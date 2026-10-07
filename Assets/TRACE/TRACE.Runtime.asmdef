@@ -1,0 +1,8 @@
+{
+  "name": "TRACE.Runtime",
+  "rootNamespace": "TRACE",
+  "references": [
+    "Unity.InputSystem",
+    "Unity.Cinemachine"
+  ]
+}

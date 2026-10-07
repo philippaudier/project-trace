@@ -1,0 +1,14 @@
+{
+  "name": "TRACE.Editor",
+  "rootNamespace": "TRACE.Editor",
+  "references": [
+    "TRACE.Runtime",
+    "Unity.InputSystem",
+    "Unity.Cinemachine",
+    "Unity.RenderPipelines.Universal.Runtime",
+    "Unity.AI.Navigation"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}
