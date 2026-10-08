@@ -201,8 +201,9 @@ namespace TRACE.Editor
             PointLight("Terminal A Glow", new Vector3(2.6f, 1.6f, 28.5f), new Color(0.35f, 0.9f, 0.85f), 2.5f, 6f, clue);
             Box("Door Clue Header", new Vector3(0f, 5f, 31f), new Vector3(9f, 2f, 0.6f), "Concrete", clue);
             clueDoor = Door("Door Clue", new Vector3(0f, 2f, 31f), new Vector3(9f, 4f, 0.5f));
-            // Room number stencilled over the clue door, read from the corridor before the archive explains it.
-            Label("Door Mark 143", new Vector3(0f, 5.1f, 30.68f), Quaternion.identity, "143", new Color(0.62f, 0.66f, 0.72f), 0.05f, clue);
+            // Small room number stencilled above the left side of the clue door, off-centre like a maintenance mark
+            // (about 0.25 m high), read from the corridor before the archive explains it.
+            Label("Door Mark 143", new Vector3(-2.6f, 4.7f, 30.68f), Quaternion.identity, "143", new Color(0.62f, 0.66f, 0.72f), 0.012f, clue);
             return terminal;
         }
 
