@@ -13,6 +13,7 @@ namespace TRACE.Characters
         [SerializeField] private string archetype = "";
         [SerializeField] private bool isTracewalker;
         [SerializeField] private Color accentColor = Color.white;
+        [SerializeField, Tooltip("HUD portrait; replaceable without touching the HUD.")] private Sprite portrait;
         public string CharacterId => characterId;
         public string DisplayName => displayName;
         public string Designation => designation;
@@ -20,6 +21,7 @@ namespace TRACE.Characters
         public string Archetype => archetype;
         public bool IsTracewalker => isTracewalker;
         public Color AccentColor => accentColor;
+        public Sprite Portrait => portrait;
         public string AccentHex => ColorUtility.ToHtmlStringRGB(accentColor);
     }
 }

@@ -288,3 +288,32 @@ band and a grip ring). Gravity Field rings use M_Control_Field (cyan unlit) and 
 affiliation/isTracewalker; CharacterPuppet (renamed from TracewalkerPuppet, same GUID) gains
 breathing and focusGesture, tuned calmer for Control. SquadVisualKit holds the shared editor
 helpers (Part, Pivot, OriginMark, Mat, Unlit, Profile, Puppet). See Docs/TRACE-Control-V0.1.md.
+
+## HUD V0.1 (2026-10-08)
+
+UGUI HUD built per scene by HudSetup.Apply (menu TRACE/Apply HUD V0.1, idempotent) on a
+screen-space-camera canvas (sorting 90, under the Tactical Overlay at 100). TRACE.UI: HudRoot
+(derives Exploration/Combat/Focus from focus, encounter state and engaged enemies within 18 m with
+2.5 s linger; picks the target: hard lock, then soft attack target, then nearest enemy engaging the
+active member; ticks the panels), HudPanel base (CanvasGroup fade + slide, real time), panels
+ActiveOperator, SquadStatus, Mission (story phase objectives + encounter waves), Target (LOCK vs
+TARGET), InteractionPrompt, Reticle, ThreatIndicatorView (renders ThreatIndicator.Hints),
+TacticalFocusOverlay (brackets, ANALYSIS block, global Volume HudFocusGrade weight). Palette:
+charcoal panels, off-white, ORIGIN amber, analysis cyan, warning red. CharacterProfile.portrait
+sprites in UI/Portraits (Support placeholder profile added). Legacy IMGUI handed over via flags
+(SkillHud disabled, InteractionController.legacyPrompt, ThreatIndicator.legacyGui,
+EncounterHud.showWaveBox). Cameras render post-processing for the focus grade. See
+Docs/TRACE-HUD-V0.1.md.
+
+## Support V0.1 (2026-10-09)
+
+Member 3 is SUPPORT, ORIGIN Field Specialist (not a Tracewalker), dressed by SupportSetup.Apply
+(menu TRACE/Apply Support V0.1, idempotent): stable stance (±0.12), enveloping off-white coat (two
+long side panels, two front flaps with mint edges, hood, sleeves), long light-brown hair with mint
+ribbons, mint collar/cuffs/lines, circular Support Module on the back (SupportModule brightens its
+mint core while any member's Shield is active; no Tactical Focus reaction), stabilization staff held
+close with a wide double emitter ring, small ORIGIN mark on the left shoulder. Pulse Shield halos on
+all members use M_Support_Shield (mint unlit) with a slow FieldVisualPulse; mechanics untouched.
+Profile origin_support_01 / Defensive Support / mint, portrait cropped from the board into
+UI/Portraits/Portrait_Support.png (same GUID as the former placeholder). Calmest puppet tuning.
+See Docs/TRACE-Support-V0.1.md.

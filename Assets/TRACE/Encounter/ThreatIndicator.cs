@@ -19,6 +19,7 @@ namespace TRACE.Encounter
         [SerializeField] private SquadController squad;
         [SerializeField] private EnemyBrain[] enemies;
         [SerializeField, Min(0f)] private float edgeMargin = 70f;
+        [SerializeField, Tooltip("Draw the prototype IMGUI boxes; off when the HUD ThreatIndicatorView renders the hints.")] private bool legacyGui = true;
         private readonly List<Hint> hints = new List<Hint>();
         private UnityEngine.Camera view;
         private GUIStyle style;
@@ -53,7 +54,7 @@ namespace TRACE.Encounter
 
         private void OnGUI()
         {
-            if (hints.Count == 0) return;
+            if (hints.Count == 0 || !legacyGui) return;
             if (style == null) style = new GUIStyle(GUI.skin.box) { fontSize = 18, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter };
             foreach (var hint in hints)
                 GUI.Box(new Rect(hint.ScreenPosition.x - 110f, Screen.height - hint.ScreenPosition.y - 20f, 220f, 40f), hint.Text, style);

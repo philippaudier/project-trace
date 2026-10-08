@@ -12,6 +12,7 @@ namespace TRACE.Narrative
         [SerializeField] private TracePlayerInput input;
         [SerializeField] private SquadController squad;
         [SerializeField] private DialogueRunner dialogue;
+        [SerializeField, Tooltip("Draw the prototype IMGUI prompt; off when the HUD InteractionPrompt renders it.")] private bool legacyPrompt = true;
         private Interactable[] interactables;
         private GUIStyle style;
         public Interactable Current { get; private set; }
@@ -50,7 +51,7 @@ namespace TRACE.Narrative
 
         private void OnGUI()
         {
-            if (Current == null) return;
+            if (Current == null || !legacyPrompt) return;
             if (style == null) style = new GUIStyle(GUI.skin.box) { fontSize = 18, alignment = TextAnchor.MiddleCenter };
             GUI.Box(new Rect(Screen.width * 0.5f - 170f, Screen.height - 150f, 340f, 40f), "F / A  :  " + Current.Prompt, style);
         }

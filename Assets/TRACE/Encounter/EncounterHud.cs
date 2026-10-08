@@ -11,6 +11,7 @@ namespace TRACE.Encounter
         [SerializeField] private TacticalFocus focus;
         [SerializeField, Tooltip("Show the ENCOUNTER COMPLETE panel; off when a story director owns the ending.")]
         private bool showCompletion = true;
+        [SerializeField, Tooltip("Draw the top-right wave box; off when the HUD MissionPanel shows the wave.")] private bool showWaveBox = true;
         private TracePlayerInput input;
         private bool menuEntered;
         private GUIStyle title;
@@ -48,7 +49,7 @@ namespace TRACE.Encounter
                     GUI.Label(new Rect(0, h * 0.14f + 60, w, 30), "Les ennemis arrivent sur les marqueurs", body);
                     break;
                 case EncounterController.EncounterState.Fighting:
-                    if (focus != null && focus.IsActive) break;
+                    if (!showWaveBox || (focus != null && focus.IsActive)) break;
                     GUI.Box(new Rect(w - 292, 12, 280, 56), GUIContent.none);
                     GUI.Label(new Rect(w - 284, 16, 264, 24), waveLabel, small);
                     GUI.Label(new Rect(w - 284, 40, 264, 24), $"ENNEMIS RESTANTS : {encounter.EnemiesAlive}", small);

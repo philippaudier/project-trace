@@ -54,8 +54,8 @@ namespace TRACE.Tests
         [UnityTest] public IEnumerator MemberTwoIsControlWithProfileModuleStaffAndMark()
         {
             AssertControl(members[1]);
-            // Still a plain capsule for Support, and no Control parts on the Tracewalker.
-            Assert.That(members[2].transform.Find("Body"), Is.Not.Null);
+            // No Control parts on the other members.
+            Assert.That(members[2].transform.Find("Control Visual"), Is.Null);
             Assert.That(members[0].GetComponent<FieldControlModule>(), Is.Null);
             yield return null;
         }
