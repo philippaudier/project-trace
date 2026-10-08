@@ -269,3 +269,22 @@ TacticalOverlay label a profiled member by name in its accent colour, others kee
 CompanionFeedback targets the torso renderer; the prototype Facing Marker is removed. Materials in
 Scenes/Materials/Tracewalker (M_Tracewalker_*). No gameplay, skill, stat or dialogue change (slice
 speakers still say ASSAULT). See Docs/TRACE-Tracewalker-V0.1.md.
+Procedural animation: TracewalkerPuppet (LateUpdate, order 50) rotates pivots Hip L/R, Upper Body,
+Shoulder L/R (blade on the right, ORIGIN mark on the left) and Head from measured speed, melee /
+companion attack, dodge, dash, Health.OnDamaged flinch and Tactical Focus (left hand to the module);
+it stops on death so CompanionFeedback keeps the laid-down pose. No Animator or clips. 204/204 tests.
+
+## Control V0.1 (2026-10-08)
+
+Member 2 is CONTROL, ORIGIN Field Specialist (not a Tracewalker), dressed by ControlSetup.Apply
+(menu TRACE/Apply Control V0.1, idempotent) in the three playable scenes: slim vertical primitive
+body under "Control Visual", asymmetric layered coat (long off-white left panel with a cyan edge,
+short charcoal right panel), long dark hair with a cyan strand, cyan collar/cuffs/lines, Field
+Control Module on the back (FieldControlModule brightens its cyan core while GravityFieldSkill.Field
+is deployed; no Tactical Focus reaction), hip and chest lenses, Gravity Staff (1.9 m, ring head)
+under the right shoulder, ORIGIN mark on the right shoulder plate (amber only there, on a module
+band and a grip ring). Gravity Field rings use M_Control_Field (cyan unlit) and FieldVisualPulse
+(counter-rotation, width pulse, game time); mechanics untouched. CharacterProfile has
+affiliation/isTracewalker; CharacterPuppet (renamed from TracewalkerPuppet, same GUID) gains
+breathing and focusGesture, tuned calmer for Control. SquadVisualKit holds the shared editor
+helpers (Part, Pivot, OriginMark, Mat, Unlit, Profile, Puppet). See Docs/TRACE-Control-V0.1.md.

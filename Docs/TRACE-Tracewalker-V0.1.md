@@ -22,6 +22,26 @@ Trace Module visible, lame courte technique.
 | Scènes | `Prototype`, `PrototypeEncounter`, `FirstTrace` traitées par `TRACE/Apply Tracewalker V0.1` (idempotent). Rencontres, rythme, niveau, dialogues et narration inchangés. |
 | Feedback existant | `CompanionFeedback` pointe sur le torse : flash de coup, teinte d'esquive, pose au sol conservés. Le `Facing Marker` du prototype est retiré (la lame et le module donnent l'orientation). |
 
+## Animation procédurale (`Characters/CharacterPuppet.cs`, ex-`TracewalkerPuppet`)
+
+Le corps est articulé par des pivots : `Hip L/R` sous la racine, `Upper Body` à hauteur de hanches avec `Shoulder L/R`
+et `Head`. La lame est fixée à l'épaule droite, la marque ORIGIN à l'épaule gauche. Le composant lit l'état du
+propriétaire en `LateUpdate` et lisse chaque pose (réponse 14 /s, 28 /s pour les frappes). Il n'écrit jamais d'état de jeu.
+
+| Action | Source lue | Pose |
+| --- | --- | --- |
+| Repos | vitesse mesurée ≈ 0 | respiration : oscillation du torse ±1,2° à 1,3 rad/s |
+| Marche / sprint | déplacement du transform (fonctionne aussi sous contrôle IA) | jambes ±32° et bras ±22° en opposition, cycle de 2 m, rebond 3,5 cm, torse penché jusqu'à 8° au sprint, tête légèrement baissée |
+| Attaque | `PlayerMeleeAttack.IsAttacking` (joueur) ou `TargetedAttack.IsWindingUp` (compagnon) | bras droit en arrière +60° pendant l'armé (0,08 s), fouetté en avant −75° pour la frappe (0,14 s), retour lissé |
+| Esquive | `ThirdPersonMotor.IsDodging` | corps abaissé de 28 cm, torse +12°, jambes groupées |
+| Dash Strike | `ThirdPersonMotor.IsSkillDashing` | torse +22°, bras droit tendu −85° (lame devant), jambes fixes |
+| Coup reçu | `Health.OnDamaged` | recul du torse de 14° qui s'amortit (8 /s) |
+| Tactical Focus | `TacticalFocus.IsActive` | main gauche portée au module (−70°), tête +6° ; temps ralenti donc geste lent, cohérent avec le ralenti |
+| Mort | `Health.IsDead` | le composant s'arrête, `CompanionFeedback` couche le corps comme avant |
+
+Tous les réglages sont des champs sérialisés sur le composant (objet `Member 1 - Tracewalker`). Aucun Animator, aucun clip :
+le composant disparaît avec les primitives quand un modèle riggé arrivera.
+
 ## Matériaux (`Assets/TRACE/Scenes/Materials/Tracewalker/`)
 
 | Matériau | Base | Notes |
@@ -38,8 +58,8 @@ Tous en URP Lit, sans chrome ni néon.
 
 ## Fichiers
 
-Créés : `Characters/CharacterProfile.cs`, `Characters/TraceModule.cs`, `Editor/TracewalkerSetup.cs`,
-`Tests/PlayMode/TracewalkerTests.cs`, les sept matériaux, `Docs/Validation/TracewalkerVisualCapture.cs`.
+Créés : `Characters/CharacterProfile.cs`, `Characters/TraceModule.cs`, `Characters/CharacterPuppet.cs`, `Editor/TracewalkerSetup.cs`,
+`Tests/PlayMode/TracewalkerTests.cs`, `Tests/PlayMode/TracewalkerAnimationTests.cs`, les sept matériaux, `Docs/Validation/TracewalkerVisualCapture.cs`.
 Modifiés : `Skills/SkillHud.cs`, `Tactical/TacticalOverlay.cs` (étiquette par profil), `Tests/PlayMode/TacticalFocusTests.cs`
 (attend `TRACEWALKER`), `Scenes/Prototype.unity`, `Scenes/PrototypeEncounter.unity`, `Scenes/FirstTrace.unity`.
 
@@ -47,10 +67,12 @@ Modifiés : `Skills/SkillHud.cs`, `Tactical/TacticalOverlay.cs` (étiquette par 
 
 | Étape | Résultat | Preuve |
 | --- | --- | --- |
-| Suite complète | 197/197 (193 précédents + 4 Tracewalker) | `Validation/TRACE-Tracewalker-PlayMode.xml` |
-| Captures | 1/1, cinq vues 1280x720 | `Validation/TRACE-Tracewalker-Visual.xml`, `Validation/Tracewalker-*.png` |
+| Suite complète | 204/204 (193 précédents + 4 Tracewalker + 7 animation) | `Validation/TRACE-Tracewalker-PlayMode.xml` |
+| Captures | 1/1, sept vues 1280x720 (dont marche et attaque) | `Validation/TRACE-Tracewalker-Visual.xml`, `Validation/Tracewalker-*.png` |
 
-Aucun warning ni erreur C#. Tests Tracewalker : profil, module, marque, lame et matériaux sur le membre 1 des trois scènes
+Aucun warning ni erreur C#. Tests animation : câblage des pivots et repos stable, balancement en marche puis arrêt,
+armé puis frappe puis retour, esquive accroupie, dash penché lame devant, main au module sous Focus, recul au coup et
+pose de mort laissée à `CompanionFeedback`. Tests Tracewalker : profil, module, marque, lame et matériaux sur le membre 1 des trois scènes
 (et absence sur les deux autres membres) ; émission du module qui monte sous Tactical Focus et redescend ;
 étiquettes HUD ; membre 1 contrôlé au chargement de FirstTrace. Locomotion, attaque, dash, esquive, switch, focus,
 lock, rencontre et slice sont couverts par les suites existantes, toutes vertes.
@@ -59,7 +81,8 @@ lock, rencontre et slice sont couverts par les suites existantes, toutes vertes.
 
 1. Rouvrir les scènes dans l'Editor (fichiers remplacés sur disque, ne pas sauvegarder l'ancienne version en mémoire).
 2. `Prototype` : lisibilité de la silhouette à la distance caméra actuelle ; le module et la lame indiquent l'orientation.
-3. Maintenir Tab : la lentille du module monte en intensité et pulse ; relâcher : retour en moins d'une demi-seconde.
+3. Maintenir Tab : la lentille du module monte en intensité et pulse, la main gauche vient au module ; relâcher : retour en moins d'une demi-seconde.
+   Marcher, sprinter, attaquer, esquiver, dasher : vérifier que les poses se lisent sans gêner la lisibilité du combat (amplitudes dans l'Inspector du `CharacterPuppet`).
 4. Esquive et coups reçus : la teinte cyan et le flash blanc s'appliquent au torse.
 5. `FirstTrace` : le Tracewalker reste distinct des deux capsules compagnons dans l'éclairage sombre du quai.
 6. Hors périmètre, à décider plus tard : les locuteurs de dialogue de la slice restent `ASSAULT` (contenu narratif non modifié).

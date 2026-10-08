@@ -55,10 +55,10 @@ namespace TRACE.Tests
             AssertTracewalker(members[0]);
             for (int i = 1; i < members.Length; i++)
             {
-                Assert.That(members[i].GetComponent<CharacterProfile>(), Is.Null, members[i].name);
+                var other = members[i].GetComponent<CharacterProfile>();
+                Assert.That(other == null || !other.IsTracewalker, Is.True, members[i].name + " is not a Tracewalker");
                 Assert.That(members[i].GetComponent<TraceModule>(), Is.Null, members[i].name);
                 Assert.That(members[i].transform.Find("Tracewalker Visual"), Is.Null, members[i].name);
-                Assert.That(members[i].transform.Find("Body"), Is.Not.Null, members[i].name);
             }
             yield return null;
         }

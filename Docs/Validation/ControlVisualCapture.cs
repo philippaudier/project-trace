@@ -8,6 +8,7 @@ using NUnit.Framework;
 using TRACE.AI;
 using TRACE.Characters;
 using TRACE.Input;
+using TRACE.Skills;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,10 +19,10 @@ using Object = UnityEngine.Object;
 
 namespace TRACE.Tests
 {
-    public sealed class TracewalkerVisualCapture
+    public sealed class ControlVisualCapture
     {
         [UnityTest]
-        public IEnumerator CaptureBodyFocusSquadAndFirstTrace()
+        public IEnumerator CaptureBodyFieldSquadAndFirstTrace()
         {
             var oldBackground = InputSystem.settings.backgroundBehavior;
             var oldEditor = InputSystem.settings.editorInputBehaviorInPlayMode;
@@ -34,48 +35,39 @@ namespace TRACE.Tests
                 var squad = Object.FindFirstObjectByType<SquadController>();
                 Set(squad.GetComponent<TracePlayerInput>(), "captureCursor", false);
                 foreach (var enemy in Object.FindObjectsByType<EnemyBrain>(FindObjectsSortMode.None)) enemy.gameObject.SetActive(false);
-                var member = squad.Members[0].transform;
+                var control = squad.Members[1];
+                var member = control.transform;
                 var camera = UnityEngine.Camera.main;
                 var brain = camera.GetComponent<CinemachineBrain>();
                 yield return new WaitForSecondsRealtime(0.3f);
-                brain.enabled = false;
-                Look(camera, member.position + new Vector3(1.5f, 1.4f, 2.3f), member.position + Vector3.up * 1.0f);
-                yield return Capture("Tracewalker-front.png");
-                Look(camera, member.position + new Vector3(-2.2f, 1.5f, -1.6f), member.position + Vector3.up * 1.0f);
-                yield return Capture("Tracewalker-back.png");
-                // Mid-stride from the side, then the attack swing from the front.
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.W));
-                yield return new WaitForSecondsRealtime(0.55f);
-                Look(camera, member.position + new Vector3(2.6f, 1.2f, 0.2f), member.position + Vector3.up * 0.95f);
-                yield return Capture("Tracewalker-walk.png");
+                // Switch to Control so she stands still under player control, then frame her.
+                InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Digit2));
+                yield return new WaitForSecondsRealtime(0.1f);
                 InputSystem.QueueStateEvent(keyboard, new KeyboardState());
                 yield return new WaitForSecondsRealtime(0.8f);
-                var mouse = InputSystem.AddDevice<Mouse>();
-                InputSystem.QueueStateEvent(mouse, new MouseState().WithButton(MouseButton.Left));
-                yield return new WaitForSecondsRealtime(0.1f);
-                Look(camera, member.position + new Vector3(1.4f, 1.3f, 2.2f), member.position + Vector3.up * 1.0f);
-                yield return Capture("Tracewalker-attack.png");
-                InputSystem.QueueStateEvent(mouse, new MouseState());
-                yield return new WaitForSecondsRealtime(0.6f);
-                InputSystem.RemoveDevice(mouse);
-                Look(camera, member.position + new Vector3(0.9f, 1.35f, 1.3f), member.position + Vector3.up * 1.25f);
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Tab));
-                yield return new WaitForSecondsRealtime(0.45f);
-                Assert.That(member.GetComponent<TraceModule>().IsFocused, Is.True);
-                yield return Capture("Tracewalker-focus.png");
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState());
-                yield return new WaitForSecondsRealtime(0.4f);
-                // Clear of the camera test corner (x = -11, z in [-4, 2]) so the orbit camera can sit behind the squad.
-                Place(squad.Members[0], new Vector3(-11f, 0f, 12f), Quaternion.identity);
+                brain.enabled = false;
+                Look(camera, member.position + new Vector3(1.6f, 1.4f, 2.4f), member.position + Vector3.up * 1.05f);
+                yield return Capture("Control-front.png");
+                Look(camera, member.position + new Vector3(-2.2f, 1.5f, -1.7f), member.position + Vector3.up * 1.0f);
+                yield return Capture("Control-back.png");
+                // Both squad members side by side for the silhouette check.
+                var tracewalker = squad.Members[0].transform;
+                Vector3 mid = (member.position + tracewalker.position) * 0.5f;
+                Look(camera, mid + new Vector3(0f, 1.6f, 4.6f), mid + Vector3.up * 0.95f);
+                yield return Capture("Control-vs-tracewalker.png");
+                // Gravity Field deployed: cyan rings and the back module lit.
+                Assert.That(control.GetComponent<GravityFieldSkill>().Activate(), Is.True);
+                yield return new WaitForSecondsRealtime(0.5f);
+                var field = control.GetComponent<GravityFieldSkill>().Field.transform;
+                Look(camera, member.position + new Vector3(-2.6f, 2.4f, -2.2f), field.position + Vector3.up * 0.4f);
+                yield return Capture("Control-field.png");
                 brain.enabled = true;
-                yield return new WaitForSecondsRealtime(1.2f);
-                yield return Capture("Tracewalker-squad.png");
 
                 yield return SceneManager.LoadSceneAsync("FirstTrace");
                 squad = Object.FindFirstObjectByType<SquadController>();
                 Set(squad.GetComponent<TracePlayerInput>(), "captureCursor", false);
                 yield return new WaitForSecondsRealtime(1.2f);
-                yield return Capture("Tracewalker-firsttrace.png");
+                yield return Capture("Control-firsttrace.png");
                 LogAssert.NoUnexpectedReceived();
             }
             finally
@@ -91,12 +83,6 @@ namespace TRACE.Tests
         {
             camera.transform.position = from;
             camera.transform.rotation = Quaternion.LookRotation(at - from, Vector3.up);
-        }
-        private static void Place(SquadMember member, Vector3 position, Quaternion rotation)
-        {
-            var body = member.GetComponent<CharacterController>(); body.enabled = false;
-            member.transform.SetPositionAndRotation(position + Vector3.up * 0.08f, rotation); body.enabled = true;
-            Physics.SyncTransforms();
         }
         private static void Set(object target, string name, object value) => target.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).SetValue(target, value);
         private static IEnumerator Capture(string name)
