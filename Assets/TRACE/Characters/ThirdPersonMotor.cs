@@ -35,6 +35,36 @@ namespace TRACE.Characters
         private Vector3 dodgeDirection;
         public bool IsDodging { get; private set; }
         public Vector3 DodgeDirection => dodgeDirection;
+        private Vector3 skillDashDisplacement;
+        private float skillDashDuration;
+        private float skillDashElapsed;
+        public bool IsSkillDashing { get; private set; }
+        // Set by TargetingSystem while a target is locked: face it, keep camera-relative movement (no tank controls).
+        public Transform FacingTarget { get; set; }
+        public event System.Action SkillDashCompleted;
+        public Vector3 MovementDirection
+        {
+            get
+            {
+                Vector2 movement = input.Move;
+                return movement.sqrMagnitude > 0.001f
+                    ? Quaternion.Euler(0f, movementCamera.eulerAngles.y, 0f) * new Vector3(movement.x, 0f, movement.y).normalized
+                    : transform.forward;
+            }
+        }
+
+        public bool TryBeginSkillDash(Vector3 displacement, float duration)
+        {
+            if (!isActiveAndEnabled || !controller.enabled || IsDodging || IsSkillDashing || duration <= 0f)
+                return false;
+            displacement.y = 0f;
+            skillDashDisplacement = displacement;
+            skillDashDuration = duration;
+            skillDashElapsed = 0f;
+            IsSkillDashing = true;
+            if (displacement.sqrMagnitude > 0.001f) transform.rotation = Quaternion.LookRotation(displacement);
+            return true;
+        }
 
         private CharacterController controller;
         private Vector3 planarVelocity;
@@ -59,6 +89,14 @@ namespace TRACE.Characters
             verticalSpeed = turnVelocity = 0f;
             IsGrounded = false;
             IsDodging = false;
+            IsSkillDashing = false;
+            if (damageReceiver != null) damageReceiver.ClearInvulnerability();
+        }
+
+        public void CancelActionMovement()
+        {
+            planarVelocity = Vector3.zero;
+            IsDodging = IsSkillDashing = false;
             if (damageReceiver != null) damageReceiver.ClearInvulnerability();
         }
 
@@ -86,7 +124,7 @@ namespace TRACE.Characters
                 planarVelocity = Vector3.zero;
                 if (damageReceiver != null) damageReceiver.ClearInvulnerability();
             }
-            if (input.DodgePressed && !IsDodging && IsGrounded && Time.time >= dodgeReadyAt)
+            if (input.DodgePressed && !IsDodging && !IsSkillDashing && IsGrounded && Time.time >= dodgeReadyAt)
             {
                 IsDodging = true;
                 dodgeElapsed = 0f;
@@ -97,7 +135,14 @@ namespace TRACE.Characters
                         Mathf.Min(invulnerabilityDuration, Mathf.Max(0f, dodgeDuration - invulnerabilityDelay)));
             }
             float speed = input.Sprint ? sprintSpeed : walkSpeed;
-            if (IsDodging)
+            if (IsSkillDashing)
+            {
+                float previous = Mathf.Clamp01(skillDashElapsed / skillDashDuration);
+                skillDashElapsed += dt;
+                float next = Mathf.Clamp01(skillDashElapsed / skillDashDuration);
+                planarVelocity = skillDashDisplacement * ((next - previous) / dt);
+            }
+            else if (IsDodging)
             {
                 // Integrate a fast-start/eased-stop distance curve: distance is stable across frame rates.
                 float previous = Mathf.Clamp01(dodgeElapsed / dodgeDuration);
@@ -110,9 +155,15 @@ namespace TRACE.Characters
                 planarVelocity = Vector3.MoveTowards(planarVelocity, desired * speed,
                     (movement.sqrMagnitude > 0f ? acceleration : deceleration) * dt);
 
-            if (!IsDodging && desired.sqrMagnitude > 0.001f)
+            Vector3 facing = desired;
+            if (FacingTarget != null)
             {
-                float angle = Mathf.Atan2(desired.x, desired.z) * Mathf.Rad2Deg;
+                facing = FacingTarget.position - transform.position;
+                facing.y = 0f;
+            }
+            if (!IsDodging && !IsSkillDashing && facing.sqrMagnitude > 0.001f)
+            {
+                float angle = Mathf.Atan2(facing.x, facing.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, Mathf.SmoothDampAngle(
                     transform.eulerAngles.y, angle, ref turnVelocity, rotationSmoothTime), 0f);
             }
@@ -155,6 +206,12 @@ namespace TRACE.Characters
             IsGrounded = walkable && (flags & CollisionFlags.Below) != 0;
             if ((flags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
                 verticalSpeed = 0f;
+            if (IsSkillDashing && skillDashElapsed >= skillDashDuration)
+            {
+                IsSkillDashing = false;
+                planarVelocity = Vector3.zero;
+                SkillDashCompleted?.Invoke();
+            }
         }
     }
 }

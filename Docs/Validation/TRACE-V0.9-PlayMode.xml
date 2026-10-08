@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="166" result="Passed" total="166" passed="166" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:40:22Z" duration="63,6718618">
+  <test-suite type="TestSuite" id="1183" name="Project-TRACE" fullname="Project-TRACE" runstate="Runnable" testcasecount="166" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:40:22Z" duration="63.671862" total="166" passed="166" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1177" name="TRACE.PlayModeTests.dll" fullname="C:/Users/Philippe/Documents/Programming/Unity/Projects/project-trace/Logs/v09-project/Library/ScriptAssemblies/TRACE.PlayModeTests.dll" runstate="Runnable" testcasecount="166" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:40:22Z" duration="63.663468" total="166" passed="166" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="14992" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1178" name="TRACE" fullname="TRACE" runstate="Runnable" testcasecount="166" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:40:22Z" duration="63.661629" total="166" passed="166" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1179" name="Tests" fullname="TRACE.Tests" runstate="Runnable" testcasecount="166" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:40:22Z" duration="63.659873" total="166" passed="166" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="CombatTests" fullname="TRACE.Tests.CombatTests" classname="TRACE.Tests.CombatTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:39:21Z" duration="2.297146" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="CooldownRejectsSpamAndHoldingDoesNotRepeat" fullname="TRACE.Tests.CombatTests.CooldownRejectsSpamAndHoldingDoesNotRepeat" methodname="CooldownRejectsSpamAndHoldingDoesNotRepeat" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="364060877" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:39:19Z" duration="0.394354" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="DirectionPriorityChoosesAlignedTargetOverCloserOffset" fullname="TRACE.Tests.CombatTests.DirectionPriorityChoosesAlignedTargetOverCloserOffset" methodname="DirectionPriorityChoosesAlignedTargetOverCloserOffset" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="1245368253" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:39:19Z" duration="0.264626" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="DisablingInputCancelsWindupAndReenableDoesNotDuplicateHit" fullname="TRACE.Tests.CombatTests.DisablingInputCancelsWindupAndReenableDoesNotDuplicateHit" methodname="DisablingInputCancelsWindupAndReenableDoesNotDuplicateHit" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="1849332973" result="Passed" start-time="2026-10-07 21:39:19Z" end-time="2026-10-07 21:39:20Z" duration="0.257183" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="FourHitsKillDisableCollisionsThenDeactivate" fullname="TRACE.Tests.CombatTests.FourHitsKillDisableCollisionsThenDeactivate" methodname="FourHitsKillDisableCollisionsThenDeactivate" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="106407815" result="Passed" start-time="2026-10-07 21:39:20Z" end-time="2026-10-07 21:39:20Z" duration="0.305735" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="HitFlashesRecoilsAndRecoversWithoutMovingCollider" fullname="TRACE.Tests.CombatTests.HitFlashesRecoilsAndRecoversWithoutMovingCollider" methodname="HitFlashesRecoilsAndRecoversWithoutMovingCollider" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="889920082" result="Passed" start-time="2026-10-07 21:39:20Z" end-time="2026-10-07 21:39:20Z" duration="0.256332" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="InputAttackHitsOnceAcrossWindowAndMultipleColliders" fullname="TRACE.Tests.CombatTests.InputAttackHitsOnceAcrossWindowAndMultipleColliders" methodname="InputAttackHitsOnceAcrossWindowAndMultipleColliders" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="984721927" result="Passed" start-time="2026-10-07 21:39:20Z" end-time="2026-10-07 21:39:21Z" duration="0.249332" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="RangeBehindLayerAndWallRejectInvalidHits" fullname="TRACE.Tests.CombatTests.RangeBehindLayerAndWallRejectInvalidHits" methodname="RangeBehindLayerAndWallRejectInvalidHits" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="218040588" result="Passed" start-time="2026-10-07 21:39:21Z" end-time="2026-10-07 21:39:21Z" duration="0.304411" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="SoftTargetingHelpsSmallOffsetWithoutRotatingPlayer" fullname="TRACE.Tests.CombatTests.SoftTargetingHelpsSmallOffsetWithoutRotatingPlayer" methodname="SoftTargetingHelpsSmallOffsetWithoutRotatingPlayer" classname="TRACE.Tests.CombatTests" runstate="Runnable" seed="1275019954" result="Passed" start-time="2026-10-07 21:39:21Z" end-time="2026-10-07 21:39:21Z" duration="0.251155" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1014" name="ComboTests" fullname="TRACE.Tests.ComboTests" classname="TRACE.Tests.ComboTests" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-07 21:39:21Z" end-time="2026-10-07 21:39:28Z" duration="7.125832" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1033" name="AutomaticCompanionHitConsumesNeitherOpportunity" fullname="TRACE.Tests.ComboTests.AutomaticCompanionHitConsumesNeitherOpportunity" methodname="AutomaticCompanionHitConsumesNeitherOpportunity" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1360043128" result="Passed" start-time="2026-10-07 21:39:21Z" end-time="2026-10-07 21:39:21Z" duration="0.370389" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="CancelledDashLeavesGroupedForAnotherAttempt" fullname="TRACE.Tests.ComboTests.CancelledDashLeavesGroupedForAnotherAttempt" methodname="CancelledDashLeavesGroupedForAnotherAttempt" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="660576844" result="Passed" start-time="2026-10-07 21:39:21Z" end-time="2026-10-07 21:39:22Z" duration="0.266947" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="ComboSplashHitsEachNearbyEnemyOnceAndDoesNotChain" fullname="TRACE.Tests.ComboTests.ComboSplashHitsEachNearbyEnemyOnceAndDoesNotChain" methodname="ComboSplashHitsEachNearbyEnemyOnceAndDoesNotChain" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1320090719" result="Passed" start-time="2026-10-07 21:39:22Z" end-time="2026-10-07 21:39:22Z" duration="0.259828" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="ControlPreparesThenManualSwitchAndQExploitGrouped" fullname="TRACE.Tests.ComboTests.ControlPreparesThenManualSwitchAndQExploitGrouped" methodname="ControlPreparesThenManualSwitchAndQExploitGrouped" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="479177609" result="Passed" start-time="2026-10-07 21:39:22Z" end-time="2026-10-07 21:39:22Z" duration="0.322885" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="DeathClearsOpportunityAndPauseFreezesItsWindow" fullname="TRACE.Tests.ComboTests.DeathClearsOpportunityAndPauseFreezesItsWindow" methodname="DeathClearsOpportunityAndPauseFreezesItsWindow" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="631142436" result="Passed" start-time="2026-10-07 21:39:22Z" end-time="2026-10-07 21:39:23Z" duration="0.264758" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="GravityRequiresDwellThenOffersGroupedWithSourceAndTarget" fullname="TRACE.Tests.ComboTests.GravityRequiresDwellThenOffersGroupedWithSourceAndTarget" methodname="GravityRequiresDwellThenOffersGroupedWithSourceAndTarget" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="291900626" result="Passed" start-time="2026-10-07 21:39:23Z" end-time="2026-10-07 21:39:23Z" duration="0.284349" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="GroupedConsumedOncePerCastAndCanReturnOnNextCast" fullname="TRACE.Tests.ComboTests.GroupedConsumedOncePerCastAndCanReturnOnNextCast" methodname="GroupedConsumedOncePerCastAndCanReturnOnNextCast" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="105818861" result="Passed" start-time="2026-10-07 21:39:23Z" end-time="2026-10-07 21:39:23Z" duration="0.343365" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="GroupedCrowdShowsOneInstructionAndActiveCounterHasPriority" fullname="TRACE.Tests.ComboTests.GroupedCrowdShowsOneInstructionAndActiveCounterHasPriority" methodname="GroupedCrowdShowsOneInstructionAndActiveCounterHasPriority" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="111745946" result="Passed" start-time="2026-10-07 21:39:23Z" end-time="2026-10-07 21:39:23Z" duration="0.269028" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="GroupedExpiresWithoutRefreshWhileStillInsideSameCast" fullname="TRACE.Tests.ComboTests.GroupedExpiresWithoutRefreshWhileStillInsideSameCast" methodname="GroupedExpiresWithoutRefreshWhileStillInsideSameCast" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1352617653" result="Passed" start-time="2026-10-07 21:39:23Z" end-time="2026-10-07 21:39:24Z" duration="0.389820" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="GroupedTakesPriorityWithoutStackingProtected" fullname="TRACE.Tests.ComboTests.GroupedTakesPriorityWithoutStackingProtected" methodname="GroupedTakesPriorityWithoutStackingProtected" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1629051279" result="Passed" start-time="2026-10-07 21:39:24Z" end-time="2026-10-07 21:39:24Z" duration="0.267094" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1038" name="IFramesDoNotGenerateProtected" fullname="TRACE.Tests.ComboTests.IFramesDoNotGenerateProtected" methodname="IFramesDoNotGenerateProtected" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="153262419" result="Passed" start-time="2026-10-07 21:39:24Z" end-time="2026-10-07 21:39:24Z" duration="0.265282" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="InterruptedExposureDoesNotAccumulateAcrossSeparateVisits" fullname="TRACE.Tests.ComboTests.InterruptedExposureDoesNotAccumulateAcrossSeparateVisits" methodname="InterruptedExposureDoesNotAccumulateAcrossSeparateVisits" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="541520015" result="Passed" start-time="2026-10-07 21:39:24Z" end-time="2026-10-07 21:39:25Z" duration="0.278637" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="InvulnerableTargetDoesNotConsumeEitherOpportunity" fullname="TRACE.Tests.ComboTests.InvulnerableTargetDoesNotConsumeEitherOpportunity" methodname="InvulnerableTargetDoesNotConsumeEitherOpportunity" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1902041494" result="Passed" start-time="2026-10-07 21:39:25Z" end-time="2026-10-07 21:39:25Z" duration="0.257016" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="KillingPrimaryStillProducesComboSplashAndFeedback" fullname="TRACE.Tests.ComboTests.KillingPrimaryStillProducesComboSplashAndFeedback" methodname="KillingPrimaryStillProducesComboSplashAndFeedback" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1372545726" result="Passed" start-time="2026-10-07 21:39:25Z" end-time="2026-10-07 21:39:25Z" duration="0.278992" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="MissedMeleeDoesNotConsumeProtected" fullname="TRACE.Tests.ComboTests.MissedMeleeDoesNotConsumeProtected" methodname="MissedMeleeDoesNotConsumeProtected" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="2043328878" result="Passed" start-time="2026-10-07 21:39:25Z" end-time="2026-10-07 21:39:25Z" duration="0.261670" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="NormalDashStillDealsThirtyFiveWithoutSplash" fullname="TRACE.Tests.ComboTests.NormalDashStillDealsThirtyFiveWithoutSplash" methodname="NormalDashStillDealsThirtyFiveWithoutSplash" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="377699563" result="Passed" start-time="2026-10-07 21:39:25Z" end-time="2026-10-07 21:39:26Z" duration="0.266441" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="ProtectedBoostsExactlyNextMeleeAttack" fullname="TRACE.Tests.ComboTests.ProtectedBoostsExactlyNextMeleeAttack" methodname="ProtectedBoostsExactlyNextMeleeAttack" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="377482202" result="Passed" start-time="2026-10-07 21:39:26Z" end-time="2026-10-07 21:39:26Z" duration="0.281076" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="ProtectedBoostsNormalDash" fullname="TRACE.Tests.ComboTests.ProtectedBoostsNormalDash" methodname="ProtectedBoostsNormalDash" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="51170977" result="Passed" start-time="2026-10-07 21:39:26Z" end-time="2026-10-07 21:39:26Z" duration="0.264883" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1030" name="ProtectedBoostsPlayerRangedShot" fullname="TRACE.Tests.ComboTests.ProtectedBoostsPlayerRangedShot" methodname="ProtectedBoostsPlayerRangedShot" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1029723743" result="Passed" start-time="2026-10-07 21:39:26Z" end-time="2026-10-07 21:39:27Z" duration="0.268166" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="ProtectedExpiresAndDoesNotRefreshOnFurtherAbsorption" fullname="TRACE.Tests.ComboTests.ProtectedExpiresAndDoesNotRefreshOnFurtherAbsorption" methodname="ProtectedExpiresAndDoesNotRefreshOnFurtherAbsorption" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="697865112" result="Passed" start-time="2026-10-07 21:39:27Z" end-time="2026-10-07 21:39:27Z" duration="0.333875" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="ProtectedStaysOnBearerAcrossSwitchAndOthersCannotSpendIt" fullname="TRACE.Tests.ComboTests.ProtectedStaysOnBearerAcrossSwitchAndOthersCannotSpendIt" methodname="ProtectedStaysOnBearerAcrossSwitchAndOthersCannotSpendIt" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="922921242" result="Passed" start-time="2026-10-07 21:39:27Z" end-time="2026-10-07 21:39:27Z" duration="0.268114" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="PulseShieldNeedsTwentyAbsorbedDamageForProtected" fullname="TRACE.Tests.ComboTests.PulseShieldNeedsTwentyAbsorbedDamageForProtected" methodname="PulseShieldNeedsTwentyAbsorbedDamageForProtected" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="181162433" result="Passed" start-time="2026-10-07 21:39:27Z" end-time="2026-10-07 21:39:27Z" duration="0.256312" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="ReadyMarkerAndImpactFeedbackHaveDistinctLifetimes" fullname="TRACE.Tests.ComboTests.ReadyMarkerAndImpactFeedbackHaveDistinctLifetimes" methodname="ReadyMarkerAndImpactFeedbackHaveDistinctLifetimes" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="2094551058" result="Passed" start-time="2026-10-07 21:39:27Z" end-time="2026-10-07 21:39:28Z" duration="0.276163" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="ShieldCanOfferOnlyOnceAndRawHealthDamageDoesNotPrepare" fullname="TRACE.Tests.ComboTests.ShieldCanOfferOnlyOnceAndRawHealthDamageDoesNotPrepare" methodname="ShieldCanOfferOnlyOnceAndRawHealthDamageDoesNotPrepare" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="895811049" result="Passed" start-time="2026-10-07 21:39:28Z" end-time="2026-10-07 21:39:28Z" duration="0.262146" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="SplashCannotCrossWalls" fullname="TRACE.Tests.ComboTests.SplashCannotCrossWalls" methodname="SplashCannotCrossWalls" classname="TRACE.Tests.ComboTests" runstate="Runnable" seed="1874964575" result="Passed" start-time="2026-10-07 21:39:28Z" end-time="2026-10-07 21:39:28Z" duration="0.263280" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1040" name="DuelTests" fullname="TRACE.Tests.DuelTests" classname="TRACE.Tests.DuelTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-07 21:39:28Z" end-time="2026-10-07 21:39:32Z" duration="4.169732" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1053" name="DodgeCancelsPlayerAttack" fullname="TRACE.Tests.DuelTests.DodgeCancelsPlayerAttack" methodname="DodgeCancelsPlayerAttack" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="1350357866" result="Passed" start-time="2026-10-07 21:39:28Z" end-time="2026-10-07 21:39:28Z" duration="0.269805" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="DodgeCooldownAndHeldKeyDoNotRepeat" fullname="TRACE.Tests.DuelTests.DodgeCooldownAndHeldKeyDoNotRepeat" methodname="DodgeCooldownAndHeldKeyDoNotRepeat" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="1545733952" result="Passed" start-time="2026-10-07 21:39:28Z" end-time="2026-10-07 21:39:29Z" duration="0.310349" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="DodgeDoesNotPassThroughWall" fullname="TRACE.Tests.DuelTests.DodgeDoesNotPassThroughWall" methodname="DodgeDoesNotPassThroughWall" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="83100522" result="Passed" start-time="2026-10-07 21:39:29Z" end-time="2026-10-07 21:39:29Z" duration="0.262269" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="DodgeMovesCameraRelativeAndStopsAtConfiguredDistance" fullname="TRACE.Tests.DuelTests.DodgeMovesCameraRelativeAndStopsAtConfiguredDistance" methodname="DodgeMovesCameraRelativeAndStopsAtConfiguredDistance" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="1598681039" result="Passed" start-time="2026-10-07 21:39:29Z" end-time="2026-10-07 21:39:29Z" duration="0.279165" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="EarlyDodgeIsHitAfterInvulnerabilityExpires" fullname="TRACE.Tests.DuelTests.EarlyDodgeIsHitAfterInvulnerabilityExpires" methodname="EarlyDodgeIsHitAfterInvulnerabilityExpires" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="491679122" result="Passed" start-time="2026-10-07 21:39:29Z" end-time="2026-10-07 21:39:30Z" duration="0.251898" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="EnemyLosesTargetAndHandlesInactiveTarget" fullname="TRACE.Tests.DuelTests.EnemyLosesTargetAndHandlesInactiveTarget" methodname="EnemyLosesTargetAndHandlesInactiveTarget" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="1370869176" result="Passed" start-time="2026-10-07 21:39:30Z" end-time="2026-10-07 21:39:30Z" duration="0.257245" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="IdleDetectChaseStopAndAttack" fullname="TRACE.Tests.DuelTests.IdleDetectChaseStopAndAttack" methodname="IdleDetectChaseStopAndAttack" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="276963396" result="Passed" start-time="2026-10-07 21:39:30Z" end-time="2026-10-07 21:39:30Z" duration="0.280842" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1048" name="InvulnerabilityHasBothBoundariesAndClearsOnDisable" fullname="TRACE.Tests.DuelTests.InvulnerabilityHasBothBoundariesAndClearsOnDisable" methodname="InvulnerabilityHasBothBoundariesAndClearsOnDisable" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="2040919567" result="Passed" start-time="2026-10-07 21:39:30Z" end-time="2026-10-07 21:39:30Z" duration="0.251766" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1051" name="LateDodgeDoesNotUndoDamage" fullname="TRACE.Tests.DuelTests.LateDodgeDoesNotUndoDamage" methodname="LateDodgeDoesNotUndoDamage" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="862065230" result="Passed" start-time="2026-10-07 21:39:30Z" end-time="2026-10-07 21:39:31Z" duration="0.255229" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="NavMeshPursuitGoesAroundObstacle" fullname="TRACE.Tests.DuelTests.NavMeshPursuitGoesAroundObstacle" methodname="NavMeshPursuitGoesAroundObstacle" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="454791909" result="Passed" start-time="2026-10-07 21:39:31Z" end-time="2026-10-07 21:39:31Z" duration="0.316477" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1054" name="PlayerCanKillEnemyAndDeathCancelsAttack" fullname="TRACE.Tests.DuelTests.PlayerCanKillEnemyAndDeathCancelsAttack" methodname="PlayerCanKillEnemyAndDeathCancelsAttack" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="979355458" result="Passed" start-time="2026-10-07 21:39:31Z" end-time="2026-10-07 21:39:31Z" duration="0.307290" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1055" name="PlayerDeathStopsControlAndEnemyAggression" fullname="TRACE.Tests.DuelTests.PlayerDeathStopsControlAndEnemyAggression" methodname="PlayerDeathStopsControlAndEnemyAggression" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="95993779" result="Passed" start-time="2026-10-07 21:39:31Z" end-time="2026-10-07 21:39:32Z" duration="0.252680" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="SpatialDodgeMissesWithoutIFramesAndEnemyResumesChase" fullname="TRACE.Tests.DuelTests.SpatialDodgeMissesWithoutIFramesAndEnemyResumesChase" methodname="SpatialDodgeMissesWithoutIFramesAndEnemyResumesChase" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="867525350" result="Passed" start-time="2026-10-07 21:39:32Z" end-time="2026-10-07 21:39:32Z" duration="0.291904" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="TimedDodgeAvoidsRealStrikeAndAllowsCounterattack" fullname="TRACE.Tests.DuelTests.TimedDodgeAvoidsRealStrikeAndAllowsCounterattack" methodname="TimedDodgeAvoidsRealStrikeAndAllowsCounterattack" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="2139547521" result="Passed" start-time="2026-10-07 21:39:32Z" end-time="2026-10-07 21:39:32Z" duration="0.282832" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1042" name="WindupSingleHitAndRecoveryAreRespected" fullname="TRACE.Tests.DuelTests.WindupSingleHitAndRecoveryAreRespected" methodname="WindupSingleHitAndRecoveryAreRespected" classname="TRACE.Tests.DuelTests" runstate="Runnable" seed="1739831925" result="Passed" start-time="2026-10-07 21:39:32Z" end-time="2026-10-07 21:39:32Z" duration="0.296328" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1056" name="EncounterTests" fullname="TRACE.Tests.EncounterTests" classname="TRACE.Tests.EncounterTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-10-07 21:39:32Z" end-time="2026-10-07 21:39:40Z" duration="7.119031" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1058" name="ArchetypesAreVisuallyDistinctBeforeTheyAttack" fullname="TRACE.Tests.EncounterTests.ArchetypesAreVisuallyDistinctBeforeTheyAttack" methodname="ArchetypesAreVisuallyDistinctBeforeTheyAttack" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1990527845" result="Passed" start-time="2026-10-07 21:39:32Z" end-time="2026-10-07 21:39:33Z" duration="0.269200" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="BulwarkDiesLikeOtherEnemies" fullname="TRACE.Tests.EncounterTests.BulwarkDiesLikeOtherEnemies" methodname="BulwarkDiesLikeOtherEnemies" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1415329028" result="Passed" start-time="2026-10-07 21:39:33Z" end-time="2026-10-07 21:39:33Z" duration="0.277300" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="BulwarkHeavyAttackIsSlowTelegraphedAndHeavy" fullname="TRACE.Tests.EncounterTests.BulwarkHeavyAttackIsSlowTelegraphedAndHeavy" methodname="BulwarkHeavyAttackIsSlowTelegraphedAndHeavy" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="926016677" result="Passed" start-time="2026-10-07 21:39:33Z" end-time="2026-10-07 21:39:33Z" duration="0.275235" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1066" name="BulwarkReducesFrontalHitsAndTakesFullFlankDamage" fullname="TRACE.Tests.EncounterTests.BulwarkReducesFrontalHitsAndTakesFullFlankDamage" methodname="BulwarkReducesFrontalHitsAndTakesFullFlankDamage" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1096104048" result="Passed" start-time="2026-10-07 21:39:33Z" end-time="2026-10-07 21:39:34Z" duration="0.292722" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="ClearingAllThreeWavesCompletesTheEncounter" fullname="TRACE.Tests.EncounterTests.ClearingAllThreeWavesCompletesTheEncounter" methodname="ClearingAllThreeWavesCompletesTheEncounter" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="824012304" result="Passed" start-time="2026-10-07 21:39:34Z" end-time="2026-10-07 21:39:34Z" duration="0.561701" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="CompanionsEngageMarksmanAndGravityFieldGroupsIt" fullname="TRACE.Tests.EncounterTests.CompanionsEngageMarksmanAndGravityFieldGroupsIt" methodname="CompanionsEngageMarksmanAndGravityFieldGroupsIt" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="731865017" result="Passed" start-time="2026-10-07 21:39:34Z" end-time="2026-10-07 21:39:34Z" duration="0.274481" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="LosingEveryMemberEndsInDefeat" fullname="TRACE.Tests.EncounterTests.LosingEveryMemberEndsInDefeat" methodname="LosingEveryMemberEndsInDefeat" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="305697377" result="Passed" start-time="2026-10-07 21:39:34Z" end-time="2026-10-07 21:39:35Z" duration="0.410988" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="MarksmanAcquiresTheControlledMemberAndKeepsItsDistance" fullname="TRACE.Tests.EncounterTests.MarksmanAcquiresTheControlledMemberAndKeepsItsDistance" methodname="MarksmanAcquiresTheControlledMemberAndKeepsItsDistance" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1693184326" result="Passed" start-time="2026-10-07 21:39:35Z" end-time="2026-10-07 21:39:35Z" duration="0.321878" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="MarksmanShotIsAvoidedBySteppingOutOfItsLine" fullname="TRACE.Tests.EncounterTests.MarksmanShotIsAvoidedBySteppingOutOfItsLine" methodname="MarksmanShotIsAvoidedBySteppingOutOfItsLine" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="630102025" result="Passed" start-time="2026-10-07 21:39:35Z" end-time="2026-10-07 21:39:35Z" duration="0.332263" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="MarksmanShotIsConsumedByDodgeInvulnerability" fullname="TRACE.Tests.EncounterTests.MarksmanShotIsConsumedByDodgeInvulnerability" methodname="MarksmanShotIsConsumedByDodgeInvulnerability" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="325161433" result="Passed" start-time="2026-10-07 21:39:35Z" end-time="2026-10-07 21:39:36Z" duration="0.306973" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="MarksmanTelegraphsItsAimThenHitsAStationaryMember" fullname="TRACE.Tests.EncounterTests.MarksmanTelegraphsItsAimThenHitsAStationaryMember" methodname="MarksmanTelegraphsItsAimThenHitsAStationaryMember" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="616130630" result="Passed" start-time="2026-10-07 21:39:36Z" end-time="2026-10-07 21:39:36Z" duration="0.299463" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1064" name="MarksmanWaitsForItsCooldownBetweenShots" fullname="TRACE.Tests.EncounterTests.MarksmanWaitsForItsCooldownBetweenShots" methodname="MarksmanWaitsForItsCooldownBetweenShots" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="2072942634" result="Passed" start-time="2026-10-07 21:39:36Z" end-time="2026-10-07 21:39:36Z" duration="0.391725" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="NextWaveWaitsForEveryEnemyThenHealsAndSpawnsAfterDelay" fullname="TRACE.Tests.EncounterTests.NextWaveWaitsForEveryEnemyThenHealsAndSpawnsAfterDelay" methodname="NextWaveWaitsForEveryEnemyThenHealsAndSpawnsAfterDelay" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1754183448" result="Passed" start-time="2026-10-07 21:39:36Z" end-time="2026-10-07 21:39:37Z" duration="0.576411" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1059" name="PursuerStillChasesAndStrikesTheControlledMember" fullname="TRACE.Tests.EncounterTests.PursuerStillChasesAndStrikesTheControlledMember" methodname="PursuerStillChasesAndStrikesTheControlledMember" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1579458680" result="Passed" start-time="2026-10-07 21:39:37Z" end-time="2026-10-07 21:39:37Z" duration="0.314432" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="RestartKeyReloadsTheEncounterFromWaveOne" fullname="TRACE.Tests.EncounterTests.RestartKeyReloadsTheEncounterFromWaveOne" methodname="RestartKeyReloadsTheEncounterFromWaveOne" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="185649873" result="Passed" start-time="2026-10-07 21:39:37Z" end-time="2026-10-07 21:39:38Z" duration="0.669957" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1057" name="SceneHasThreeWavesOfThreeArchetypesAndIsFirstBuildScene" fullname="TRACE.Tests.EncounterTests.SceneHasThreeWavesOfThreeArchetypesAndIsFirstBuildScene" methodname="SceneHasThreeWavesOfThreeArchetypesAndIsFirstBuildScene" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="806018036" result="Passed" start-time="2026-10-07 21:39:38Z" end-time="2026-10-07 21:39:38Z" duration="0.267350" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="StatisticsTrackSwitchesFocusCombosAndDamage" fullname="TRACE.Tests.EncounterTests.StatisticsTrackSwitchesFocusCombosAndDamage" methodname="StatisticsTrackSwitchesFocusCombosAndDamage" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1654092521" result="Passed" start-time="2026-10-07 21:39:38Z" end-time="2026-10-07 21:39:39Z" duration="0.402054" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="TacticalOverlayExplainsEveryArchetypeIncludingTheGuard" fullname="TRACE.Tests.EncounterTests.TacticalOverlayExplainsEveryArchetypeIncludingTheGuard" methodname="TacticalOverlayExplainsEveryArchetypeIncludingTheGuard" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="941590149" result="Passed" start-time="2026-10-07 21:39:39Z" end-time="2026-10-07 21:39:39Z" duration="0.280751" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1075" name="ThreatIndicatorPointsAtOffscreenMarksmanAimingAtTheControlledMember" fullname="TRACE.Tests.EncounterTests.ThreatIndicatorPointsAtOffscreenMarksmanAimingAtTheControlledMember" methodname="ThreatIndicatorPointsAtOffscreenMarksmanAimingAtTheControlledMember" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="553081250" result="Passed" start-time="2026-10-07 21:39:39Z" end-time="2026-10-07 21:39:39Z" duration="0.253323" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="WaveOneStartsAfterWarningWithOnlyItsEnemies" fullname="TRACE.Tests.EncounterTests.WaveOneStartsAfterWarningWithOnlyItsEnemies" methodname="WaveOneStartsAfterWarningWithOnlyItsEnemies" classname="TRACE.Tests.EncounterTests" runstate="Runnable" seed="1304669799" result="Passed" start-time="2026-10-07 21:39:39Z" end-time="2026-10-07 21:39:40Z" duration="0.336194" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1010" name="HealthTests" fullname="TRACE.Tests.HealthTests" classname="TRACE.Tests.HealthTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.004705" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1011" name="DamageHealAndClamping" fullname="TRACE.Tests.HealthTests.DamageHealAndClamping" methodname="DamageHealAndClamping" classname="TRACE.Tests.HealthTests" runstate="Runnable" seed="1288424249" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.002933" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="InvalidAmountsAndDisabledHealthAreIgnored" fullname="TRACE.Tests.HealthTests.InvalidAmountsAndDisabledHealthAreIgnored" methodname="InvalidAmountsAndDisabledHealthAreIgnored" classname="TRACE.Tests.HealthTests" runstate="Runnable" seed="1125041972" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.000273" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="ReentrantDamageRaisesDeathOnlyOnce" fullname="TRACE.Tests.HealthTests.ReentrantDamageRaisesDeathOnlyOnce" methodname="ReentrantDamageRaisesDeathOnlyOnce" classname="TRACE.Tests.HealthTests" runstate="Runnable" seed="285583945" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.000276" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1077" name="PrototypeTests" fullname="TRACE.Tests.PrototypeTests" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:44Z" duration="4.112189" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1081" name="ClimbRampReachPlatformAndDescendGrounded" fullname="TRACE.Tests.PrototypeTests.ClimbRampReachPlatformAndDescendGrounded" methodname="ClimbRampReachPlatformAndDescendGrounded" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="223816535" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.417592" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1079" name="DiagonalDoesNotMoveFasterAndRotationFollows" fullname="TRACE.Tests.PrototypeTests.DiagonalDoesNotMoveFasterAndRotationFollows" methodname="DiagonalDoesNotMoveFasterAndRotationFollows" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="1765453550" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:40Z" duration="0.275046" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="GravityLandsAndSmallStepsAreClimbable" fullname="TRACE.Tests.PrototypeTests.GravityLandsAndSmallStepsAreClimbable" methodname="GravityLandsAndSmallStepsAreClimbable" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="899245101" result="Passed" start-time="2026-10-07 21:39:40Z" end-time="2026-10-07 21:39:41Z" duration="0.344596" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1080" name="MouseOrbitPitchClampAndCameraRelativeMovement" fullname="TRACE.Tests.PrototypeTests.MouseOrbitPitchClampAndCameraRelativeMovement" methodname="MouseOrbitPitchClampAndCameraRelativeMovement" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="1573023969" result="Passed" start-time="2026-10-07 21:39:41Z" end-time="2026-10-07 21:39:42Z" duration="1.483056" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="SceneReloadRetainsWiringAndInput" fullname="TRACE.Tests.PrototypeTests.SceneReloadRetainsWiringAndInput" methodname="SceneReloadRetainsWiringAndInput" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="1393649974" result="Passed" start-time="2026-10-07 21:39:42Z" end-time="2026-10-07 21:39:43Z" duration="0.519947" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="SteepSlopeDoesNotAllowClimbing" fullname="TRACE.Tests.PrototypeTests.SteepSlopeDoesNotAllowClimbing" methodname="SteepSlopeDoesNotAllowClimbing" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="907778408" result="Passed" start-time="2026-10-07 21:39:43Z" end-time="2026-10-07 21:39:43Z" duration="0.334631" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1078" name="WalkSprintDecelerateAndDisableInput" fullname="TRACE.Tests.PrototypeTests.WalkSprintDecelerateAndDisableInput" methodname="WalkSprintDecelerateAndDisableInput" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="125178707" result="Passed" start-time="2026-10-07 21:39:43Z" end-time="2026-10-07 21:39:43Z" duration="0.343738" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1083" name="WallsBlockPlayerAndCameraRecoversAfterOcclusion" fullname="TRACE.Tests.PrototypeTests.WallsBlockPlayerAndCameraRecoversAfterOcclusion" methodname="WallsBlockPlayerAndCameraRecoversAfterOcclusion" classname="TRACE.Tests.PrototypeTests" runstate="Runnable" seed="1979737472" result="Passed" start-time="2026-10-07 21:39:43Z" end-time="2026-10-07 21:39:44Z" duration="0.391325" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1086" name="SkillTests" fullname="TRACE.Tests.SkillTests" classname="TRACE.Tests.SkillTests" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-07 21:39:44Z" end-time="2026-10-07 21:39:51Z" duration="7.015259" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1091" name="DashCannotCrossWallOrDamageThroughIt" fullname="TRACE.Tests.SkillTests.DashCannotCrossWallOrDamageThroughIt" methodname="DashCannotCrossWallOrDamageThroughIt" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="532519228" result="Passed" start-time="2026-10-07 21:39:44Z" end-time="2026-10-07 21:39:44Z" duration="0.261048" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1092" name="DashCooldownExpiresAfterFiveSeconds" fullname="TRACE.Tests.SkillTests.DashCooldownExpiresAfterFiveSeconds" methodname="DashCooldownExpiresAfterFiveSeconds" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="79842589" result="Passed" start-time="2026-10-07 21:39:44Z" end-time="2026-10-07 21:39:44Z" duration="0.381862" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1103" name="DodgeIFramesDoNotConsumeShield" fullname="TRACE.Tests.SkillTests.DodgeIFramesDoNotConsumeShield" methodname="DodgeIFramesDoNotConsumeShield" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1428251377" result="Passed" start-time="2026-10-07 21:39:44Z" end-time="2026-10-07 21:39:45Z" duration="0.249286" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1094" name="GravityAppearsNearTargetAndSlowsFortyPercent" fullname="TRACE.Tests.SkillTests.GravityAppearsNearTargetAndSlowsFortyPercent" methodname="GravityAppearsNearTargetAndSlowsFortyPercent" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1695694206" result="Passed" start-time="2026-10-07 21:39:45Z" end-time="2026-10-07 21:39:45Z" duration="0.266112" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="GravityContinuesAfterCasterDeathAndCleansUp" fullname="TRACE.Tests.SkillTests.GravityContinuesAfterCasterDeathAndCleansUp" methodname="GravityContinuesAfterCasterDeathAndCleansUp" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1070918955" result="Passed" start-time="2026-10-07 21:39:45Z" end-time="2026-10-07 21:39:45Z" duration="0.341790" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="GravityCooldownPersistsAfterSwitchAndExpiresAtEightSeconds" fullname="TRACE.Tests.SkillTests.GravityCooldownPersistsAfterSwitchAndExpiresAtEightSeconds" methodname="GravityCooldownPersistsAfterSwitchAndExpiresAtEightSeconds" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="939291972" result="Passed" start-time="2026-10-07 21:39:45Z" end-time="2026-10-07 21:39:46Z" duration="0.480221" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1095" name="GravityPullUsesNavMeshAndRestoresSpeedOnExpiry" fullname="TRACE.Tests.SkillTests.GravityPullUsesNavMeshAndRestoresSpeedOnExpiry" methodname="GravityPullUsesNavMeshAndRestoresSpeedOnExpiry" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1601361344" result="Passed" start-time="2026-10-07 21:39:46Z" end-time="2026-10-07 21:39:46Z" duration="0.348229" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1106" name="InactiveCompanionsCannotActivateOrConsumeCooldown" fullname="TRACE.Tests.SkillTests.InactiveCompanionsCannotActivateOrConsumeCooldown" methodname="InactiveCompanionsCannotActivateOrConsumeCooldown" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="986006692" result="Passed" start-time="2026-10-07 21:39:46Z" end-time="2026-10-07 21:39:46Z" duration="0.246882" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1096" name="LeavingGravityRestoresSpeedWithoutWaitingForZoneExpiry" fullname="TRACE.Tests.SkillTests.LeavingGravityRestoresSpeedWithoutWaitingForZoneExpiry" methodname="LeavingGravityRestoresSpeedWithoutWaitingForZoneExpiry" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="661053199" result="Passed" start-time="2026-10-07 21:39:46Z" end-time="2026-10-07 21:39:46Z" duration="0.255249" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1108" name="PauseAndDodgeRejectSkillWithoutConsumingCooldown" fullname="TRACE.Tests.SkillTests.PauseAndDodgeRejectSkillWithoutConsumingCooldown" methodname="PauseAndDodgeRejectSkillWithoutConsumingCooldown" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1764013244" result="Passed" start-time="2026-10-07 21:39:46Z" end-time="2026-10-07 21:39:47Z" duration="0.257818" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="QAppliesThirtyShieldToAllThreeMembers" fullname="TRACE.Tests.SkillTests.QAppliesThirtyShieldToAllThreeMembers" methodname="QAppliesThirtyShieldToAllThreeMembers" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="310070087" result="Passed" start-time="2026-10-07 21:39:47Z" end-time="2026-10-07 21:39:47Z" duration="0.251863" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1088" name="QStartsDashThenDealsThirtyFiveAtArrival" fullname="TRACE.Tests.SkillTests.QStartsDashThenDealsThirtyFiveAtArrival" methodname="QStartsDashThenDealsThirtyFiveAtArrival" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="674080242" result="Passed" start-time="2026-10-07 21:39:47Z" end-time="2026-10-07 21:39:47Z" duration="0.264597" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="SceneHasThreeDistinctSkillsAndFourExistingEnemies" fullname="TRACE.Tests.SkillTests.SceneHasThreeDistinctSkillsAndFourExistingEnemies" methodname="SceneHasThreeDistinctSkillsAndFourExistingEnemies" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="104959784" result="Passed" start-time="2026-10-07 21:39:47Z" end-time="2026-10-07 21:39:47Z" duration="0.257612" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="ShieldAbsorbsBeforeHealthAndOverflowPassesThrough" fullname="TRACE.Tests.SkillTests.ShieldAbsorbsBeforeHealthAndOverflowPassesThrough" methodname="ShieldAbsorbsBeforeHealthAndOverflowPassesThrough" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1556640133" result="Passed" start-time="2026-10-07 21:39:47Z" end-time="2026-10-07 21:39:48Z" duration="0.248779" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="ShieldCooldownIsTenSecondsAndDoesNotResetOnTransfer" fullname="TRACE.Tests.SkillTests.ShieldCooldownIsTenSecondsAndDoesNotResetOnTransfer" methodname="ShieldCooldownIsTenSecondsAndDoesNotResetOnTransfer" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1010160193" result="Passed" start-time="2026-10-07 21:39:48Z" end-time="2026-10-07 21:39:48Z" duration="0.527189" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1109" name="ShieldPersistsWhenSupportDiesUntilNormalExpiry" fullname="TRACE.Tests.SkillTests.ShieldPersistsWhenSupportDiesUntilNormalExpiry" methodname="ShieldPersistsWhenSupportDiesUntilNormalExpiry" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="581496025" result="Passed" start-time="2026-10-07 21:39:48Z" end-time="2026-10-07 21:39:49Z" duration="0.387443" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="ShieldRejectsInvalidDamageAndNeverShieldsDeadMembers" fullname="TRACE.Tests.SkillTests.ShieldRejectsInvalidDamageAndNeverShieldsDeadMembers" methodname="ShieldRejectsInvalidDamageAndNeverShieldsDeadMembers" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1404215" result="Passed" start-time="2026-10-07 21:39:49Z" end-time="2026-10-07 21:39:49Z" duration="0.261680" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1107" name="SimultaneousSwitchAndQUsesNewMemberOnly" fullname="TRACE.Tests.SkillTests.SimultaneousSwitchAndQUsesNewMemberOnly" methodname="SimultaneousSwitchAndQUsesNewMemberOnly" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1678003737" result="Passed" start-time="2026-10-07 21:39:49Z" end-time="2026-10-07 21:39:49Z" duration="0.263286" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1093" name="SwitchCancelsDashWithoutDelayedDamageOrCooldownReset" fullname="TRACE.Tests.SkillTests.SwitchCancelsDashWithoutDelayedDamageOrCooldownReset" methodname="SwitchCancelsDashWithoutDelayedDamageOrCooldownReset" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1463982220" result="Passed" start-time="2026-10-07 21:39:49Z" end-time="2026-10-07 21:39:49Z" duration="0.268293" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="ThreeSkillsHaveIndependentCooldownsThroughFullRotation" fullname="TRACE.Tests.SkillTests.ThreeSkillsHaveIndependentCooldownsThroughFullRotation" methodname="ThreeSkillsHaveIndependentCooldownsThroughFullRotation" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1781291153" result="Passed" start-time="2026-10-07 21:39:49Z" end-time="2026-10-07 21:39:50Z" duration="0.269572" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="UnconsumedShieldExpiresAtFiveSeconds" fullname="TRACE.Tests.SkillTests.UnconsumedShieldExpiresAtFiveSeconds" methodname="UnconsumedShieldExpiresAtFiveSeconds" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1848250593" result="Passed" start-time="2026-10-07 21:39:50Z" end-time="2026-10-07 21:39:50Z" duration="0.391583" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1089" name="UntargetedDashMovesForwardThreeMetres" fullname="TRACE.Tests.SkillTests.UntargetedDashMovesForwardThreeMetres" methodname="UntargetedDashMovesForwardThreeMetres" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="1070778865" result="Passed" start-time="2026-10-07 21:39:50Z" end-time="2026-10-07 21:39:50Z" duration="0.259354" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1090" name="UntargetedDashUsesMovementDirection" fullname="TRACE.Tests.SkillTests.UntargetedDashUsesMovementDirection" methodname="UntargetedDashUsesMovementDirection" classname="TRACE.Tests.SkillTests" runstate="Runnable" seed="402046082" result="Passed" start-time="2026-10-07 21:39:50Z" end-time="2026-10-07 21:39:51Z" duration="0.270276" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1110" name="SquadTests" fullname="TRACE.Tests.SquadTests" classname="TRACE.Tests.SquadTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-07 21:39:51Z" end-time="2026-10-07 21:39:57Z" duration="6.849947" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1115" name="BothFollowConvergeAndStayStillAtRest" fullname="TRACE.Tests.SquadTests.BothFollowConvergeAndStayStillAtRest" methodname="BothFollowConvergeAndStayStillAtRest" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1816971019" result="Passed" start-time="2026-10-07 21:39:51Z" end-time="2026-10-07 21:39:51Z" duration="0.443866" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1120" name="CompanionYieldsLeaderSpaceWhileEngagedInCombat" fullname="TRACE.Tests.SquadTests.CompanionYieldsLeaderSpaceWhileEngagedInCombat" methodname="CompanionYieldsLeaderSpaceWhileEngagedInCombat" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="289394366" result="Passed" start-time="2026-10-07 21:39:51Z" end-time="2026-10-07 21:39:51Z" duration="0.350968" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1112" name="ContinuousSprintAndTurnStayTogetherWithoutRecovery" fullname="TRACE.Tests.SquadTests.ContinuousSprintAndTurnStayTogetherWithoutRecovery" methodname="ContinuousSprintAndTurnStayTogetherWithoutRecovery" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1945479190" result="Passed" start-time="2026-10-07 21:39:51Z" end-time="2026-10-07 21:39:52Z" duration="0.463435" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1114" name="DyingDuringWindupCancelsCompanionDamagePermanently" fullname="TRACE.Tests.SquadTests.DyingDuringWindupCancelsCompanionDamagePermanently" methodname="DyingDuringWindupCancelsCompanionDamagePermanently" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1389028739" result="Passed" start-time="2026-10-07 21:39:52Z" end-time="2026-10-07 21:39:52Z" duration="0.355821" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1127" name="EnemyCanKillCompanionAndSurvivorKeepsFollowing" fullname="TRACE.Tests.SquadTests.EnemyCanKillCompanionAndSurvivorKeepsFollowing" methodname="EnemyCanKillCompanionAndSurvivorKeepsFollowing" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1972733419" result="Passed" start-time="2026-10-07 21:39:52Z" end-time="2026-10-07 21:39:53Z" duration="0.383634" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1125" name="FarRecoveryWaitsThenWarpsToSafeFormation" fullname="TRACE.Tests.SquadTests.FarRecoveryWaitsThenWarpsToSafeFormation" methodname="FarRecoveryWaitsThenWarpsToSafeFormation" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="2118457628" result="Passed" start-time="2026-10-07 21:39:53Z" end-time="2026-10-07 21:39:53Z" duration="0.305977" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1116" name="FollowNavigatesAroundSolidObstacleWithoutTeleporting" fullname="TRACE.Tests.SquadTests.FollowNavigatesAroundSolidObstacleWithoutTeleporting" methodname="FollowNavigatesAroundSolidObstacleWithoutTeleporting" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="53476398" result="Passed" start-time="2026-10-07 21:39:53Z" end-time="2026-10-07 21:39:53Z" duration="0.426562" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1128" name="LeaderDeathStopsBothCompanionsAndAllEnemies" fullname="TRACE.Tests.SquadTests.LeaderDeathStopsBothCompanionsAndAllEnemies" methodname="LeaderDeathStopsBothCompanionsAndAllEnemies" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="260496554" result="Passed" start-time="2026-10-07 21:39:53Z" end-time="2026-10-07 21:39:54Z" duration="0.285074" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1118" name="MeleeDetectsApproachesDamagesOncePerCooldownThenReturns" fullname="TRACE.Tests.SquadTests.MeleeDetectsApproachesDamagesOncePerCooldownThenReturns" methodname="MeleeDetectsApproachesDamagesOncePerCooldownThenReturns" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1394082159" result="Passed" start-time="2026-10-07 21:39:54Z" end-time="2026-10-07 21:39:54Z" duration="0.375034" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1117" name="OverlappingMembersSeparateAndDoNotPushLeader" fullname="TRACE.Tests.SquadTests.OverlappingMembersSeparateAndDoNotPushLeader" methodname="OverlappingMembersSeparateAndDoNotPushLeader" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1747876069" result="Passed" start-time="2026-10-07 21:39:54Z" end-time="2026-10-07 21:39:54Z" duration="0.317465" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1121" name="RangedBacksAwayWhenEnemyIsTooClose" fullname="TRACE.Tests.SquadTests.RangedBacksAwayWhenEnemyIsTooClose" methodname="RangedBacksAwayWhenEnemyIsTooClose" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="501768189" result="Passed" start-time="2026-10-07 21:39:54Z" end-time="2026-10-07 21:39:55Z" duration="0.287846" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1119" name="RangedDamagesFromDistanceAndRespectsCooldown" fullname="TRACE.Tests.SquadTests.RangedDamagesFromDistanceAndRespectsCooldown" methodname="RangedDamagesFromDistanceAndRespectsCooldown" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="634257324" result="Passed" start-time="2026-10-07 21:39:55Z" end-time="2026-10-07 21:39:55Z" duration="0.380247" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1113" name="ReactivationRestoresCollisionExclusionAndFollowing" fullname="TRACE.Tests.SquadTests.ReactivationRestoresCollisionExclusionAndFollowing" methodname="ReactivationRestoresCollisionExclusionAndFollowing" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1067802898" result="Passed" start-time="2026-10-07 21:39:55Z" end-time="2026-10-07 21:39:55Z" duration="0.349126" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1111" name="SceneHasOnePlayerTwoDistinctCompanionsAndThreeEnemies" fullname="TRACE.Tests.SquadTests.SceneHasOnePlayerTwoDistinctCompanionsAndThreeEnemies" methodname="SceneHasOnePlayerTwoDistinctCompanionsAndThreeEnemies" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1950946792" result="Passed" start-time="2026-10-07 21:39:55Z" end-time="2026-10-07 21:39:56Z" duration="0.257530" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1122" name="StableTargetIsKeptWhenAnotherEnemyBecomesCloser" fullname="TRACE.Tests.SquadTests.StableTargetIsKeptWhenAnotherEnemyBecomesCloser" methodname="StableTargetIsKeptWhenAnotherEnemyBecomesCloser" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="2021384730" result="Passed" start-time="2026-10-07 21:39:56Z" end-time="2026-10-07 21:39:56Z" duration="0.289091" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1126" name="StalledRecoveryWorksBelowTeleportDistance" fullname="TRACE.Tests.SquadTests.StalledRecoveryWorksBelowTeleportDistance" methodname="StalledRecoveryWorksBelowTeleportDistance" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1997785569" result="Passed" start-time="2026-10-07 21:39:56Z" end-time="2026-10-07 21:39:56Z" duration="0.347916" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1129" name="ThreeEnemiesFightBothRolesAndSurvivorsReturnToFormation" fullname="TRACE.Tests.SquadTests.ThreeEnemiesFightBothRolesAndSurvivorsReturnToFormation" methodname="ThreeEnemiesFightBothRolesAndSurvivorsReturnToFormation" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1818427527" result="Passed" start-time="2026-10-07 21:39:56Z" end-time="2026-10-07 21:39:57Z" duration="0.538716" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1124" name="TooDistantEnemyIsAbandonedAndSquadRegroups" fullname="TRACE.Tests.SquadTests.TooDistantEnemyIsAbandonedAndSquadRegroups" methodname="TooDistantEnemyIsAbandonedAndSquadRegroups" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="1729093271" result="Passed" start-time="2026-10-07 21:39:57Z" end-time="2026-10-07 21:39:57Z" duration="0.415494" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1123" name="WallsBlockDetectionAndCommittedRangedShot" fullname="TRACE.Tests.SquadTests.WallsBlockDetectionAndCommittedRangedShot" methodname="WallsBlockDetectionAndCommittedRangedShot" classname="TRACE.Tests.SquadTests" runstate="Runnable" seed="237447732" result="Passed" start-time="2026-10-07 21:39:57Z" end-time="2026-10-07 21:39:57Z" duration="0.271510" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1130" name="SwitchTests" fullname="TRACE.Tests.SwitchTests" classname="TRACE.Tests.SwitchTests" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-07 21:39:57Z" end-time="2026-10-07 21:40:04Z" duration="6.931023" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1148" name="ActiveDeathSelectsFirstLivingMemberIgnoringSwitchCooldown" fullname="TRACE.Tests.SwitchTests.ActiveDeathSelectsFirstLivingMemberIgnoringSwitchCooldown" methodname="ActiveDeathSelectsFirstLivingMemberIgnoringSwitchCooldown" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="2029712828" result="Passed" start-time="2026-10-07 21:39:57Z" end-time="2026-10-07 21:39:58Z" duration="0.252738" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1149" name="AllDeadIsDefeatWithoutResurrectionOrInput" fullname="TRACE.Tests.SwitchTests.AllDeadIsDefeatWithoutResurrectionOrInput" methodname="AllDeadIsDefeatWithoutResurrectionOrInput" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="1367444056" result="Passed" start-time="2026-10-07 21:39:58Z" end-time="2026-10-07 21:39:58Z" duration="0.253104" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1140" name="AllThreeCanAttackWithTheirOwnDamageAndRange" fullname="TRACE.Tests.SwitchTests.AllThreeCanAttackWithTheirOwnDamageAndRange" methodname="AllThreeCanAttackWithTheirOwnDamageAndRange" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="160258421" result="Passed" start-time="2026-10-07 21:39:58Z" end-time="2026-10-07 21:39:58Z" duration="0.424530" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1138" name="CameraTransfersSmoothlyAndKeepsOrientation" fullname="TRACE.Tests.SwitchTests.CameraTransfersSmoothlyAndKeepsOrientation" methodname="CameraTransfersSmoothlyAndKeepsOrientation" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="416020024" result="Passed" start-time="2026-10-07 21:39:58Z" end-time="2026-10-07 21:39:59Z" duration="0.683955" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1145" name="ControlledRangedAttackCannotShootThroughWalls" fullname="TRACE.Tests.SwitchTests.ControlledRangedAttackCannotShootThroughWalls" methodname="ControlledRangedAttackCannotShootThroughWalls" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="211662743" result="Passed" start-time="2026-10-07 21:39:59Z" end-time="2026-10-07 21:39:59Z" duration="0.265255" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1135" name="CooldownRejectsSpamAndHeldNumberDoesNotCycle" fullname="TRACE.Tests.SwitchTests.CooldownRejectsSpamAndHeldNumberDoesNotCycle" methodname="CooldownRejectsSpamAndHeldNumberDoesNotCycle" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="199881690" result="Passed" start-time="2026-10-07 21:39:59Z" end-time="2026-10-07 21:40:00Z" duration="0.292149" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1147" name="DeadMemberCannotBeSelected" fullname="TRACE.Tests.SwitchTests.DeadMemberCannotBeSelected" methodname="DeadMemberCannotBeSelected" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="205649797" result="Passed" start-time="2026-10-07 21:40:00Z" end-time="2026-10-07 21:40:00Z" duration="0.242636" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1146" name="DeadPreferredRangedTargetIsDroppedAndSoftTargetingResumes" fullname="TRACE.Tests.SwitchTests.DeadPreferredRangedTargetIsDroppedAndSoftTargetingResumes" methodname="DeadPreferredRangedTargetIsDroppedAndSoftTargetingResumes" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="147910443" result="Passed" start-time="2026-10-07 21:40:00Z" end-time="2026-10-07 21:40:00Z" duration="0.254254" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1136" name="EachActiveMemberReceivesMovementAndSprint" fullname="TRACE.Tests.SwitchTests.EachActiveMemberReceivesMovementAndSprint" methodname="EachActiveMemberReceivesMovementAndSprint" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="1266284044" result="Passed" start-time="2026-10-07 21:40:00Z" end-time="2026-10-07 21:40:01Z" duration="0.366347" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1141" name="EveryMemberCanDodgeWithRightMouseAndReceiveIFrames" fullname="TRACE.Tests.SwitchTests.EveryMemberCanDodgeWithRightMouseAndReceiveIFrames" methodname="EveryMemberCanDodgeWithRightMouseAndReceiveIFrames" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="871158853" result="Passed" start-time="2026-10-07 21:40:01Z" end-time="2026-10-07 21:40:01Z" duration="0.305189" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1139" name="FormationRebuildsAroundNewLeaderAndSettles" fullname="TRACE.Tests.SwitchTests.FormationRebuildsAroundNewLeaderAndSettles" methodname="FormationRebuildsAroundNewLeaderAndSettles" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="742803102" result="Passed" start-time="2026-10-07 21:40:01Z" end-time="2026-10-07 21:40:01Z" duration="0.413718" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1150" name="IndicatorTracksSelectedMemberAndNeverShowsTwoActiveRings" fullname="TRACE.Tests.SwitchTests.IndicatorTracksSelectedMemberAndNeverShowsTwoActiveRings" methodname="IndicatorTracksSelectedMemberAndNeverShowsTwoActiveRings" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="651302585" result="Passed" start-time="2026-10-07 21:40:01Z" end-time="2026-10-07 21:40:02Z" duration="0.267949" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1132" name="NumberKeysSwitchOneToTwoToThreeToOne" fullname="TRACE.Tests.SwitchTests.NumberKeysSwitchOneToTwoToThreeToOne" methodname="NumberKeysSwitchOneToTwoToThreeToOne" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="562605839" result="Passed" start-time="2026-10-07 21:40:02Z" end-time="2026-10-07 21:40:02Z" duration="0.270704" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1151" name="OffMeshFormerPlayerIsNotTeleportedBySwitchAndRecoversLater" fullname="TRACE.Tests.SwitchTests.OffMeshFormerPlayerIsNotTeleportedBySwitchAndRecoversLater" methodname="OffMeshFormerPlayerIsNotTeleportedBySwitchAndRecoversLater" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="791051516" result="Passed" start-time="2026-10-07 21:40:02Z" end-time="2026-10-07 21:40:02Z" duration="0.321579" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1131" name="OneInputOwnerAndExactlyOnePlayerMotor" fullname="TRACE.Tests.SwitchTests.OneInputOwnerAndExactlyOnePlayerMotor" methodname="OneInputOwnerAndExactlyOnePlayerMotor" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="546815057" result="Passed" start-time="2026-10-07 21:40:02Z" end-time="2026-10-07 21:40:02Z" duration="0.243593" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1152" name="RepeatedCombatSwitchesKeepExactlyOneControllerAndSquadAlive" fullname="TRACE.Tests.SwitchTests.RepeatedCombatSwitchesKeepExactlyOneControllerAndSquadAlive" methodname="RepeatedCombatSwitchesKeepExactlyOneControllerAndSquadAlive" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="1569172494" result="Passed" start-time="2026-10-07 21:40:02Z" end-time="2026-10-07 21:40:03Z" duration="0.433048" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1134" name="SameMemberAndInvalidIndicesAreNoOpsWithoutConsumingCooldown" fullname="TRACE.Tests.SwitchTests.SameMemberAndInvalidIndicesAreNoOpsWithoutConsumingCooldown" methodname="SameMemberAndInvalidIndicesAreNoOpsWithoutConsumingCooldown" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="978034282" result="Passed" start-time="2026-10-07 21:40:03Z" end-time="2026-10-07 21:40:03Z" duration="0.250364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1144" name="SwitchingAwayCancelsPlayerWindupAndRoundTripCannotResetCooldown" fullname="TRACE.Tests.SwitchTests.SwitchingAwayCancelsPlayerWindupAndRoundTripCannotResetCooldown" methodname="SwitchingAwayCancelsPlayerWindupAndRoundTripCannotResetCooldown" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="94342549" result="Passed" start-time="2026-10-07 21:40:03Z" end-time="2026-10-07 21:40:03Z" duration="0.294685" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1142" name="SwitchingDuringDodgeCancelsOldDodgeAndInvulnerability" fullname="TRACE.Tests.SwitchTests.SwitchingDuringDodgeCancelsOldDodgeAndInvulnerability" methodname="SwitchingDuringDodgeCancelsOldDodgeAndInvulnerability" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="1404988929" result="Passed" start-time="2026-10-07 21:40:03Z" end-time="2026-10-07 21:40:04Z" duration="0.260861" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1137" name="SwitchingDuringSprintTransfersHeldInputWithoutNavMeshConflict" fullname="TRACE.Tests.SwitchTests.SwitchingDuringSprintTransfersHeldInputWithoutNavMeshConflict" methodname="SwitchingDuringSprintTransfersHeldInputWithoutNavMeshConflict" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="935792438" result="Passed" start-time="2026-10-07 21:40:04Z" end-time="2026-10-07 21:40:04Z" duration="0.268145" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1143" name="SwitchingToAttackingAIStopsPendingDamageAndPreservesCooldown" fullname="TRACE.Tests.SwitchTests.SwitchingToAttackingAIStopsPendingDamageAndPreservesCooldown" methodname="SwitchingToAttackingAIStopsPendingDamageAndPreservesCooldown" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="817864048" result="Passed" start-time="2026-10-07 21:40:04Z" end-time="2026-10-07 21:40:04Z" duration="0.310148" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1133" name="TransferPreservesAllPositionsRotationsAndHealth" fullname="TRACE.Tests.SwitchTests.TransferPreservesAllPositionsRotationsAndHealth" methodname="TransferPreservesAllPositionsRotationsAndHealth" classname="TRACE.Tests.SwitchTests" runstate="Runnable" seed="103412462" result="Passed" start-time="2026-10-07 21:40:04Z" end-time="2026-10-07 21:40:04Z" duration="0.250949" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1153" name="TacticalFocusTests" fullname="TRACE.Tests.TacticalFocusTests" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-07 21:40:04Z" end-time="2026-10-07 21:40:22Z" duration="18.030725" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1168" name="BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" fullname="TRACE.Tests.TacticalFocusTests.BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" methodname="BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1782202928" result="Passed" start-time="2026-10-07 21:40:04Z" end-time="2026-10-07 21:40:05Z" duration="0.517097" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1165" name="CameraMouseSensitivityIsUnscaled" fullname="TRACE.Tests.TacticalFocusTests.CameraMouseSensitivityIsUnscaled" methodname="CameraMouseSensitivityIsUnscaled" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="407513013" result="Passed" start-time="2026-10-07 21:40:05Z" end-time="2026-10-07 21:40:05Z" duration="0.512781" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1173" name="ComboConsumptionFeedbackDoesNotResetFocusTime" fullname="TRACE.Tests.TacticalFocusTests.ComboConsumptionFeedbackDoesNotResetFocusTime" methodname="ComboConsumptionFeedbackDoesNotResetFocusTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1640483264" result="Passed" start-time="2026-10-07 21:40:05Z" end-time="2026-10-07 21:40:06Z" duration="0.816276" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1170" name="CooldownAndComboDurationFollowScaledClock" fullname="TRACE.Tests.TacticalFocusTests.CooldownAndComboDurationFollowScaledClock" methodname="CooldownAndComboDurationFollowScaledClock" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="656938952" result="Passed" start-time="2026-10-07 21:40:06Z" end-time="2026-10-07 21:40:07Z" duration="1.005707" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1161" name="DeathRestoresTimeEvenWhenSquadAutoSwitches" fullname="TRACE.Tests.TacticalFocusTests.DeathRestoresTimeEvenWhenSquadAutoSwitches" methodname="DeathRestoresTimeEvenWhenSquadAutoSwitches" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="100185674" result="Passed" start-time="2026-10-07 21:40:07Z" end-time="2026-10-07 21:40:08Z" duration="0.726872" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1157" name="DisableImmediatelyRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.DisableImmediatelyRestoresTime" methodname="DisableImmediatelyRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="83813778" result="Passed" start-time="2026-10-07 21:40:08Z" end-time="2026-10-07 21:40:09Z" duration="0.515752" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1176" name="EnemyWindupTelegraphAndAttackContinueInGameTime" fullname="TRACE.Tests.TacticalFocusTests.EnemyWindupTelegraphAndAttackContinueInGameTime" methodname="EnemyWindupTelegraphAndAttackContinueInGameTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1986575735" result="Passed" start-time="2026-10-07 21:40:09Z" end-time="2026-10-07 21:40:10Z" duration="1.511906" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1172" name="EnteringFocusCancelsAttackWindup" fullname="TRACE.Tests.TacticalFocusTests.EnteringFocusCancelsAttackWindup" methodname="EnteringFocusCancelsAttackWindup" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="2017760079" result="Passed" start-time="2026-10-07 21:40:10Z" end-time="2026-10-07 21:40:11Z" duration="0.503355" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1169" name="EnteringFocusCancelsDashWithoutRefundingCooldown" fullname="TRACE.Tests.TacticalFocusTests.EnteringFocusCancelsDashWithoutRefundingCooldown" methodname="EnteringFocusCancelsDashWithoutRefundingCooldown" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1804866180" result="Passed" start-time="2026-10-07 21:40:11Z" end-time="2026-10-07 21:40:11Z" duration="0.506163" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1171" name="ExistingFieldAndShieldKeepTheirScaledDurations" fullname="TRACE.Tests.TacticalFocusTests.ExistingFieldAndShieldKeepTheirScaledDurations" methodname="ExistingFieldAndShieldKeepTheirScaledDurations" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="845699274" result="Passed" start-time="2026-10-07 21:40:11Z" end-time="2026-10-07 21:40:12Z" duration="0.909088" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1162" name="ExternalPauseHasPriorityAndIsNotOverwritten" fullname="TRACE.Tests.TacticalFocusTests.ExternalPauseHasPriorityAndIsNotOverwritten" methodname="ExternalPauseHasPriorityAndIsNotOverwritten" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="356658120" result="Passed" start-time="2026-10-07 21:40:12Z" end-time="2026-10-07 21:40:12Z" duration="0.507934" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1163" name="ExternalPhysicsStepIsPreservedOnAbort" fullname="TRACE.Tests.TacticalFocusTests.ExternalPhysicsStepIsPreservedOnAbort" methodname="ExternalPhysicsStepIsPreservedOnAbort" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="182446482" result="Passed" start-time="2026-10-07 21:40:12Z" end-time="2026-10-07 21:40:13Z" duration="0.510113" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1167" name="FocusBlocksMoveSprintAttackDodgeAndSkill" fullname="TRACE.Tests.TacticalFocusTests.FocusBlocksMoveSprintAttackDodgeAndSkill" methodname="FocusBlocksMoveSprintAttackDodgeAndSkill" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="282020989" result="Passed" start-time="2026-10-07 21:40:13Z" end-time="2026-10-07 21:40:14Z" duration="0.756866" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1160" name="FocusLossRequiresReleaseBeforeReentry" fullname="TRACE.Tests.TacticalFocusTests.FocusLossRequiresReleaseBeforeReentry" methodname="FocusLossRequiresReleaseBeforeReentry" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="337236847" result="Passed" start-time="2026-10-07 21:40:14Z" end-time="2026-10-07 21:40:14Z" duration="0.731495" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1154" name="HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" fullname="TRACE.Tests.TacticalFocusTests.HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" methodname="HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1915036258" result="Passed" start-time="2026-10-07 21:40:14Z" end-time="2026-10-07 21:40:15Z" duration="0.734216" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1159" name="InputLossRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.InputLossRestoresTime" methodname="InputLossRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="513000363" result="Passed" start-time="2026-10-07 21:40:15Z" end-time="2026-10-07 21:40:16Z" duration="0.503701" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="NonDefaultTimeBaselineIsRestored" fullname="TRACE.Tests.TacticalFocusTests.NonDefaultTimeBaselineIsRestored" methodname="NonDefaultTimeBaselineIsRestored" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1681814642" result="Passed" start-time="2026-10-07 21:40:16Z" end-time="2026-10-07 21:40:16Z" duration="0.732577" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1166" name="OneTwoThreeSwitchAndCameraFollowStayAvailable" fullname="TRACE.Tests.TacticalFocusTests.OneTwoThreeSwitchAndCameraFollowStayAvailable" methodname="OneTwoThreeSwitchAndCameraFollowStayAvailable" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="149838934" result="Passed" start-time="2026-10-07 21:40:16Z" end-time="2026-10-07 21:40:18Z" duration="1.210376" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1174" name="OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" fullname="TRACE.Tests.TacticalFocusTests.OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" methodname="OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1304857344" result="Passed" start-time="2026-10-07 21:40:18Z" end-time="2026-10-07 21:40:18Z" duration="0.511623" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1156" name="RepeatedHoldDoesNotToggleOrCompoundSlowdown" fullname="TRACE.Tests.TacticalFocusTests.RepeatedHoldDoesNotToggleOrCompoundSlowdown" methodname="RepeatedHoldDoesNotToggleOrCompoundSlowdown" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1548358493" result="Passed" start-time="2026-10-07 21:40:18Z" end-time="2026-10-07 21:40:20Z" duration="2.256168" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1158" name="SceneUnloadRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.SceneUnloadRestoresTime" methodname="SceneUnloadRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="618261856" result="Passed" start-time="2026-10-07 21:40:20Z" end-time="2026-10-07 21:40:21Z" duration="0.743359" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1155" name="TransitionsUseRealTimeAndAreNotInstant" fullname="TRACE.Tests.TacticalFocusTests.TransitionsUseRealTimeAndAreNotInstant" methodname="TransitionsUseRealTimeAndAreNotInstant" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="2028256814" result="Passed" start-time="2026-10-07 21:40:21Z" end-time="2026-10-07 21:40:22Z" duration="0.788284" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1175" name="VisibleEnemyCardShowsGroupedAndHidesOutsideView" fullname="TRACE.Tests.TacticalFocusTests.VisibleEnemyCardShowsGroupedAndHidesOutsideView" methodname="VisibleEnemyCardShowsGroupedAndHidesOutsideView" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="761997159" result="Passed" start-time="2026-10-07 21:40:22Z" end-time="2026-10-07 21:40:22Z" duration="0.513359" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/Philippe/AppData/LocalLow/DefaultCompany/Project-TRACE\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

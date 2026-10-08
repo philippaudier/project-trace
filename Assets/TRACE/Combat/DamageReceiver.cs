@@ -8,13 +8,18 @@ namespace TRACE.Combat
     public sealed class DamageReceiver : MonoBehaviour
     {
         private Health health;
+        private Shield shield;
         private float invulnerableFrom;
         private float invulnerableUntil;
         public Health Health => health;
         public bool IsInvulnerable => isActiveAndEnabled &&
             Time.time >= invulnerableFrom && Time.time < invulnerableUntil;
 
-        private void Awake() => health = GetComponent<Health>();
+        private void Awake()
+        {
+            health = GetComponent<Health>();
+            shield = GetComponent<Shield>();
+        }
         private void OnDisable() => ClearInvulnerability();
 
         public void GrantInvulnerability(float delay, float duration)
@@ -27,11 +32,13 @@ namespace TRACE.Combat
 
         public bool TryTakeDamage(float amount)
         {
-            if (!isActiveAndEnabled || health == null || health.IsDead || IsInvulnerable)
+            if (!isActiveAndEnabled || health == null || health.IsDead || IsInvulnerable ||
+                amount <= 0f || float.IsNaN(amount) || float.IsInfinity(amount))
                 return false;
+            float remaining = shield != null ? shield.Absorb(amount) : amount;
             float before = health.CurrentHealth;
-            health.TakeDamage(amount);
-            return health.CurrentHealth < before;
+            health.TakeDamage(remaining);
+            return remaining < amount || health.CurrentHealth < before;
         }
     }
 }

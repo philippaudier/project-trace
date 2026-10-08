@@ -6,8 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/TRACE/Scenes/FirstTrace.unity
+    guid: ee09db457a326a548b9af7655abd98c2
+  - enabled: 1
+    path: Assets/TRACE/Scenes/PrototypeEncounter.unity
+    guid: 35780734e9bc75c4e874a788af03ec11
+  - enabled: 1
     path: Assets/TRACE/Scenes/Prototype.unity
     guid: 01c612b6182d1bc6c80238b028c82f38
+  - enabled: 1
+    path: Assets/TRACE/Scenes/PrototypeLegacy.unity
+    guid: ee34d1964d6fdf54eaf7e707d45e502d
+  - enabled: 1
+    path: Assets/TRACE/Scenes/PrototypeSwitch.unity
+    guid: 27ae688af560afc4f8f680dde66b8101
+  - enabled: 1
+    path: Assets/TRACE/Scenes/PrototypeSquad.unity
+    guid: c12772902593dc5409f2fbcfe7ae0b70
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05

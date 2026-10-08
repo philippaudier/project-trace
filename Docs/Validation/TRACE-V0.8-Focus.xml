@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="21" result="Failed(Child)" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13,5705914">
+  <test-suite type="TestSuite" id="1160" name="Project-TRACE" fullname="Project-TRACE" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13.570591" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1154" name="TRACE.PlayModeTests.dll" fullname="C:/Users/Philippe/Documents/Programming/Unity/Projects/project-trace/Logs/v08-project/Library/ScriptAssemblies/TRACE.PlayModeTests.dll" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13.560287" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15180" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1155" name="TRACE" fullname="TRACE" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13.557675" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1156" name="Tests" fullname="TRACE.Tests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13.555521" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1132" name="TacticalFocusTests" fullname="TRACE.Tests.TacticalFocusTests" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" testcasecount="21" result="Failed" site="Child" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:40Z" duration="13.552572" total="21" passed="4" failed="17" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1147" name="BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" fullname="TRACE.Tests.TacticalFocusTests.BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" methodname="BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1297026267" result="Failed" start-time="2026-10-07 20:19:26Z" end-time="2026-10-07 20:19:27Z" duration="0.766024" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<BlockedSkillIsNotBufferedAndReleasePermitsImmediateNewPress>d__27.MoveNext () [0x000b0] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:194
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1144" name="CameraMouseSensitivityIsUnscaled" fullname="TRACE.Tests.TacticalFocusTests.CameraMouseSensitivityIsUnscaled" methodname="CameraMouseSensitivityIsUnscaled" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1999912956" result="Passed" start-time="2026-10-07 20:19:27Z" end-time="2026-10-07 20:19:28Z" duration="0.568428" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1150" name="ComboConsumptionFeedbackDoesNotResetFocusTime" fullname="TRACE.Tests.TacticalFocusTests.ComboConsumptionFeedbackDoesNotResetFocusTime" methodname="ComboConsumptionFeedbackDoesNotResetFocusTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1494641637" result="Failed" start-time="2026-10-07 20:19:28Z" end-time="2026-10-07 20:19:29Z" duration="0.857120" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<ComboConsumptionFeedbackDoesNotResetFocusTime>d__30.MoveNext () [0x000a6] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:225
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1149" name="CooldownAndComboDurationFollowScaledClock" fullname="TRACE.Tests.TacticalFocusTests.CooldownAndComboDurationFollowScaledClock" methodname="CooldownAndComboDurationFollowScaledClock" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="2040866687" result="Failed" start-time="2026-10-07 20:19:29Z" end-time="2026-10-07 20:19:30Z" duration="1.031886" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.0751082227f +/- 0.0149999997f
+  But was:  0.500721335f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<CooldownAndComboDurationFollowScaledClock>d__29.MoveNext () [0x000ef] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:215
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1140" name="DeathRestoresTimeEvenWhenSquadAutoSwitches" fullname="TRACE.Tests.TacticalFocusTests.DeathRestoresTimeEvenWhenSquadAutoSwitches" methodname="DeathRestoresTimeEvenWhenSquadAutoSwitches" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="362464959" result="Failed" start-time="2026-10-07 20:19:30Z" end-time="2026-10-07 20:19:30Z" duration="0.769723" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<DeathRestoresTimeEvenWhenSquadAutoSwitches>d__20.MoveNext () [0x00113] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:127
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1136" name="DisableImmediatelyRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.DisableImmediatelyRestoresTime" methodname="DisableImmediatelyRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1010531822" result="Failed" start-time="2026-10-07 20:19:30Z" end-time="2026-10-07 20:19:31Z" duration="0.528832" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.0199999865f
+  But was:  0.00607587863f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<DisableImmediatelyRestoresTime>d__16.MoveNext () [0x0005f] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:102
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1153" name="EnemyWindupTelegraphAndAttackContinueInGameTime" fullname="TRACE.Tests.TacticalFocusTests.EnemyWindupTelegraphAndAttackContinueInGameTime" methodname="EnemyWindupTelegraphAndAttackContinueInGameTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1656120098" result="Failed" start-time="2026-10-07 20:19:31Z" end-time="2026-10-07 20:19:32Z" duration="0.557480" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<EnemyWindupTelegraphAndAttackContinueInGameTime>d__33.MoveNext () [0x00103] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:260
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1148" name="EnteringFocusCancelsDashWithoutRefundingCooldown" fullname="TRACE.Tests.TacticalFocusTests.EnteringFocusCancelsDashWithoutRefundingCooldown" methodname="EnteringFocusCancelsDashWithoutRefundingCooldown" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="698459072" result="Passed" start-time="2026-10-07 20:19:32Z" end-time="2026-10-07 20:19:32Z" duration="0.552463" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1141" name="ExternalPauseHasPriorityAndIsNotOverwritten" fullname="TRACE.Tests.TacticalFocusTests.ExternalPauseHasPriorityAndIsNotOverwritten" methodname="ExternalPauseHasPriorityAndIsNotOverwritten" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="829010348" result="Failed" start-time="2026-10-07 20:19:32Z" end-time="2026-10-07 20:19:33Z" duration="0.542113" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.0199999865f
+  But was:  0.00600951677f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<ExternalPauseHasPriorityAndIsNotOverwritten>d__21.MoveNext () [0x00097] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:133
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1142" name="ExternalPhysicsStepIsPreservedOnAbort" fullname="TRACE.Tests.TacticalFocusTests.ExternalPhysicsStepIsPreservedOnAbort" methodname="ExternalPhysicsStepIsPreservedOnAbort" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1187965063" result="Passed" start-time="2026-10-07 20:19:33Z" end-time="2026-10-07 20:19:33Z" duration="0.547384" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1146" name="FocusBlocksMoveSprintAttackDodgeAndSkill" fullname="TRACE.Tests.TacticalFocusTests.FocusBlocksMoveSprintAttackDodgeAndSkill" methodname="FocusBlocksMoveSprintAttackDodgeAndSkill" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1137582155" result="Failed" start-time="2026-10-07 20:19:33Z" end-time="2026-10-07 20:19:34Z" duration="0.785848" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: (0.00, 0.00)
+  But was:  (0.00, 1.00)
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<FocusBlocksMoveSprintAttackDodgeAndSkill>d__26.MoveNext () [0x000d0] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:183
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1139" name="FocusLossRequiresReleaseBeforeReentry" fullname="TRACE.Tests.TacticalFocusTests.FocusLossRequiresReleaseBeforeReentry" methodname="FocusLossRequiresReleaseBeforeReentry" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1159378765" result="Failed" start-time="2026-10-07 20:19:34Z" end-time="2026-10-07 20:19:35Z" duration="0.741368" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<FocusLossRequiresReleaseBeforeReentry>d__19.MoveNext () [0x0013b] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:120
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1133" name="HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" fullname="TRACE.Tests.TacticalFocusTests.HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" methodname="HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1453152285" result="Failed" start-time="2026-10-07 20:19:35Z" end-time="2026-10-07 20:19:35Z" duration="0.527468" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<HoldReducesScaleAndPhysicsStepAndReleaseRestoresBoth>d__13.MoveNext () [0x00045] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:72
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1138" name="InputLossRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.InputLossRestoresTime" methodname="InputLossRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1144393589" result="Passed" start-time="2026-10-07 20:19:35Z" end-time="2026-10-07 20:19:36Z" duration="0.540845" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1143" name="NonDefaultTimeBaselineIsRestored" fullname="TRACE.Tests.TacticalFocusTests.NonDefaultTimeBaselineIsRestored" methodname="NonDefaultTimeBaselineIsRestored" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="52536386" result="Failed" start-time="2026-10-07 20:19:36Z" end-time="2026-10-07 20:19:36Z" duration="0.533673" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.075000003f +/- 0.00100000005f
+  But was:  0.5f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<NonDefaultTimeBaselineIsRestored>d__23.MoveNext () [0x00059] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:146
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1145" name="OneTwoThreeSwitchAndCameraFollowStayAvailable" fullname="TRACE.Tests.TacticalFocusTests.OneTwoThreeSwitchAndCameraFollowStayAvailable" methodname="OneTwoThreeSwitchAndCameraFollowStayAvailable" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="34676099" result="Failed" start-time="2026-10-07 20:19:36Z" end-time="2026-10-07 20:19:37Z" duration="0.762364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<OneTwoThreeSwitchAndCameraFollowStayAvailable>d__25.MoveNext () [0x00130] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:172
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1151" name="OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" fullname="TRACE.Tests.TacticalFocusTests.OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" methodname="OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="566209537" result="Failed" start-time="2026-10-07 20:19:37Z" end-time="2026-10-07 20:19:38Z" duration="0.535188" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<OverlayDisplaysThreeMembersCooldownAndCounterOnlyWhileHeld>d__31.MoveNext () [0x0009d] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:232
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1135" name="RepeatedHoldDoesNotToggleOrCompoundSlowdown" fullname="TRACE.Tests.TacticalFocusTests.RepeatedHoldDoesNotToggleOrCompoundSlowdown" methodname="RepeatedHoldDoesNotToggleOrCompoundSlowdown" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="405181193" result="Failed" start-time="2026-10-07 20:19:38Z" end-time="2026-10-07 20:19:38Z" duration="0.532371" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.150000006f +/- 0.00100000005f
+  But was:  1.0f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<RepeatedHoldDoesNotToggleOrCompoundSlowdown>d__15.MoveNext () [0x00059] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:93
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1137" name="SceneUnloadRestoresTime" fullname="TRACE.Tests.TacticalFocusTests.SceneUnloadRestoresTime" methodname="SceneUnloadRestoresTime" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="356103344" result="Failed" start-time="2026-10-07 20:19:38Z" end-time="2026-10-07 20:19:39Z" duration="0.801004" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.0199999865f
+  But was:  0.00677914545f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<SceneUnloadRestoresTime>d__17.MoveNext () [0x0007e] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:107
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1134" name="TransitionsUseRealTimeAndAreNotInstant" fullname="TRACE.Tests.TacticalFocusTests.TransitionsUseRealTimeAndAreNotInstant" methodname="TransitionsUseRealTimeAndAreNotInstant" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="43984178" result="Failed" start-time="2026-10-07 20:19:39Z" end-time="2026-10-07 20:19:39Z" duration="0.504364" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 0.150000006f +/- 0.00100000005f
+  But was:  1.0f
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<TransitionsUseRealTimeAndAreNotInstant>d__14.MoveNext () [0x000a1] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:83
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1152" name="VisibleEnemyCardShowsGroupedAndHidesOutsideView" fullname="TRACE.Tests.TacticalFocusTests.VisibleEnemyCardShowsGroupedAndHidesOutsideView" methodname="VisibleEnemyCardShowsGroupedAndHidesOutsideView" classname="TRACE.Tests.TacticalFocusTests" runstate="Runnable" seed="1718644389" result="Failed" start-time="2026-10-07 20:19:39Z" end-time="2026-10-07 20:19:40Z" duration="0.547646" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 1
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at TRACE.Tests.TacticalFocusTests+<VisibleEnemyCardShowsGroupedAndHidesOutsideView>d__32.MoveNext () [0x00141] in C:\Users\Philippe\Documents\Programming\Unity\Projects\project-trace\Logs\v08-project\Assets\TRACE\Tests\PlayMode\TacticalFocusTests.cs:248
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Saving results to: C:/Users/Philippe/AppData/LocalLow/DefaultCompany/Project-TRACE\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -35,7 +35,7 @@ namespace TRACE.Tests
             Time.captureDeltaTime = 1f / 60f;
             keyboard = InputSystem.AddDevice<Keyboard>();
             mouse = InputSystem.AddDevice<Mouse>();
-            yield return SceneManager.LoadSceneAsync("Prototype");
+            yield return SceneManager.LoadSceneAsync("PrototypeLegacy");
             motor = Object.FindFirstObjectByType<ThirdPersonMotor>();
             controller = motor.GetComponent<CharacterController>();
             input = motor.GetComponent<TracePlayerInput>();
@@ -187,7 +187,7 @@ namespace TRACE.Tests
         [UnityTest]
         public IEnumerator SceneReloadRetainsWiringAndInput()
         {
-            yield return SceneManager.LoadSceneAsync("Prototype");
+            yield return SceneManager.LoadSceneAsync("PrototypeLegacy");
             yield return Frames(30);
             var reloaded = Object.FindFirstObjectByType<ThirdPersonMotor>();
             var reader = reloaded.GetComponent<TracePlayerInput>();

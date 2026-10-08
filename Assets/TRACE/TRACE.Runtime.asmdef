@@ -3,6 +3,7 @@
   "rootNamespace": "TRACE",
   "references": [
     "Unity.InputSystem",
-    "Unity.Cinemachine"
+    "Unity.Cinemachine",
+    "Unity.ugui"
   ]
 }

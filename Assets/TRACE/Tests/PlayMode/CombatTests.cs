@@ -31,7 +31,7 @@ namespace TRACE.Tests
             InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
             InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
             mouse = InputSystem.AddDevice<Mouse>();
-            yield return SceneManager.LoadSceneAsync("Prototype");
+            yield return SceneManager.LoadSceneAsync("PrototypeLegacy");
             input = Object.FindFirstObjectByType<TracePlayerInput>();
             typeof(TracePlayerInput).GetField("captureCursor", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(input, false);
             attack = input.GetComponent<PlayerMeleeAttack>();

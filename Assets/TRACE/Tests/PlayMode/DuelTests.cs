@@ -27,6 +27,8 @@ namespace TRACE.Tests
         private float previousCapture;
         private InputSettings.BackgroundBehavior previousBackground;
         private InputSettings.EditorInputBehaviorInPlayMode previousEditorInput;
+        private bool attackHeld;
+        private bool dodgeHeld;
 
         [UnitySetUp]
         public IEnumerator SetUp()
@@ -39,7 +41,8 @@ namespace TRACE.Tests
             InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
             keyboard = InputSystem.AddDevice<Keyboard>();
             mouse = InputSystem.AddDevice<Mouse>();
-            yield return SceneManager.LoadSceneAsync("Prototype");
+            attackHeld = dodgeHeld = false;
+            yield return SceneManager.LoadSceneAsync("PrototypeLegacy");
             input = Object.FindFirstObjectByType<TracePlayerInput>();
             typeof(TracePlayerInput).GetField("captureCursor", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(input, false);
             motor = input.GetComponent<ThirdPersonMotor>();
@@ -327,8 +330,16 @@ namespace TRACE.Tests
             Physics.SyncTransforms();
         }
 
-        private void Keys(params Key[] keys) => InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys));
-        private void Click(bool pressed) => InputSystem.QueueStateEvent(mouse, new MouseState().WithButton(MouseButton.Left, pressed));
+        private void Keys(params Key[] keys)
+        {
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys));
+            // Existing scenarios use Space as the dodge intent. The user rebound Dodge to right-click.
+            dodgeHeld = System.Array.IndexOf(keys, Key.Space) >= 0;
+            QueueMouse();
+        }
+        private void Click(bool pressed) { attackHeld = pressed; QueueMouse(); }
+        private void QueueMouse() => InputSystem.QueueStateEvent(mouse,
+            new MouseState().WithButton(MouseButton.Left, attackHeld).WithButton(MouseButton.Right, dodgeHeld));
         private static IEnumerator Frames(int count) { for (int i = 0; i < count; i++) yield return null; }
     }
 }

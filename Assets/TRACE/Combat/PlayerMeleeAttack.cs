@@ -34,7 +34,15 @@ namespace TRACE.Combat
         private float readyAt;
         private bool attacking;
         private bool sampledActive;
+        private Health preferredTarget;
+        private TargetingSystem targeting;
+        private float counterMultiplier = 1f;
+        private bool counterEvaluated;
         public bool IsAttacking => attacking;
+        public Health CurrentTarget { get; private set; }
+        public void PreferTarget(Health target) => preferredTarget = target;
+        public float ReadyAt => readyAt;
+        public void DelayUntil(float time) => readyAt = Mathf.Max(readyAt, time);
         private Vector3 Origin => transform.position + Vector3.up * attackHeight;
 
         private void Awake()
@@ -44,6 +52,7 @@ namespace TRACE.Combat
                 Debug.LogError("TRACE melee attack requires player input.", this);
                 enabled = false;
             }
+            if (input != null) targeting = input.GetComponent<TargetingSystem>();
             SetVisual(false);
         }
 
@@ -51,7 +60,7 @@ namespace TRACE.Combat
 
         private void Update()
         {
-            if (!input.GameplayInputEnabled || (motor != null && motor.IsDodging))
+            if (!input.CombatInputEnabled || (motor != null && (motor.IsDodging || motor.IsSkillDashing)))
             {
                 CancelAttack();
                 return;
@@ -65,6 +74,8 @@ namespace TRACE.Combat
                 readyAt = Time.time + Mathf.Max(cooldown, windup + activeDuration);
                 attacking = true;
                 sampledActive = false;
+                counterMultiplier = 1f;
+                counterEvaluated = false;
             }
             if (!attacking || Time.time < activeAt)
                 return;
@@ -83,8 +94,21 @@ namespace TRACE.Combat
 
         private Vector3 AssistedDirection()
         {
+            Health preferred = preferredTarget;
+            preferredTarget = null;
+            CurrentTarget = null;
             Vector3 facing = transform.forward;
             Vector3 direction = facing;
+            Health lockedTarget = targeting != null ? targeting.LockedWithin(transform, range, obstructionMask) : null;
+            if (lockedTarget != null)
+            {
+                // A reachable locked target wins over the cone scan; the swing may turn up to 90 degrees toward it.
+                CurrentTarget = lockedTarget;
+                Vector3 toLocked = lockedTarget.transform.position - transform.position;
+                toLocked.y = 0f;
+                if (toLocked.sqrMagnitude > 0.001f)
+                    return Vector3.RotateTowards(facing, toLocked.normalized, 90f * Mathf.Deg2Rad, 0f).normalized;
+            }
             float bestAngle = float.PositiveInfinity;
             float bestDistance = float.PositiveInfinity;
             int count = Physics.OverlapSphereNonAlloc(Origin, range, overlaps, targetMask, QueryTriggerInteraction.Ignore);
@@ -98,18 +122,25 @@ namespace TRACE.Combat
             for (int i = 0; i < count; i++)
             {
                 Collider candidate = candidates[i];
-                if (!ValidTarget(candidate, out _) || !Visible(candidate))
+                if (!ValidTarget(candidate, out Health health) || !Visible(candidate))
                     continue;
                 Vector3 toTarget = candidate.bounds.center - Origin;
                 toTarget.y = 0f;
                 float angle = Vector3.Angle(facing, toTarget);
                 float distance = toTarget.sqrMagnitude;
+                if (health == preferred && angle <= targetingHalfAngle)
+                {
+                    CurrentTarget = health;
+                    direction = toTarget.normalized;
+                    break;
+                }
                 if (angle > targetingHalfAngle || (angle > bestAngle + 0.1f) ||
                     (Mathf.Abs(angle - bestAngle) <= 0.1f && distance >= bestDistance))
                     continue;
                 bestAngle = angle;
                 bestDistance = distance;
                 direction = toTarget.normalized;
+                CurrentTarget = health;
             }
             // Correct the hit direction, never snap the character or camera rotation.
             return Vector3.RotateTowards(facing, direction, maximumAimCorrection * Mathf.Deg2Rad, 0f).normalized;
@@ -140,9 +171,13 @@ namespace TRACE.Combat
                     !ValidTarget(candidate, out Health health) || damagedThisAttack.Contains(health) || !Visible(candidate))
                     continue;
                 damagedThisAttack.Add(health);
-                var receiver = health.GetComponent<DamageReceiver>();
-                if (receiver != null) receiver.TryTakeDamage(damage);
-                else health.TakeDamage(damage);
+                if (!ComboDamage.CanHit(health)) continue;
+                if (!counterEvaluated)
+                {
+                    counterMultiplier = ComboDamage.ConsumeProtected(gameObject);
+                    counterEvaluated = true;
+                }
+                ComboDamage.Apply(health, damage * counterMultiplier, transform.position);
             }
         }
 

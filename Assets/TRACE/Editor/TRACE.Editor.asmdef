@@ -6,7 +6,9 @@
     "Unity.InputSystem",
     "Unity.Cinemachine",
     "Unity.RenderPipelines.Universal.Runtime",
-    "Unity.AI.Navigation"
+    "Unity.RenderPipelines.Core.Runtime",
+    "Unity.AI.Navigation",
+    "Unity.ugui"
   ],
   "includePlatforms": [
     "Editor"

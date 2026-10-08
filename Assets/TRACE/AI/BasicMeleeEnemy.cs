@@ -7,13 +7,14 @@ namespace TRACE.AI
     [RequireComponent(typeof(Health), typeof(NavMeshAgent))]
     [DefaultExecutionOrder(30)]
     [DisallowMultipleComponent]
-    public sealed class BasicMeleeEnemy : MonoBehaviour
+    public sealed class BasicMeleeEnemy : EnemyBrain
     {
         public enum EnemyState { Idle, Chase, Attack, Dead }
         public enum AttackPhase { None, Windup, Active, Recovery }
 
         [SerializeField] private DamageReceiver target;
         [SerializeField] private Collider targetCollider;
+        [SerializeField] private SquadController squad;
         [SerializeField] private GameObject attackCue;
         [SerializeField] private Renderer cueRenderer;
         [SerializeField] private LayerMask obstructionMask = 1;
@@ -28,6 +29,8 @@ namespace TRACE.AI
         [SerializeField, Min(0.01f)] private float recovery = 0.65f;
         [SerializeField, Min(0.05f)] private float repathInterval = 0.2f;
         [SerializeField] private EnemyState state = EnemyState.Idle;
+        [SerializeField, Tooltip("Overlay label: PURSUER by default, BULWARK for the heavy tuning.")]
+        private string archetype = "PURSUER";
 
         private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
         private readonly Collider[] hits = new Collider[8];
@@ -40,8 +43,20 @@ namespace TRACE.AI
         private float attackEndsAt;
         private float nextPathAt;
         private bool strikeConsumed;
+        private float nextTargetAt;
+        public override DamageReceiver CurrentTarget => target;
         public EnemyState State => state;
+        public override string Archetype => archetype;
+        public override bool IsEngaged => state != EnemyState.Idle && state != EnemyState.Dead;
+        public override bool IsPreparingAttack => Phase == AttackPhase.Windup;
+        public override float PreparationRemaining => WindupRemaining;
+        public override string StatusLabel => Phase == AttackPhase.Windup ? $"<color=#FFD36A>WIND-UP {WindupRemaining:0.0}s</color>" :
+            state == EnemyState.Attack ? "ATTACKING / " + Phase.ToString().ToUpperInvariant() : state.ToString().ToUpperInvariant();
         public AttackPhase Phase { get; private set; }
+        public Vector3 StrikeDirection => strikeDirection;
+        public float HitRange => hitRange;
+        public float HitHalfWidth => hitHalfWidth;
+        public float WindupRemaining => Phase == AttackPhase.Windup ? Mathf.Max(0f, activeAt - Time.time) : 0f;
         private Vector3 Origin => transform.position + Vector3.up * 0.9f;
 
         private void Awake()
@@ -76,6 +91,22 @@ namespace TRACE.AI
             {
                 if (state != EnemyState.Dead) Die();
                 return;
+            }
+            if (squad != null)
+            {
+                if (!squad.LeaderAlive) { Idle(); return; }
+                // Never change the committed victim during a swing. A target is held for at least 2s.
+                if (state != EnemyState.Attack && (Time.time >= nextTargetAt || target == null ||
+                    !target.isActiveAndEnabled || target.Health.IsDead))
+                {
+                    nextTargetAt = Time.time + 2f;
+                    var candidate = squad.NearestLivingMember(transform.position, detectionRange, obstructionMask);
+                    if (candidate != null)
+                    {
+                        target = candidate;
+                        targetCollider = candidate.GetComponent<Collider>();
+                    }
+                }
             }
             if (target == null || targetCollider == null || !target.isActiveAndEnabled || target.Health.IsDead || !targetCollider.enabled)
             {

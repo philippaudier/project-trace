@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1,9371885">
+  <test-suite type="TestSuite" id="1114" name="Project-TRACE" fullname="Project-TRACE" runstate="Runnable" testcasecount="99" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.937189" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1108" name="TRACE.PlayModeTests.dll" fullname="C:/Users/Philippe/Documents/Programming/Unity/Projects/project-trace/Logs/v06-project/Library/ScriptAssemblies/TRACE.PlayModeTests.dll" runstate="Runnable" testcasecount="99" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.929101" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2616" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1109" name="TRACE" fullname="TRACE" runstate="Runnable" testcasecount="99" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.927757" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1110" name="Tests" fullname="TRACE.Tests" runstate="Runnable" testcasecount="99" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.926574" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1039" name="SkillsVisualCapture" fullname="TRACE.Tests.SkillsVisualCapture" classname="TRACE.Tests.SkillsVisualCapture" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.924517" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1040" name="CaptureThreeSkillsAndLiveEncounter" fullname="TRACE.Tests.SkillsVisualCapture.CaptureThreeSkillsAndLiveEncounter" methodname="CaptureThreeSkillsAndLiveEncounter" classname="TRACE.Tests.SkillsVisualCapture" runstate="Runnable" seed="1998695025" result="Passed" start-time="2026-10-07 18:39:36Z" end-time="2026-10-07 18:39:38Z" duration="1.906696" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/Philippe/AppData/LocalLow/DefaultCompany/Project-TRACE\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
