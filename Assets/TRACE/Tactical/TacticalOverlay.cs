@@ -1,4 +1,5 @@
 using TRACE.AI;
+using TRACE.Characters;
 using TRACE.Combat;
 using TRACE.Skills;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace TRACE.Tactical
         private CharacterSkill[] skills;
         private Shield[] shields;
         private ComboOpportunity[] memberCombos;
+        private CharacterProfile[] profiles;
         private Health[] enemyHealth;
         private ComboOpportunity[] enemyCombos;
         private EnemyGravityResponse[] gravity;
@@ -42,11 +44,13 @@ namespace TRACE.Tactical
             skills = new CharacterSkill[squad.Members.Count];
             shields = new Shield[skills.Length];
             memberCombos = new ComboOpportunity[skills.Length];
+            profiles = new CharacterProfile[skills.Length];
             for (int i = 0; i < skills.Length; i++)
             {
                 skills[i] = squad.Members[i].GetComponent<CharacterSkill>();
                 shields[i] = squad.Members[i].GetComponent<Shield>();
                 memberCombos[i] = squad.Members[i].GetComponent<ComboOpportunity>();
+                profiles[i] = squad.Members[i].GetComponent<CharacterProfile>();
             }
             enemyHealth = new Health[enemies.Length];
             enemyCombos = new ComboOpportunity[enemies.Length];
@@ -88,7 +92,9 @@ namespace TRACE.Tactical
                     string selection = member == squad.ActiveMember ? "<color=#72EBFF>ACTIF</color>" : "COMPANION";
                     string readiness = member.Health.IsDead ? "DEAD" : skills[i].IsReady ? "READY" : $"{skills[i].CooldownRemaining:0.0} s";
                     string counter = memberCombos[i].Type == ComboOpportunityType.Protected ? $"  <color=#72EBFF>CONTRE {memberCombos[i].RemainingDuration:0.0}s</color>" : "";
-                    memberTexts[i].text = $"<b>{i + 1}  {roles[i]}</b>  {selection}\nHP {member.Health.CurrentHealth:0}/{member.Health.MaxHealth:0}  SH {shields[i].CurrentAmount:0}\n{skills[i].SkillName} : <b>{readiness}</b>{counter}";
+                    // A profiled member is named and tinted by its profile; the others keep the prototype role label.
+                    string label = profiles[i] != null ? $"<color=#{profiles[i].AccentHex}>{profiles[i].DisplayName.ToUpperInvariant()}</color>" : roles[i];
+                    memberTexts[i].text = $"<b>{i + 1}  {label}</b>  {selection}\nHP {member.Health.CurrentHealth:0}/{member.Health.MaxHealth:0}  SH {shields[i].CurrentAmount:0}\n{skills[i].SkillName} : <b>{readiness}</b>{counter}";
                 }
             }
             placedCount = VisibleEnemyCount = 0;

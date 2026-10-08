@@ -255,3 +255,17 @@ zones, heals + ResetCooldown + encounter.Begin at the arena, gates opened per wa
 end panel with restart / prototype / stay). EncounterController has autoStart (false here) and
 Begin(). Lighting: cold sun, linear fog, URP Volume (vignette, color adjustments, bloom). No
 quest, save, loot, RPG progression, boss or new mechanic. See Docs/TRACE-V1-FirstTrace.md.
+
+## Tracewalker V0.1 (2026-10-08)
+
+Member 1 (former Assault placeholder) is the Tracewalker, dressed by TracewalkerSetup.Apply
+(idempotent, menu TRACE/Apply Tracewalker V0.1) in Prototype, PrototypeEncounter and FirstTrace:
+composed primitive body under "Tracewalker Visual" (charcoal, shadow, cool grey, off-white, amber),
+ORIGIN mark on the left brassard (plate + two leaning bars + amber stroke), Trace Module on the
+right chest whose amber lens is driven by TraceModule (reads TacticalFocus only: 0.8 idle, 2.6 with
+a 2.5 Hz pulse while held, real-time response), short blade in the right hand. CharacterProfile
+(characterId/displayName/designation/archetype/accentColor) on member 1 only; SkillHud and
+TacticalOverlay label a profiled member by name in its accent colour, others keep the role labels.
+CompanionFeedback targets the torso renderer; the prototype Facing Marker is removed. Materials in
+Scenes/Materials/Tracewalker (M_Tracewalker_*). No gameplay, skill, stat or dialogue change (slice
+speakers still say ASSAULT). See Docs/TRACE-Tracewalker-V0.1.md.

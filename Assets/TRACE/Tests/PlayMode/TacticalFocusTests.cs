@@ -251,7 +251,7 @@ namespace TRACE.Tests
             members[0].GetComponent<CharacterSkill>().Activate();
             members[0].GetComponent<ComboOpportunity>().Offer(ComboOpportunityType.Protected, 3f, focus);
             yield return Enter(); Assert.That(overlay.IsVisible, Is.True);
-            StringAssert.Contains("ASSAULT", overlay.MemberInfo(0)); StringAssert.Contains("CONTRE", overlay.MemberInfo(0));
+            StringAssert.Contains("TRACEWALKER", overlay.MemberInfo(0)); StringAssert.Contains("CONTRE", overlay.MemberInfo(0));
             StringAssert.Contains("HP", overlay.MemberInfo(0)); StringAssert.DoesNotContain("READY", overlay.MemberInfo(0));
             StringAssert.Contains("CONTROL", overlay.MemberInfo(1)); StringAssert.Contains("READY", overlay.MemberInfo(1));
             StringAssert.Contains("SUPPORT", overlay.MemberInfo(2)); StringAssert.Contains("READY", overlay.MemberInfo(2));
