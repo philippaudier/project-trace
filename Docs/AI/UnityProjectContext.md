@@ -317,3 +317,19 @@ all members use M_Support_Shield (mint unlit) with a slow FieldVisualPulse; mech
 Profile origin_support_01 / Defensive Support / mint, portrait cropped from the board into
 UI/Portraits/Portrait_Support.png (same GUID as the former placeholder). Calmest puppet tuning.
 See Docs/TRACE-Support-V0.1.md.
+
+## Voice V0.1 (2026-10-09)
+
+Combat vocalisation layer in TRACE.Voice: CharacterVoiceSet (ScriptableObject per member, one Line
+per VoiceCategory with clip variants, volume, probability, cooldown; pitch jitter <= 1 %),
+VoicePolicy (fixed priority Critical AllyDown/HurtHeavy > High LowHealth/SkillPrimary > Medium
+SwitchIn/Out, CombatStart, ComboReady > Low rest; default cooldowns and probabilities),
+CharacterVoice on each member (owns VoiceAudioSource, 3D 60 %, Voice mixer group; attack / dodge
+edges, hurt light vs heavy by damage >= 20 % max HP, low health < 30 % once with re-arm above 35 %,
+skill Activated; higher priority interrupts, no immediate variant repeat, declined roll counts as a
+pass), SquadVoiceDirector on Squad (switch in/out outside a 1.5 s burst window, CombatStart once per
+HudRoot engagement, one AllyDown reaction, discreet Focus breath), VoiceDebugPanel (F9 IMGUI).
+VoiceSetup (TRACE/Apply Voice V0.1) fills sets from the naming convention VO_<Prefix>_<Category>_NN
+in Audio/Voice/<Character>/ (real recordings) else TMP_VO_* in Audio/Voice/Temp (51 synthetic
+placeholders from Docs/Audio/voice_placeholders.py, stable meta GUIDs); imports mono / decompress /
+ADPCM. Mixer gains a Voice group (focus: -2 dB, 6 kHz). See Docs/VoiceSystem-V0.1.md.

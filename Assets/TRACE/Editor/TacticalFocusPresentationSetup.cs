@@ -51,7 +51,7 @@ namespace TRACE.Editor
             "Assets/TRACE/Scenes/FirstTrace.unity",
             "Assets/TRACE/Scenes/FieldTest.unity",
         };
-        private static readonly string[] Groups = { "Music", "Ambience", "World", "Combat", "UI", "Tactical" };
+        private static readonly string[] Groups = { "Music", "Ambience", "World", "Combat", "UI", "Voice", "Tactical" };
         // Group: (low-pass cutoff in Focus, attenuation in Focus). The tactical layer, UI and warnings stay clear.
         private static readonly (string group, float cutoff, float volume)[] FocusMix =
         {
@@ -60,6 +60,7 @@ namespace TRACE.Editor
             ("Ambience", 800f, -14f),
             ("Music", 2400f, -8f),
             ("Combat", 4000f, -3f),
+            ("Voice", 6000f, -2f),
         };
         private const float OpenCutoff = 22000f;
 
@@ -347,7 +348,7 @@ namespace TRACE.Editor
                 .Invoke(target is Type ? null : target, args);
         private static object Get(object target, string property) => target.GetType().GetProperty(property, Any).GetValue(target);
 
-        private static AudioMixer BuildMixer()
+        internal static AudioMixer BuildMixer()
         {
             var controllerType = EditorType("AudioMixerController");
             var mixer = AssetDatabase.LoadAssetAtPath<AudioMixer>(MixerPath);

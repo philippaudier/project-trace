@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a1f1d2e3b44c5d8e9f0a1b2c3d4e52, type: 3}
+  m_Name: VoiceSet_Support
+  m_EditorClassIdentifier: TRACE.Runtime::TRACE.Voice.CharacterVoiceSet
+  characterId: origin_support_01
+  filePrefix: Support
+  pitchJitter: 0.01
+  lines:
+  - category: 0
+    clips:
+    - {fileID: 8300000, guid: 5e9f6d9796dcbac6127bc8330d8d704c, type: 3}
+    - {fileID: 8300000, guid: e76bfbf17869e397b696237c3672aaac, type: 3}
+    - {fileID: 8300000, guid: e8ee41c0fd66b15ce070bd13c2ce2e28, type: 3}
+    volume: 0.9
+    probability: 0.55
+    cooldown: 0.35
+  - category: 1
+    clips: []
+    volume: 0.9
+    probability: 0.8
+    cooldown: 0.5
+  - category: 2
+    clips:
+    - {fileID: 8300000, guid: 4a0942b3744ace281ea62c337c2535e1, type: 3}
+    - {fileID: 8300000, guid: 32ea83ceaefef67644b708f62b1f2a46, type: 3}
+    volume: 0.9
+    probability: 0.5
+    cooldown: 0.8
+  - category: 3
+    clips:
+    - {fileID: 8300000, guid: b30db87ecffff2ffae9bff36356fb807, type: 3}
+    - {fileID: 8300000, guid: 870cffe964c5bc5a9a87c357203981a1, type: 3}
+    - {fileID: 8300000, guid: dda2caf5878efc755c1b261bc584cba4, type: 3}
+    volume: 0.9
+    probability: 0.85
+    cooldown: 0.6
+  - category: 4
+    clips:
+    - {fileID: 8300000, guid: bb225f7eaf1596a40bda8785ca1119fc, type: 3}
+    - {fileID: 8300000, guid: f06d36a6752e4d597a645852c255f08d, type: 3}
+    volume: 0.9
+    probability: 1
+    cooldown: 1.2
+  - category: 5
+    clips:
+    - {fileID: 8300000, guid: df482ffbbb248cc40b5dbebd995b14f3, type: 3}
+    - {fileID: 8300000, guid: de8e086123b07544db957ffa39e333ad, type: 3}
+    volume: 0.9
+    probability: 1
+    cooldown: 12
+  - category: 6
+    clips:
+    - {fileID: 8300000, guid: 72d37d24ce62ba74088542154f5458ef, type: 3}
+    - {fileID: 8300000, guid: 7ee3e8a198373ce438f9c9200cf16104, type: 3}
+    volume: 0.9
+    probability: 0.8
+    cooldown: 1.5
+  - category: 7
+    clips:
+    - {fileID: 8300000, guid: 9456ec8ca3ca9fe4988d45d34568dbc9, type: 3}
+    - {fileID: 8300000, guid: 4834ea9da03a3a74388a2af1cef866d8, type: 3}
+    volume: 0.9
+    probability: 0.55
+    cooldown: 1.5
+  - category: 8
+    clips: []
+    volume: 0.9
+    probability: 0.2
+    cooldown: 1.5
+  - category: 9
+    clips:
+    - {fileID: 8300000, guid: e1d0c610d670eba428856779734b68a6, type: 3}
+    - {fileID: 8300000, guid: 72d05f084ca37c9408b46366ec32763c, type: 3}
+    volume: 0.9
+    probability: 0.4
+    cooldown: 6
+  - category: 10
+    clips:
+    - {fileID: 8300000, guid: 1e61e43282ae3574bad2d3c0b6c11553, type: 3}
+    - {fileID: 8300000, guid: 3ecccabc477fa4c4c8c688ed72b67b70, type: 3}
+    volume: 0.9
+    probability: 1
+    cooldown: 2
+  - category: 11
+    clips:
+    - {fileID: 8300000, guid: 726f1e3a96cce3f4893aa92730a5449d, type: 3}
+    - {fileID: 8300000, guid: 10c827bfb7c969148be4b79b25f3a38a, type: 3}
+    volume: 0.9
+    probability: 0.5
+    cooldown: 4
+  - category: 12
+    clips:
+    - {fileID: 8300000, guid: 9681cceb5b9a3114fbbbea825b37d83e, type: 3}
+    - {fileID: 8300000, guid: 3e25b6edfe76a8f40b8598293e8d069e, type: 3}
+    volume: 0.9
+    probability: 0.25
+    cooldown: 6
+  - category: 13
+    clips: []
+    volume: 0.9
+    probability: 0.15
+    cooldown: 6
+  - category: 14
+    clips: []
+    volume: 0.9
+    probability: 0.5
+    cooldown: 3
