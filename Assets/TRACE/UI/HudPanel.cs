@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TRACE.UI
 {
@@ -58,5 +59,22 @@ namespace TRACE.UI
         protected abstract void OnTick(HudRoot hud, bool refresh);
 
         protected static string Hex(Color color) => ColorUtility.ToHtmlStringRGB(color);
+
+        // Identity colour on portrait frames and accent bars; slightly lifted under Tactical Focus so it survives
+        // the desaturated grade.
+        public static Color AccentFor(Color accent, bool focused, float alpha = 1f)
+        {
+            Color color = focused ? Color.Lerp(accent, Color.white, 0.25f) : accent;
+            color.a = alpha;
+            return color;
+        }
+
+        // Shows the given portrait, or the neutral fallback; the image is never left empty or broken.
+        public static void ShowPortrait(Image image, Sprite sprite, Sprite fallback)
+        {
+            if (image == null) return;
+            image.sprite = sprite != null ? sprite : fallback;
+            image.enabled = image.sprite != null;
+        }
     }
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:30Z" duration="26.8884058">
+  <test-suite type="TestSuite" id="1297" name="Project-TRACE" fullname="Project-TRACE" runstate="Runnable" testcasecount="266" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:30Z" duration="26.888406" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1291" name="TRACE.PlayModeTests.dll" fullname="/tmp/claude-1000/-home-philippe-Project-TRACE/ef4a5293-ee38-43b6-8048-f4d0babaf3e1/scratchpad/proj/Library/ScriptAssemblies/TRACE.PlayModeTests.dll" runstate="Runnable" testcasecount="266" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:30Z" duration="26.881801" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="1447558" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1292" name="TRACE" fullname="TRACE" runstate="Runnable" testcasecount="266" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:30Z" duration="26.880611" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1293" name="Tests" fullname="TRACE.Tests" runstate="Runnable" testcasecount="266" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:30Z" duration="26.879535" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1100" name="FieldTestTests" fullname="TRACE.Tests.FieldTestTests" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:26Z" duration="22.932380" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1104" name="CompanionsFollowThroughADoorAndUpStairs" fullname="TRACE.Tests.FieldTestTests.CompanionsFollowThroughADoorAndUpStairs" methodname="CompanionsFollowThroughADoorAndUpStairs" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="1159877689" result="Passed" start-time="2026-10-09 14:16:03Z" end-time="2026-10-09 14:16:21Z" duration="18.026251" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="DebugStationsWakeEachCompositionOnce" fullname="TRACE.Tests.FieldTestTests.DebugStationsWakeEachCompositionOnce" methodname="DebugStationsWakeEachCompositionOnce" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="105628158" result="Passed" start-time="2026-10-09 14:16:21Z" end-time="2026-10-09 14:16:22Z" duration="1.191413" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="EveryZoneIsReachableFromTheSpawn" fullname="TRACE.Tests.FieldTestTests.EveryZoneIsReachableFromTheSpawn" methodname="EveryZoneIsReachableFromTheSpawn" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="1844934536" result="Passed" start-time="2026-10-09 14:16:22Z" end-time="2026-10-09 14:16:23Z" duration="0.633137" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1106" name="FocusAndLockWorkInTheOpenYard" fullname="TRACE.Tests.FieldTestTests.FocusAndLockWorkInTheOpenYard" methodname="FocusAndLockWorkInTheOpenYard" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="693092009" result="Passed" start-time="2026-10-09 14:16:23Z" end-time="2026-10-09 14:16:25Z" duration="1.965212" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="TheSceneIsACompactOrganisedSemiOpenZone" fullname="TRACE.Tests.FieldTestTests.TheSceneIsACompactOrganisedSemiOpenZone" methodname="TheSceneIsACompactOrganisedSemiOpenZone" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="778074844" result="Passed" start-time="2026-10-09 14:16:25Z" end-time="2026-10-09 14:16:25Z" duration="0.550125" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1103" name="TwoRoutesLinkTheYardToTheInteriorAndTheLevelLoops" fullname="TRACE.Tests.FieldTestTests.TwoRoutesLinkTheYardToTheInteriorAndTheLevelLoops" methodname="TwoRoutesLinkTheYardToTheInteriorAndTheLevelLoops" classname="TRACE.Tests.FieldTestTests" runstate="Runnable" seed="231262663" result="Passed" start-time="2026-10-09 14:16:25Z" end-time="2026-10-09 14:16:26Z" duration="0.550938" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1107" name="FieldTestVisualCapture" fullname="TRACE.Tests.FieldTestVisualCapture" classname="TRACE.Tests.FieldTestVisualCapture" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-09 14:16:26Z" end-time="2026-10-09 14:16:30Z" duration="3.943205" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1108" name="CaptureFieldTestViews" fullname="TRACE.Tests.FieldTestVisualCapture.CaptureFieldTestViews" methodname="CaptureFieldTestViews" classname="TRACE.Tests.FieldTestVisualCapture" runstate="Runnable" seed="605377493" result="Passed" start-time="2026-10-09 14:16:26Z" end-time="2026-10-09 14:16:30Z" duration="3.939361" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /home/philippe/.config/unity3d/DefaultCompany/Project-TRACE/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

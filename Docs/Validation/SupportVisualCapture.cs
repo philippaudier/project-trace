@@ -54,7 +54,11 @@ namespace TRACE.Tests
                 yield return Capture("Support-trio.png");
                 // Pulse Shield deployed: mint halos on everyone, the back module lit.
                 Assert.That(support.GetComponent<PulseShield>().Activate(), Is.True);
-                yield return new WaitForSecondsRealtime(0.6f);
+                // The cast: gauntlet arm extended, hexagonal barrier projected past the hand, links to the squad.
+                yield return new WaitForSecondsRealtime(0.18f);
+                Look(camera, member.position + member.right * 2.6f + member.forward * 1.6f + Vector3.up * 1.3f, member.position + member.forward * 0.6f + Vector3.up * 1.1f);
+                yield return Capture("Support-cast.png");
+                yield return new WaitForSecondsRealtime(0.45f);
                 Look(camera, centre + new Vector3(-2.2f, 2.0f, 4.4f), centre + Vector3.up * 1.0f);
                 yield return Capture("Support-shield.png");
                 brain.enabled = true;

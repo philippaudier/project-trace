@@ -37,7 +37,7 @@ le seul binding. Aucun singleton.
 
 | État | Condition (`HudRoot`) | Comportement |
 | --- | --- | --- |
-| Exploration | ni Focus, ni combat depuis 2,5 s | opérateur à 80 %, squad à 60 % sans détail de skill, objectif, reticle discret, prompt d'interaction, pas de panneau cible |
+| Exploration | ni Focus, ni combat depuis 2,5 s | opérateur à 90 %, squad à 75 % sans détail de skill, objectif, reticle discret, prompt d'interaction, pas de panneau cible |
 | Combat | rencontre en Spawning / Fighting / Cleared, ou un ennemi engagé / en préparation d'attaque à moins de 18 m du membre actif | panneaux pleins, cooldowns, panneau cible (lock ou cible molle), reticle visible, menaces aux bords |
 | Focus | `TacticalFocus.IsActive` | couche analytique, grade désaturé, ANALYSIS, cooldowns des trois membres et combos sur les cartes, objectif atténué à 35 %, reticle caché ; l'overlay existant garde ses cartes ennemies (en-tête déplacé en haut à gauche, panneaux membres retirés) |
 
@@ -64,6 +64,17 @@ dans le profil, rien à toucher dans le HUD.
 `DialogueRunner` et `StoryDirector` gardent leurs IMGUI narratifs. Le post-processing est activé sur la caméra des
 scènes prototype pour le grade du Focus (aucun autre volume ne s'y applique).
 
+## Ajustements V0.1.1 (lisibilité)
+
+Retours de la première revue visuelle, sans nouveau système :
+
+| Point | Changement |
+| --- | --- |
+| Tactical Focus trop verbeux | ANALYSIS tient sur une ligne de tags courts (`HOSTILES n`, `WIND-UP n`, `COMBO 1+E` / `COMBO CONTRE`, `LOCK`) allumés quand ils sont actionnables, grisés sinon ; panneau réduit à 46 px. Les cartes ennemies passent à deux lignes : `LOCK  ARCHETYPE  PV`, puis seulement les tags utiles (`WIND-UP 0.3 > 2`, `COMBO 1+E`, `SLOWED`, `GUARD > FLANK`) ; l'état de déplacement (CHASE, REPOSITION…) n'est plus affiché. Cartes 240 × 48, corps 14. |
+| Panneau cible trop présent | Bandeau compact par défaut (280 × 40, nom 13, barre 4 px). `EnemyBrain.elite` (case à cocher) passe le panneau en disposition élite / boss (420 × 64, nom 17, barre 8 px). Tailles réglables dans `TargetPanel` (`compact`, `elite`). |
+| Identité couleur du squad | Chaque carte reprend la couleur du `CharacterProfile` (Tracewalker ambre, Control cyan, Support menthe) : barre verticale, contour du portrait et numéro de slot. La barre du panneau devient neutre pour ne pas concurrencer. |
+| Dialogues | `DialogueRunner.speakers` (câblé par `Apply HUD V0.1`) résout le locuteur vers un profil par nom affiché ou premier mot de l'archétype (`ASSAULT` → Tracewalker) : mini-portrait 72 px avec contour, nom affiché du profil dans sa couleur, barre d'accent. Les autres locuteurs (`TERMINAL`) restent neutres, sans portrait. |
+
 ## Fichiers
 
 Créés : les dix scripts `UI/`, `Editor/HudSetup.cs`, `Tests/PlayMode/HudTests.cs`, `Docs/Validation/HudVisualCapture.cs`,
@@ -78,6 +89,11 @@ Modifiés : `CharacterProfile.cs` (portrait), `InteractionController.cs`, `Threa
 | --- | --- | --- |
 | Suite complète | 217/217 (210 précédents + 7 HUD) | `Validation/TRACE-HUD-PlayMode.xml` |
 | Captures | 1/1, cinq vues 1280x720 | `Validation/TRACE-HUD-Visual.xml`, `Validation/Hud-*.png` |
+| V0.1.1 : suite complète | 226/226 (222 précédents + 4 ajustements) | `Validation/TRACE-HUD-V0.1.1-PlayMode.xml` |
+| V0.1.1 : captures | 1/1, six vues (+ `Hud-target-elite`) | `Validation/TRACE-HUD-V0.1.1-Visual.xml` |
+
+Les captures batch ne rendent pas l'IMGUI : le dialogue (portrait, couleur) se vérifie en jeu, sa résolution de
+locuteur est couverte par `DialogueSpeakersResolveToSquadProfiles`.
 
 Tests HUD : exploration (opérateur, squad, objectif, pas de cible, reticle discret, IMGUI héritée coupée) ; portraits
 sur les trois profils ; switch (panneau actif et cartes) ; combat puis lock puis retour au calme ; Focus (overlay,

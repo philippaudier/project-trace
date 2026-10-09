@@ -13,7 +13,8 @@ namespace TRACE.Characters
         [SerializeField] private string archetype = "";
         [SerializeField] private bool isTracewalker;
         [SerializeField] private Color accentColor = Color.white;
-        [SerializeField, Tooltip("HUD portrait; replaceable without touching the HUD.")] private Sprite portrait;
+        [SerializeField, Tooltip("HUD portrait (active operator, dialogue); replaceable without touching the HUD.")] private Sprite portrait;
+        [SerializeField, Tooltip("Tighter face crop for small sizes (squad cards). Falls back to the portrait.")] private Sprite miniPortrait;
         public string CharacterId => characterId;
         public string DisplayName => displayName;
         public string Designation => designation;
@@ -22,6 +23,9 @@ namespace TRACE.Characters
         public bool IsTracewalker => isTracewalker;
         public Color AccentColor => accentColor;
         public Sprite Portrait => portrait;
+        public Sprite MiniPortrait => miniPortrait != null ? miniPortrait : portrait;
+        // Role line shown under the name in the HUD.
+        public string RoleLabel => archetype;
         public string AccentHex => ColorUtility.ToHtmlStringRGB(accentColor);
     }
 }

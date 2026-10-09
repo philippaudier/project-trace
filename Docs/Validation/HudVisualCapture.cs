@@ -42,6 +42,17 @@ namespace TRACE.Tests
                 leader.position = new Vector3(-11f, 0.08f, 12f); leaderBody.enabled = true; Physics.SyncTransforms();
                 yield return new WaitForSecondsRealtime(1.5f);
                 yield return Capture("Hud-exploration.png");
+                // Each member active: operator portrait, squad minis, accents.
+                foreach (var key in new[] { Key.Digit2, Key.Digit3, Key.Digit1 })
+                {
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState(key));
+                    yield return new WaitForSecondsRealtime(0.1f);
+                    InputSystem.QueueStateEvent(keyboard, new KeyboardState());
+                    yield return new WaitForSecondsRealtime(0.6f);
+                    yield return Capture($"Hud-portraits-{squad.ActiveMember.GetComponent<TRACE.Characters.CharacterProfile>().DisplayName}.png");
+                }
+                yield return Capture("Hud-portraits-1600x900.png", 1600, 900);
+                yield return Capture("Hud-portraits-1920x1080.png", 1920, 1080);
 
                 // Two hostiles ahead, one locked: combat HUD with the target panel.
                 for (int i = 0; i < 2; i++)
@@ -56,6 +67,12 @@ namespace TRACE.Tests
                 InputSystem.QueueStateEvent(mouse, new MouseState());
                 yield return new WaitForSecondsRealtime(0.6f);
                 yield return Capture("Hud-combat-lock.png");
+                var eliteField = typeof(EnemyBrain).GetField("elite", BindingFlags.Instance | BindingFlags.NonPublic);
+                foreach (var enemy in enemies) eliteField.SetValue(enemy, true);
+                yield return new WaitForSecondsRealtime(0.3f);
+                yield return Capture("Hud-target-elite.png");
+                foreach (var enemy in enemies) eliteField.SetValue(enemy, false);
+                yield return new WaitForSecondsRealtime(0.3f);
 
                 InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Tab));
                 yield return new WaitForSecondsRealtime(0.7f);
@@ -91,20 +108,20 @@ namespace TRACE.Tests
         }
 
         private static void Set(object target, string name, object value) => target.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).SetValue(target, value);
-        private static IEnumerator Capture(string name)
+        private static IEnumerator Capture(string name, int width = 1280, int height = 720)
         {
             string output = Environment.GetEnvironmentVariable("TRACE_CAPTURE_OUTPUT");
             Directory.CreateDirectory(output);
             var camera = UnityEngine.Camera.main;
-            var target = new RenderTexture(1280, 720, 24);
+            var target = new RenderTexture(width, height, 24);
             var oldTarget = camera.targetTexture; var oldActive = RenderTexture.active;
             camera.targetTexture = target;
             yield return null;
             yield return null;
             Canvas.ForceUpdateCanvases();
             camera.Render(); RenderTexture.active = target;
-            var pixels = new Texture2D(1280, 720, TextureFormat.RGB24, false);
-            pixels.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0); pixels.Apply();
+            var pixels = new Texture2D(width, height, TextureFormat.RGB24, false);
+            pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();
             File.WriteAllBytes(Path.Combine(output, name), pixels.EncodeToPNG());
             camera.targetTexture = oldTarget; RenderTexture.active = oldActive;
             Object.Destroy(pixels); Object.Destroy(target);

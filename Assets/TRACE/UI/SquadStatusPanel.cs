@@ -16,6 +16,7 @@ namespace TRACE.UI
         {
             public RectTransform root;
             public Image portrait;
+            public Image portraitFrame;
             public Image accent;
             public Text nameText;
             public Image hpFill;
@@ -23,14 +24,19 @@ namespace TRACE.UI
             public Text statusText;
             public Image comboTag;
             [NonSerialized] public SquadMember member;
+            [NonSerialized] public Color accentColor;
+            [NonSerialized] public bool focusShown;
         }
 
         [SerializeField] private Card[] cards = Array.Empty<Card>();
-        [SerializeField, Range(0f, 1f)] private float explorationAlpha = 0.6f;
+        [SerializeField, Range(0f, 1f), Tooltip("Kept high enough for the mini portraits to stay recognisable.")] private float explorationAlpha = 0.75f;
+        [SerializeField, Tooltip("Shown when a profile has no portrait.")] private Sprite fallbackPortrait;
         public string CardLabel(int index) => index < cards.Length && cards[index].nameText != null ? cards[index].nameText.text : "";
         public string CardSkill(int index) => index < cards.Length && cards[index].skillText != null ? cards[index].skillText.text : "";
         public string CardStatus(int index) => index < cards.Length && cards[index].statusText != null ? cards[index].statusText.text : "";
         public SquadMember CardMember(int index) => index < cards.Length ? cards[index].member : null;
+        public Color CardAccent(int index) => index < cards.Length && cards[index].accent != null ? cards[index].accent.color : Color.clear;
+        public Color CardFrame(int index) => index < cards.Length && cards[index].portraitFrame != null ? cards[index].portraitFrame.color : Color.clear;
         public Sprite CardPortrait(int index) => index < cards.Length && cards[index].portrait != null ? cards[index].portrait.sprite : null;
 
         protected override float TargetAlpha(HudRoot hud) => hud.Squad == null ? 0f : hud.State == HudState.Exploration ? explorationAlpha : 1f;
@@ -49,13 +55,18 @@ namespace TRACE.UI
                     card.member = member;
                     var profile = member.GetComponent<CharacterProfile>();
                     Color accent = profile != null ? profile.AccentColor : OffWhite;
-                    card.nameText.text = $"<color=#{Hex(Muted)}>0{i + 1}</color>  {(profile != null ? profile.DisplayName.ToUpperInvariant() : member.name.ToUpperInvariant())}";
-                    if (card.accent != null) card.accent.color = accent;
-                    if (card.portrait != null)
-                    {
-                        card.portrait.sprite = profile != null ? profile.Portrait : null;
-                        card.portrait.enabled = card.portrait.sprite != null;
-                    }
+                    // Identity colour as a light touch: bar, portrait outline and slot number; the card stays neutral.
+                    card.nameText.text = $"<color=#{Hex(accent)}>0{i + 1}</color>  {(profile != null ? profile.DisplayName.ToUpperInvariant() : member.name.ToUpperInvariant())}";
+                    card.accentColor = accent;
+                    card.focusShown = hud.State != HudState.Focus;
+                    ShowPortrait(card.portrait, profile != null ? profile.MiniPortrait : null, fallbackPortrait);
+                }
+                bool focused = hud.State == HudState.Focus;
+                if (focused != card.focusShown)
+                {
+                    card.focusShown = focused;
+                    if (card.accent != null) card.accent.color = AccentFor(card.accentColor, focused);
+                    if (card.portraitFrame != null) card.portraitFrame.color = AccentFor(card.accentColor, focused, focused ? 1f : 0.85f);
                 }
                 if (!refresh) continue;
                 var health = member.Health;

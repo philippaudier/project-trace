@@ -68,6 +68,7 @@ namespace TRACE.Editor
         {
             if (AssetDatabase.IsValidFolder(folder)) return;
             int slash = folder.LastIndexOf('/');
+            EnsureFolder(folder.Substring(0, slash));
             AssetDatabase.CreateFolder(folder.Substring(0, slash), folder.Substring(slash + 1));
         }
 

@@ -439,13 +439,15 @@ namespace TRACE.Tests
             var overlay = squad.GetComponent<TacticalOverlay>();
             InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Tab));
             yield return Wait(0.4f);
+            // The cards follow the Focus reveal cascade, timed in unscaled time (this fixture fixes game time per frame).
+            yield return new WaitForSecondsRealtime(0.3f);
             Assert.That(overlay.IsVisible, Is.True);
             Assert.That(overlay.VisibleEnemyCount, Is.EqualTo(2));
             var all = encounter.Waves.SelectMany(w => w.enemies).ToList();
             string bulwarkCard = overlay.EnemyInfo(all.IndexOf(bulwark));
             string marksmanCard = overlay.EnemyInfo(all.IndexOf(marksman));
             StringAssert.Contains("BULWARK", bulwarkCard);
-            StringAssert.Contains("FLANQUER", bulwarkCard);
+            StringAssert.Contains("GUARD > FLANK", bulwarkCard);
             StringAssert.Contains("MARKSMAN", marksmanCard);
             Assert.That(bulwark.transform.Find("Guard Arc").gameObject.activeSelf, Is.True);
             InputSystem.QueueStateEvent(keyboard, new KeyboardState());

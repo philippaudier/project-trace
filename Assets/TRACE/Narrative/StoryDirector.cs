@@ -153,7 +153,7 @@ namespace TRACE.Narrative
             if (eventDoor != null) eventDoor.Open();
             if (eventLight != null) eventLight.enabled = true;
             if (eventScreen != null) { eventScreen.SetActive(true); eventScreenUntil = Time.time + eventScreenDuration; }
-            if (ambience != null) ambience.PlayCreak();
+            if (ambience != null) { ambience.PlayCreak(); ambience.SetAnomaly(true); }
             dialogue.Play(eventLines);
             Enter(Phase.Hall);
         }
@@ -161,7 +161,7 @@ namespace TRACE.Narrative
         private void EnterTension()
         {
             foreach (var light in tensionLights) if (light != null) { light.enabled = true; light.intensity = tensionLightIntensity; }
-            if (ambience != null) ambience.SetTension(true);
+            if (ambience != null) { ambience.SetTension(true); ambience.SetAnomaly(false); }
             dialogue.Play(tensionLines);
             Enter(Phase.Tension);
         }
@@ -200,7 +200,7 @@ namespace TRACE.Narrative
         private void ShowConclusion()
         {
             conclusionPlayed = true;
-            if (ambience != null) ambience.SetCombat(false);
+            if (ambience != null) { ambience.SetCombat(false); ambience.SetConclusion(true); ambience.SetAnomaly(true); }
             if (conclusionLight != null) conclusionLight.enabled = true;
             if (conclusionScreen != null && conclusionScreenOn != null) conclusionScreen.sharedMaterial = conclusionScreenOn;
             dialogue.Play(conclusionLines);

@@ -288,12 +288,12 @@ namespace TRACE.Tests
             var overlay = squad.GetComponent<TacticalOverlay>();
             yield return RealTime(0.15f);
             Assert.That(overlay.IsVisible, Is.True);
-            StringAssert.Contains("[LOCK]", overlay.EnemyInfo(0));
-            StringAssert.DoesNotContain("[LOCK]", overlay.EnemyInfo(1));
+            StringAssert.Contains("LOCK", overlay.EnemyInfo(0));
+            StringAssert.DoesNotContain("LOCK", overlay.EnemyInfo(1));
             yield return Wheel(1f);
             Assert.That(targeting.LockedTarget, Is.EqualTo(right.GetComponent<Health>()));
             yield return RealTime(0.15f);
-            StringAssert.Contains("[LOCK]", overlay.EnemyInfo(1));
+            StringAssert.Contains("LOCK", overlay.EnemyInfo(1));
             yield return PressLock();
             Assert.That(targeting.IsLocked, Is.False);
             Assert.That(focus.IsActive, Is.True);

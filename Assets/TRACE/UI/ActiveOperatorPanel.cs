@@ -23,14 +23,18 @@ namespace TRACE.UI
         [SerializeField] private Text dodgeText;
         [SerializeField] private Text stateText;
         [SerializeField] private Image switchHighlight;
-        [SerializeField, Range(0f, 1f)] private float explorationAlpha = 0.8f;
+        [SerializeField, Tooltip("Shown when a profile has no portrait.")] private Sprite fallbackPortrait;
+        [SerializeField, Range(0f, 1f), Tooltip("Kept high so the portrait stays clean over bright scenery.")] private float explorationAlpha = 0.9f;
         private SquadMember shown;
+        private Color accent = OffWhite;
+        private bool focusShown;
         private float longestRemaining;
         public string NameLabel => nameText != null ? nameText.text : "";
         public string RoleLabel => roleText != null ? roleText.text : "";
         public string SkillLabel => skillText != null ? skillText.text : "";
         public string StateLabel => stateText != null ? stateText.text : "";
         public Sprite PortraitSprite => portrait != null ? portrait.sprite : null;
+        public Color FrameColor => portraitFrame != null ? portraitFrame.color : Color.clear;
 
         protected override float TargetAlpha(HudRoot hud) => hud.ActiveMember == null ? 0f : hud.State == HudState.Exploration ? explorationAlpha : 1f;
 
@@ -43,17 +47,19 @@ namespace TRACE.UI
                 shown = member;
                 longestRemaining = 0f;
                 var profile = member.GetComponent<CharacterProfile>();
-                Color accent = profile != null ? profile.AccentColor : OffWhite;
+                accent = profile != null ? profile.AccentColor : OffWhite;
                 nameText.text = profile != null ? profile.DisplayName.ToUpperInvariant() : member.name.ToUpperInvariant();
-                roleText.text = profile != null ? profile.Archetype.ToUpperInvariant() : "";
-                if (accentBar != null) accentBar.color = accent;
-                if (portraitFrame != null) portraitFrame.color = new Color(accent.r, accent.g, accent.b, 0.9f);
-                if (portrait != null)
-                {
-                    portrait.sprite = profile != null ? profile.Portrait : null;
-                    portrait.enabled = portrait.sprite != null;
-                }
+                roleText.text = profile != null ? profile.RoleLabel.ToUpperInvariant() : "";
+                ShowPortrait(portrait, profile != null ? profile.Portrait : null, fallbackPortrait);
+                focusShown = !(hud.State == HudState.Focus);
                 if (ultimateText != null) ultimateText.text = $"<color=#{Hex(Muted)}>R  ULTIMATE</color>";
+            }
+            bool focused = hud.State == HudState.Focus;
+            if (focused != focusShown)
+            {
+                focusShown = focused;
+                if (accentBar != null) accentBar.color = AccentFor(accent, focused);
+                if (portraitFrame != null) portraitFrame.color = AccentFor(accent, focused, focused ? 1f : 0.9f);
             }
             if (switchHighlight != null)
                 switchHighlight.color = new Color(1f, 1f, 1f, Mathf.Clamp01(0.35f - (Time.unscaledTime - hud.ActiveChangedAt) * 0.9f));

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TRACE.Characters;
 using TRACE.Input;
 using UnityEngine;
 
@@ -15,12 +16,16 @@ namespace TRACE.Narrative
     }
 
     // Short linear exchanges: one line at a time, auto-advance on a real-time clock, Interact skips ahead.
-    // No tree, no choices, no portraits.
+    // No tree, no choices. A speaker matching a squad profile gets its mini portrait and identity colour.
     [DefaultExecutionOrder(-7)]
     [DisallowMultipleComponent]
     public sealed class DialogueRunner : MonoBehaviour
     {
         [SerializeField] private TracePlayerInput input;
+        [SerializeField, Tooltip("Profiles a speaker resolves to, by display name or first archetype word (ASSAULT).")]
+        private CharacterProfile[] speakers = Array.Empty<CharacterProfile>();
+        [SerializeField, Tooltip("Shown for a squad speaker whose profile has no portrait.")] private Sprite fallbackPortrait;
+        private static readonly Color NeutralSpeaker = new Color(0.62f, 0.65f, 0.69f);
         private readonly Queue<DialogueLine> queue = new Queue<DialogueLine>();
         private float lineEndsAt;
         private GUIStyle speakerStyle;
@@ -28,7 +33,12 @@ namespace TRACE.Narrative
         private GUIStyle hintStyle;
         public bool IsPlaying { get; private set; }
         public DialogueLine CurrentLine { get; private set; }
+        public CharacterProfile CurrentSpeaker { get; private set; }
+        // Portrait drawn for the current line: the speaker's, the fallback for a portrait-less profile, none otherwise.
+        public Sprite CurrentPortrait => !IsPlaying || CurrentSpeaker == null ? null : CurrentSpeaker.Portrait != null ? CurrentSpeaker.Portrait : fallbackPortrait;
         public int ShownCount { get; private set; }
+        // Lines the player advanced with Interact (presentation feedback reads it).
+        public int ManualAdvanceCount { get; private set; }
         public int QueuedCount => queue.Count;
         public event Action Finished;
 
@@ -46,7 +56,9 @@ namespace TRACE.Narrative
         private void Update()
         {
             if (!IsPlaying) return;
-            if ((input != null && input.InteractPressed) || Time.unscaledTime >= lineEndsAt) Advance();
+            bool manual = input != null && input.InteractPressed;
+            if (manual) ManualAdvanceCount++;
+            if (manual || Time.unscaledTime >= lineEndsAt) Advance();
         }
 
         private void Advance()
@@ -59,9 +71,23 @@ namespace TRACE.Narrative
                 return;
             }
             CurrentLine = queue.Dequeue();
+            CurrentSpeaker = Resolve(CurrentLine.speaker);
             IsPlaying = true;
             ShownCount++;
             lineEndsAt = Time.unscaledTime + Mathf.Max(0.5f, CurrentLine.duration);
+        }
+
+        public CharacterProfile Resolve(string speaker)
+        {
+            if (string.IsNullOrEmpty(speaker)) return null;
+            foreach (var profile in speakers)
+            {
+                if (profile == null) continue;
+                if (string.Equals(profile.DisplayName, speaker, StringComparison.OrdinalIgnoreCase)) return profile;
+                string role = profile.Archetype.Split(' ')[0];
+                if (role.Length > 0 && string.Equals(role, speaker, StringComparison.OrdinalIgnoreCase)) return profile;
+            }
+            return null;
         }
 
         private void OnGUI()
@@ -76,9 +102,31 @@ namespace TRACE.Narrative
             float w = Mathf.Min(760f, Screen.width - 40f);
             var panel = new Rect(Screen.width * 0.5f - w * 0.5f, Screen.height - 128f, w, 96f);
             GUI.Box(panel, GUIContent.none);
-            GUI.Label(new Rect(panel.x + 16f, panel.y + 8f, w - 32f, 22f), CurrentLine.speaker, speakerStyle);
-            GUI.Label(new Rect(panel.x + 16f, panel.y + 32f, w - 32f, 56f), CurrentLine.text, textStyle);
-            GUI.Label(new Rect(panel.x + 16f, panel.y + 72f, w - 32f, 18f), queue.Count > 0 ? "F / A : continuer" : "", hintStyle);
+            var speaker = CurrentSpeaker;
+            Color accent = speaker != null ? speaker.AccentColor : NeutralSpeaker;
+            var oldColor = GUI.color;
+            GUI.color = accent;
+            GUI.DrawTexture(new Rect(panel.x, panel.y + 6f, 3f, panel.height - 12f), Texture2D.whiteTexture);
+            float textX = panel.x + 16f;
+            var portrait = CurrentPortrait;
+            if (portrait != null)
+            {
+                var frame = new Rect(panel.x + 12f, panel.y + 11f, 74f, 74f);
+                GUI.DrawTexture(frame, Texture2D.whiteTexture);
+                GUI.color = Color.white;
+                var texture = portrait.texture;
+                var source = portrait.textureRect;
+                GUI.DrawTextureWithTexCoords(new Rect(frame.x + 1f, frame.y + 1f, 72f, 72f), texture,
+                    new Rect(source.x / texture.width, source.y / texture.height, source.width / texture.width, source.height / texture.height));
+                textX = frame.xMax + 14f;
+            }
+            GUI.color = oldColor;
+            float textW = panel.xMax - 16f - textX;
+            string name = speaker != null ? speaker.DisplayName.ToUpperInvariant() : CurrentLine.speaker;
+            speakerStyle.normal.textColor = accent;
+            GUI.Label(new Rect(textX, panel.y + 8f, textW, 22f), name, speakerStyle);
+            GUI.Label(new Rect(textX, panel.y + 32f, textW, 56f), CurrentLine.text, textStyle);
+            GUI.Label(new Rect(textX, panel.y + 72f, textW, 18f), queue.Count > 0 ? "F / A : continuer" : "", hintStyle);
         }
     }
 }

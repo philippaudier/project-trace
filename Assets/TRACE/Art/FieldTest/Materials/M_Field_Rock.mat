@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Field_Rock
+  m_Shader: {fileID: 4800000, guid: 237a4a3d23e517f159fab6b940146bf2, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: f31fe9d547c21ae62bd0839894f283b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LayerMap:
+        m_Texture: {fileID: 2800000, guid: 3ca9ce858caa6a667b613525836009e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LayerMaskMap:
+        m_Texture: {fileID: 2800000, guid: bafb6923bd3a53164a5eb1ba93794352, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MacroMap:
+        m_Texture: {fileID: 2800000, guid: 1369f42c111d60016a46d4e9cab9be12, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: 81c3581c0da6026abb6bc3fe2fe84d54, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: caf195dad369a8809b47d0204d9cf43e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _GroundWetAmount: 0.6
+    - _GroundWetHeight: 2
+    - _GroundWetLevel: 0
+    - _LayerAmount: 0.35
+    - _LayerContrast: 6
+    - _LayerTiling: 0.25
+    - _LayerUp: 1
+    - _MacroScale: 0.03
+    - _MacroStrength: 0.25
+    - _Metallic: 1
+    - _NormalStrength: 1
+    - _OcclusionStrength: 1
+    - _SmoothnessMax: 0.3
+    - _SmoothnessMin: 0.05
+    - _Tiling: 0.2
+    - _TriplanarSharpness: 6
+    - _WetDarken: 0.85
+    - _WetNormalFlatten: 0.4
+    - _WetPatchiness: 0.5
+    - _WetSmoothness: 0.62
+    - _Wetness: 0
+    m_Colors:
+    - _BaseColor: {r: 0.95, g: 0.97, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LayerTint: {r: 0.42, g: 0.48, b: 0.36, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

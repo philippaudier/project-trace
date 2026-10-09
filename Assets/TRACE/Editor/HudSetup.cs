@@ -26,18 +26,21 @@ namespace TRACE.Editor
     {
         private const string SpriteFolder = "Assets/TRACE/UI/Sprites/";
         private const string PortraitFolder = "Assets/TRACE/UI/Portraits/";
-        private const string VolumeProfilePath = "Assets/TRACE/UI/HudFocusGrade.asset";
         private static readonly string[] Scenes =
         {
             "Assets/TRACE/Scenes/Prototype.unity",
             "Assets/TRACE/Scenes/PrototypeEncounter.unity",
             "Assets/TRACE/Scenes/FirstTrace.unity",
+            "Assets/TRACE/Scenes/FieldTest.unity",
         };
         private static Sprite panelSprite, whiteSprite, reticleSprite;
         private static Font font;
 
         [MenuItem("TRACE/Apply HUD V0.1")]
-        public static void Apply()
+        public static void Apply() => ApplyTo(Scenes);
+
+        // The same pass on chosen scenes only (FieldTestSetup uses it to leave the other scenes untouched).
+        public static void ApplyTo(params string[] paths)
         {
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
             panelSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SpriteFolder + "HudPanel.png");
@@ -46,13 +49,12 @@ namespace TRACE.Editor
             font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             if (panelSprite == null || whiteSprite == null || reticleSprite == null)
                 throw new InvalidOperationException("HUD sprites are missing under " + SpriteFolder);
-            var profile = GradeProfile();
             int applied = 0;
-            foreach (string path in Scenes)
+            foreach (string path in paths)
             {
                 if (AssetDatabase.LoadAssetAtPath<SceneAsset>(path) == null) continue;
                 var scene = EditorSceneManager.OpenScene(path);
-                Build(scene, profile);
+                Build(scene);
                 EditorSceneManager.MarkSceneDirty(scene);
                 EditorSceneManager.SaveScene(scene);
                 applied++;
@@ -61,22 +63,7 @@ namespace TRACE.Editor
             Debug.Log($"TRACE HUD V0.1 applied to {applied} scene(s).");
         }
 
-        private static VolumeProfile GradeProfile()
-        {
-            var profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(VolumeProfilePath);
-            if (profile != null) return profile;
-            profile = ScriptableObject.CreateInstance<VolumeProfile>();
-            AssetDatabase.CreateAsset(profile, VolumeProfilePath);
-            var adjustments = profile.Add<ColorAdjustments>(true);
-            adjustments.saturation.Override(-42f);
-            adjustments.colorFilter.Override(new Color(0.9f, 0.98f, 1f));
-            adjustments.contrast.Override(6f);
-            AssetDatabase.AddObjectToAsset(adjustments, profile);
-            EditorUtility.SetDirty(profile);
-            return profile;
-        }
-
-        private static void Build(Scene scene, VolumeProfile gradeProfile)
+        private static void Build(Scene scene)
         {
             var squad = UnityEngine.Object.FindFirstObjectByType<SquadController>();
             if (squad == null) throw new InvalidOperationException(scene.path + " has no squad.");
@@ -92,16 +79,12 @@ namespace TRACE.Editor
                 if (root.name == "HUD" || root.name == "HUD Focus Grade") UnityEngine.Object.DestroyImmediate(root);
 
             Portraits(squad);
+            Speakers(squad);
             HandOverLegacyGui(squad, interaction, threat, encounter);
             RestyleTacticalOverlay(scene);
             var cameraData = camera.GetComponent<UniversalAdditionalCameraData>();
             if (cameraData != null) cameraData.renderPostProcessing = true;
-            var gradeObject = new GameObject("HUD Focus Grade");
-            var volume = gradeObject.AddComponent<Volume>();
-            volume.isGlobal = true;
-            volume.priority = 10f;
-            volume.weight = 0f;
-            volume.sharedProfile = gradeProfile;
+            // The Tactical Focus grade now belongs to TacticalFocusPresentationSetup; the old "HUD Focus Grade" is removed above.
 
             var canvasObject = new GameObject("HUD", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler));
             var canvas = canvasObject.GetComponent<Canvas>();
@@ -124,7 +107,7 @@ namespace TRACE.Editor
                 Mission(canvasRect, scene, encounter, story),
                 Target(canvasRect),
                 Reticle(canvasRect),
-                FocusLayer(canvasRect, volume),
+                FocusLayer(canvasRect),
             };
             if (interaction != null) panels.Add(Prompt(canvasRect, interaction));
             if (threat != null) panels.Add(ThreatView(canvasRect, threat));
@@ -137,22 +120,43 @@ namespace TRACE.Editor
             Fill(data.FindProperty("enemies"), enemies);
             Fill(data.FindProperty("panels"), panels.ToArray());
             data.ApplyModifiedPropertiesWithoutUndo();
+            AudioSetup.Relink(hud);
+            TacticalFocusPresentationSetup.Relink(hud);
         }
 
+        // Every profile gets its portrait and its squad-card mini from Assets/TRACE/UI/Portraits (built by
+        // Docs/Portraits/build_portraits.py); panels and dialogue fall back to a neutral silhouette.
         private static void Portraits(SquadController squad)
         {
-            var members = squad.Members;
             var roster = new SerializedObject(squad).FindProperty("members");
             var list = Enumerable.Range(0, roster.arraySize).Select(i => (SquadMember)roster.GetArrayElementAtIndex(i).objectReferenceValue).ToArray();
-            string[] files = { "Portrait_Tracewalker.png", "Portrait_Control.png", "Portrait_Support.png" };
-            for (int i = 0; i < list.Length && i < files.Length; i++)
+            string[] names = { "Tracewalker", "Control", "Support" };
+            for (int i = 0; i < list.Length && i < names.Length; i++)
             {
                 var profile = list[i].GetComponent<CharacterProfile>();
                 // Support has no design yet: a neutral placeholder profile keeps the slot functional.
                 if (profile == null)
                     profile = Profile(list[i].gameObject, "support_placeholder", "Support", "Field Support — placeholder", "ORIGIN", "Support", false, new Color(0.45f, 0.7f, 1f));
-                Reference(profile, "portrait", AssetDatabase.LoadAssetAtPath<Sprite>(PortraitFolder + files[i]));
+                Reference(profile, "portrait", AssetDatabase.LoadAssetAtPath<Sprite>(PortraitFolder + "Portrait_" + names[i] + ".png"));
+                Reference(profile, "miniPortrait", AssetDatabase.LoadAssetAtPath<Sprite>(PortraitFolder + "Portrait_" + names[i] + "_Mini.png"));
             }
+        }
+
+        private static Sprite FallbackPortrait => AssetDatabase.LoadAssetAtPath<Sprite>(PortraitFolder + "Portrait_Fallback.png");
+
+        // Dialogue lines name their speaker (ASSAULT, CONTROL…); the runner resolves them to these profiles.
+        private static void Speakers(SquadController squad)
+        {
+            var dialogue = UnityEngine.Object.FindFirstObjectByType<DialogueRunner>();
+            if (dialogue == null) return;
+            var roster = new SerializedObject(squad).FindProperty("members");
+            var profiles = Enumerable.Range(0, roster.arraySize)
+                .Select(i => ((SquadMember)roster.GetArrayElementAtIndex(i).objectReferenceValue).GetComponent<CharacterProfile>())
+                .Where(p => p != null).ToArray();
+            var data = new SerializedObject(dialogue);
+            Fill(data.FindProperty("speakers"), profiles);
+            data.FindProperty("fallbackPortrait").objectReferenceValue = FallbackPortrait;
+            data.ApplyModifiedPropertiesWithoutUndo();
         }
 
         private static void HandOverLegacyGui(SquadController squad, InteractionController interaction, ThreatIndicator threat, EncounterController encounter)
@@ -185,7 +189,14 @@ namespace TRACE.Editor
                 }
                 else if (child.name == "Controls") Style(image, HudPanel.Charcoal);
                 else if (child.name.StartsWith("Member ")) child.gameObject.SetActive(false);
-                else if (child.name.StartsWith("Enemy ")) Style(image, new Color(0.1f, 0.075f, 0.06f, 0.9f));
+                else if (child.name.StartsWith("Enemy "))
+                {
+                    // Two short lines (name, actionable tags) instead of the prototype's three-line readout.
+                    Style(image, new Color(0.07f, 0.075f, 0.085f, 0.88f));
+                    rect.sizeDelta = new Vector2(240f, 48f);
+                    var label = child.GetComponentInChildren<Text>(true);
+                    if (label != null) { label.fontSize = 14; label.lineSpacing = 1.05f; }
+                }
             }
         }
 
@@ -221,6 +232,7 @@ namespace TRACE.Editor
             data.FindProperty("portrait").objectReferenceValue = portrait;
             data.FindProperty("accentBar").objectReferenceValue = accent;
             data.FindProperty("portraitFrame").objectReferenceValue = frame;
+            data.FindProperty("fallbackPortrait").objectReferenceValue = FallbackPortrait;
             data.FindProperty("nameText").objectReferenceValue = name;
             data.FindProperty("roleText").objectReferenceValue = role;
             data.FindProperty("hpText").objectReferenceValue = hpText;
@@ -237,16 +249,21 @@ namespace TRACE.Editor
 
         private static HudPanel SquadPanel(RectTransform canvas)
         {
-            var panel = Panel("Squad Status Panel", canvas, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-16f, 16f), new Vector2(300f, 112f), out _);
+            var panel = Panel("Squad Status Panel", canvas, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-16f, 16f), new Vector2(300f, 112f), out var panelAccent);
+            // Neutral panel bar: each card carries its member's identity colour instead.
+            panelAccent.color = new Color(0.62f, 0.65f, 0.69f, 0.35f);
             Label("Header", panel, new Vector2(12f, -6f), new Vector2(120f, 14f), "SQUAD", 10, HudPanel.Muted, FontStyle.Bold);
             var component = panel.gameObject.AddComponent<SquadStatusPanel>();
             var data = new SerializedObject(component);
+            data.FindProperty("fallbackPortrait").objectReferenceValue = FallbackPortrait;
             var cards = data.FindProperty("cards");
             cards.arraySize = 2;
             for (int i = 0; i < 2; i++)
             {
                 var card = Rect("Card " + (i + 1), panel, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, -22f - i * 44f), new Vector2(300f, 42f), new Vector2(0f, 1f));
-                var accent = Picture("Accent", card, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(6f, -4f), new Vector2(3f, 34f), whiteSprite, HudPanel.Amber, new Vector2(0f, 1f));
+                var accent = Picture("Accent", card, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(6f, -3f), new Vector2(2f, 36f), whiteSprite, HudPanel.Amber, new Vector2(0f, 1f));
+                var portraitFrame = Picture("Portrait Frame", card, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(11f, -3f), new Vector2(36f, 36f), whiteSprite, HudPanel.Amber, new Vector2(0f, 1f));
+                Picture("Portrait Back", card, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -4f), new Vector2(34f, 34f), whiteSprite, new Color(0.07f, 0.075f, 0.085f, 1f), new Vector2(0f, 1f));
                 var portrait = Picture("Portrait", card, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -4f), new Vector2(34f, 34f), null, Color.white, new Vector2(0f, 1f));
                 portrait.preserveAspect = true;
                 var name = Label("Name", card, new Vector2(54f, -4f), new Vector2(170f, 16f), "", 13, HudPanel.OffWhite, FontStyle.Bold);
@@ -259,6 +276,7 @@ namespace TRACE.Editor
                 var entry = cards.GetArrayElementAtIndex(i);
                 entry.FindPropertyRelative("root").objectReferenceValue = card;
                 entry.FindPropertyRelative("portrait").objectReferenceValue = portrait;
+                entry.FindPropertyRelative("portraitFrame").objectReferenceValue = portraitFrame;
                 entry.FindPropertyRelative("accent").objectReferenceValue = accent;
                 entry.FindPropertyRelative("nameText").objectReferenceValue = name;
                 entry.FindPropertyRelative("hpFill").objectReferenceValue = hpFill;
@@ -301,15 +319,16 @@ namespace TRACE.Editor
 
         private static HudPanel Target(RectTransform canvas)
         {
-            var panel = Panel("Target Panel", canvas, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -14f), new Vector2(360f, 62f), out var accent);
+            // Built at the compact size; TargetPanel switches to its elite layout for an elite or boss.
+            var panel = Panel("Target Panel", canvas, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -14f), new Vector2(280f, 40f), out var accent);
             accent.color = HudPanel.Danger;
             var frame = Picture("Frame", panel, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero, panelSprite, new Color(0.62f, 0.65f, 0.69f, 0.35f));
             frame.type = Image.Type.Sliced; frame.fillCenter = false; frame.pixelsPerUnitMultiplier = 6f;
             var tag = Label("Tag", panel, new Vector2(12f, -7f), new Vector2(60f, 14f), "", 10, HudPanel.Muted, FontStyle.Bold);
             var name = Label("Name", panel, new Vector2(60f, -5f), new Vector2(200f, 18f), "", 15, HudPanel.OffWhite, FontStyle.Bold);
             var hpText = Label("HP Text", panel, new Vector2(-12f, -6f), new Vector2(90f, 16f), "", 12, HudPanel.OffWhite, FontStyle.Normal, TextAnchor.UpperRight, new Vector2(1f, 1f));
-            Picture("HP Back", panel, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -28f), new Vector2(336f, 6f), whiteSprite, new Color(1f, 1f, 1f, 0.12f), new Vector2(0f, 1f));
-            var hpFill = Bar("HP Fill", panel, new Vector2(12f, -28f), new Vector2(336f, 6f), HudPanel.Danger);
+            var hpBack = Picture("HP Back", panel, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -21f), new Vector2(256f, 4f), whiteSprite, new Color(1f, 1f, 1f, 0.12f), new Vector2(0f, 1f));
+            var hpFill = Bar("HP Fill", panel, new Vector2(12f, -21f), new Vector2(256f, 4f), HudPanel.Danger);
             var status = Label("Status", panel, new Vector2(12f, -40f), new Vector2(200f, 14f), "", 10, HudPanel.Muted);
             var combo = Label("Combo", panel, new Vector2(-12f, -40f), new Vector2(220f, 14f), "", 10, HudPanel.Amber, FontStyle.Bold, TextAnchor.UpperRight, new Vector2(1f, 1f));
             var component = panel.gameObject.AddComponent<TargetPanel>();
@@ -318,6 +337,7 @@ namespace TRACE.Editor
             data.FindProperty("nameText").objectReferenceValue = name;
             data.FindProperty("tagText").objectReferenceValue = tag;
             data.FindProperty("hpText").objectReferenceValue = hpText;
+            data.FindProperty("hpBack").objectReferenceValue = hpBack;
             data.FindProperty("hpFill").objectReferenceValue = hpFill;
             data.FindProperty("statusText").objectReferenceValue = status;
             data.FindProperty("comboText").objectReferenceValue = combo;
@@ -376,7 +396,7 @@ namespace TRACE.Editor
             return component;
         }
 
-        private static HudPanel FocusLayer(RectTransform canvas, Volume volume)
+        private static HudPanel FocusLayer(RectTransform canvas)
         {
             var rect = Rect("Tactical Focus Layer", canvas, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero, new Vector2(0.5f, 0.5f));
             rect.gameObject.AddComponent<CanvasGroup>();
@@ -391,14 +411,13 @@ namespace TRACE.Editor
                 Picture("Vertical", brackets[i], corner, corner, Vector2.zero, new Vector2(2f, 40f), whiteSprite, HudPanel.Cyan, corner);
             }
             Picture("Top Line", rect, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -70f), new Vector2(520f, 1f), whiteSprite, new Color(0.369f, 0.839f, 1f, 0.35f), new Vector2(0.5f, 1f));
-            var analysisPanel = Panel("Analysis", rect, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(16f, 140f), new Vector2(372f, 96f), out var accent);
+            var analysisPanel = Panel("Analysis", rect, new Vector2(0f, 0f), new Vector2(0f, 0f), new Vector2(16f, 140f), new Vector2(372f, 46f), out var accent);
             accent.color = HudPanel.Cyan;
             UnityEngine.Object.DestroyImmediate(analysisPanel.GetComponent<CanvasGroup>());
-            var analysis = Label("Analysis Text", analysisPanel, new Vector2(12f, -6f), new Vector2(352f, 86f), "", 11, HudPanel.OffWhite);
+            var analysis = Label("Analysis Text", analysisPanel, new Vector2(12f, -6f), new Vector2(352f, 36f), "", 12, HudPanel.OffWhite);
             analysis.lineSpacing = 1.15f;
             var component = rect.gameObject.AddComponent<TacticalFocusOverlay>();
             var data = new SerializedObject(component);
-            data.FindProperty("gradeVolume").objectReferenceValue = volume;
             data.FindProperty("analysisText").objectReferenceValue = analysis;
             Fill(data.FindProperty("brackets"), brackets);
             data.ApplyModifiedPropertiesWithoutUndo();

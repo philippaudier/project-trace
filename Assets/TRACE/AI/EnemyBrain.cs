@@ -7,6 +7,8 @@ namespace TRACE.AI
     // Each concrete brain keeps its own state machine; no generic AI framework.
     public abstract class EnemyBrain : MonoBehaviour
     {
+        [SerializeField, Tooltip("Elite or boss: the HUD gives its target panel more weight.")] private bool elite;
+        public bool IsElite => elite;
         public abstract string Archetype { get; }
         public abstract DamageReceiver CurrentTarget { get; }
         // Chasing, repositioning or attacking: anything but idle or dead.

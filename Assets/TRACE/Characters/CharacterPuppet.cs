@@ -1,5 +1,6 @@
 using TRACE.AI;
 using TRACE.Combat;
+using TRACE.Skills;
 using TRACE.Tactical;
 using UnityEngine;
 
@@ -27,6 +28,8 @@ namespace TRACE.Characters
         [SerializeField] private CompanionController companion;
         [SerializeField] private Health health;
         [SerializeField] private TacticalFocus focus;
+        [SerializeField, Tooltip("Optional: the left arm extends when this skill fires.")] private CharacterSkill skill;
+        [SerializeField, Tooltip("Optional: an engaged ranged attack deepens the guard while player-controlled.")] private PlayerRangedAttack ranged;
         [Header("Locomotion")]
         [SerializeField, Min(0.1f)] private float walkSpeed = 3.2f;
         [SerializeField, Min(0.1f)] private float sprintSpeed = 6.2f;
@@ -48,6 +51,10 @@ namespace TRACE.Characters
         [SerializeField, Range(0f, 45f)] private float hitFlinch = 14f;
         [SerializeField, Tooltip("Left hand to the chest while Tactical Focus is held (Tracewalker only).")] private bool focusGesture = true;
         [SerializeField, Range(0f, 120f)] private float focusArmPitch = 70f;
+        [SerializeField, Range(0f, 90f), Tooltip("Left arm held forward at rest (degrees); 0 keeps the natural swing.")] private float guardArmPitch;
+        [SerializeField, Range(0f, 90f), Tooltip("Left arm guard while engaged in combat.")] private float combatGuardPitch;
+        [SerializeField, Range(0f, 120f), Tooltip("Left arm extension when the skill fires.")] private float skillArmPitch = 80f;
+        [SerializeField, Min(0.05f)] private float skillGestureTime = 0.45f;
         [SerializeField, Min(0.1f)] private float poseResponse = 14f;
         [SerializeField, Min(0.1f)] private float strikeResponse = 28f;
 
@@ -55,6 +62,7 @@ namespace TRACE.Characters
         private float phase;
         private float flinch;
         private float attackStartedAt = -10f;
+        private float skillGestureUntil = -10f;
         private float swingUntil = -10f;
         private bool wasAttacking;
         private bool wasWindingUp;
@@ -71,6 +79,8 @@ namespace TRACE.Characters
         public float LegSwingAmplitude => legSwing;
         public float PoseResponse => poseResponse;
         public bool FocusGesture => focusGesture;
+        public float GuardArmPitch => guardArmPitch;
+        public bool IsSkillGesture => Time.time < skillGestureUntil;
         public bool IsActive => isActiveAndEnabled && (health == null || !health.IsDead);
 
         private void Awake()
@@ -82,12 +92,16 @@ namespace TRACE.Characters
         {
             lastPosition = transform.position;
             if (health != null) health.OnDamaged += Flinch;
+            if (skill != null) skill.Activated += SkillGesture;
         }
 
         private void OnDisable()
         {
             if (health != null) health.OnDamaged -= Flinch;
+            if (skill != null) skill.Activated -= SkillGesture;
         }
+
+        private void SkillGesture() => skillGestureUntil = Time.time + skillGestureTime;
 
         private void Flinch(float amount) => flinch = hitFlinch;
 
@@ -153,6 +167,19 @@ namespace TRACE.Characters
                 legTarget = 0f;
             }
             float leftTarget = focused ? -focusArmPitch : -armTarget;
+            float leftResponse = poseResponse;
+            if (!focused && (guardArmPitch > 0f || combatGuardPitch > 0f))
+            {
+                // Defensive carriage: the left arm stays slightly forward, swings less, and comes up in combat.
+                bool engaged = companion != null && companion.isActiveAndEnabled ? companion.State == CompanionController.CompanionState.Combat :
+                    ranged != null && ranged.isActiveAndEnabled && ranged.CurrentTarget != null;
+                leftTarget = -armTarget * 0.4f - (engaged ? Mathf.Max(guardArmPitch, combatGuardPitch) : guardArmPitch);
+            }
+            if (IsSkillGesture)
+            {
+                leftTarget = -skillArmPitch;
+                leftResponse = strikeResponse;
+            }
             float crouchTarget = 0f;
             if (dodging)
             {
@@ -167,7 +194,7 @@ namespace TRACE.Characters
             float strike = 1f - Mathf.Exp(-dt * rightResponse);
             leftLeg = Mathf.Lerp(leftLeg, legTarget, blend);
             rightLeg = Mathf.Lerp(rightLeg, -legTarget, blend);
-            leftArm = Mathf.Lerp(leftArm, leftTarget, blend);
+            leftArm = Mathf.Lerp(leftArm, leftTarget, 1f - Mathf.Exp(-dt * leftResponse));
             rightArm = Mathf.Lerp(rightArm, rightTarget, strike);
             lean = Mathf.Lerp(lean, leanTarget, blend);
             crouch = Mathf.Lerp(crouch, crouchTarget, strike);

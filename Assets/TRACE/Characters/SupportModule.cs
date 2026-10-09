@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace TRACE.Characters
 {
-    // Support's ORIGIN field stabilization technology: a mint emitter that idles low and brightens while any
-    // squad member carries a Pulse Shield. Reads the shields only; no reaction to Tactical Focus.
+    // Support's ORIGIN field stabilization technology on her back: a mint emitter that idles low and brightens,
+    // and a segmented ring that turns, while any squad member carries a Pulse Shield. It answers the gauntlet
+    // (which projects) by amplifying. Reads the shields only; no reaction to Tactical Focus.
     [DisallowMultipleComponent]
     public sealed class SupportModule : MonoBehaviour
     {
@@ -14,11 +15,14 @@ namespace TRACE.Characters
         [SerializeField, Min(0f)] private float idleIntensity = 0.5f;
         [SerializeField, Min(0f)] private float deployedIntensity = 1.7f;
         [SerializeField, Min(0.01f)] private float responseTime = 0.25f;
+        [SerializeField] private Transform ring;
+        [SerializeField, Tooltip("Ring spin in degrees per second at full deployment.")] private float deployedSpin = 60f;
         private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
         private MaterialPropertyBlock properties;
         public float CurrentIntensity { get; private set; }
         public float IdleIntensity => idleIntensity;
         public int ShieldCount => shields != null ? shields.Length : 0;
+        public float RingAngle { get; private set; }
         public bool IsDeployed
         {
             get
@@ -42,6 +46,10 @@ namespace TRACE.Characters
             float blend = 1f - Mathf.Exp(-Time.deltaTime / responseTime);
             CurrentIntensity = Mathf.Lerp(CurrentIntensity, target, blend);
             Apply();
+            if (ring == null) return;
+            float deployed = Mathf.InverseLerp(idleIntensity, deployedIntensity, CurrentIntensity);
+            RingAngle = Mathf.Repeat(RingAngle + deployedSpin * deployed * Time.deltaTime, 360f);
+            ring.localRotation = Quaternion.Euler(0f, 0f, RingAngle);
         }
 
         private void Apply()

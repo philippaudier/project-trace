@@ -266,8 +266,9 @@ namespace TRACE.Tests
             camera.transform.LookAt(enemy.transform.position + Vector3.up); camera.aspect = 16f / 9f;
             enemy.GetComponent<ComboOpportunity>().Offer(ComboOpportunityType.Grouped, 2.5f, focus);
             yield return Enter(); var overlay = squad.GetComponent<TacticalOverlay>();
+            yield return Wait(0.12f); // combos are the last layer of the reveal cascade (~220 ms)
             Assert.That(overlay.VisibleEnemyCount, Is.EqualTo(1));
-            StringAssert.Contains("GROUPED", overlay.EnemyInfo(0)); StringAssert.Contains("1 + E", overlay.EnemyInfo(0));
+            StringAssert.Contains("GROUPED 1+E", overlay.EnemyInfo(0));
             camera.transform.Rotate(0, 180f, 0); yield return Frames(3); Assert.That(overlay.VisibleEnemyCount, Is.Zero);
         }
         [UnityTest] public IEnumerator EnemyWindupTelegraphAndAttackContinueInGameTime()

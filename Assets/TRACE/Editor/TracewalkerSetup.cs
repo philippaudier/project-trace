@@ -22,6 +22,7 @@ namespace TRACE.Editor
             "Assets/TRACE/Scenes/Prototype.unity",
             "Assets/TRACE/Scenes/PrototypeEncounter.unity",
             "Assets/TRACE/Scenes/FirstTrace.unity",
+            "Assets/TRACE/Scenes/FieldTest.unity",
         };
 
         [MenuItem("TRACE/Apply Tracewalker V0.1")]

@@ -97,6 +97,73 @@ namespace TRACE.Tests
             yield return null;
         }
 
+        [UnityTest] public IEnumerator PortraitsShareOneFormatWithASmallerFaceCropForTheSquadCards()
+        {
+            foreach (var member in members)
+            {
+                var profile = member.GetComponent<CharacterProfile>();
+                Assert.That(profile.Portrait.rect.size, Is.EqualTo(new Vector2(256f, 256f)), profile.DisplayName);
+                Assert.That(profile.MiniPortrait, Is.Not.EqualTo(profile.Portrait), profile.DisplayName);
+                Assert.That(profile.MiniPortrait.rect.size, Is.EqualTo(new Vector2(72f, 72f)), profile.DisplayName);
+                Assert.That(profile.RoleLabel, Is.EqualTo(profile.Archetype));
+            }
+            yield return null;
+        }
+
+        [UnityTest] public IEnumerator EveryMemberShowsItsPortraitAndAccentThroughRapidSwitches()
+        {
+            var active = Panel<ActiveOperatorPanel>();
+            var squadPanel = Panel<SquadStatusPanel>();
+            foreach (var key in new[] { Key.Digit2, Key.Digit3, Key.Digit1, Key.Digit3, Key.Digit2 })
+            {
+                Keys(key); yield return Wait(0.05f); Keys(); yield return Wait(0.05f);
+            }
+            yield return Wait(0.3f);
+            for (int round = 0; round < 3; round++)
+            {
+                Keys(Key.Digit1 + round); yield return Wait(0.1f); Keys(); yield return Wait(0.2f);
+                var profile = members[round].GetComponent<CharacterProfile>();
+                Assert.That(squad.ActiveMember, Is.EqualTo(members[round]));
+                Assert.That(active.PortraitSprite, Is.EqualTo(profile.Portrait), profile.DisplayName);
+                StringAssert.Contains(profile.RoleLabel.ToUpperInvariant(), active.RoleLabel);
+                Assert.That((Vector4)active.FrameColor, Is.EqualTo((Vector4)new Color(profile.AccentColor.r, profile.AccentColor.g, profile.AccentColor.b, 0.9f)).Using(ColorNear));
+                for (int card = 0; card < 2; card++)
+                    Assert.That(squadPanel.CardPortrait(card), Is.EqualTo(squadPanel.CardMember(card).GetComponent<CharacterProfile>().MiniPortrait));
+            }
+        }
+
+        [UnityTest] public IEnumerator AMissingPortraitFallsBackToTheNeutralSilhouette()
+        {
+            var profile = members[1].GetComponent<CharacterProfile>();
+            Set(profile, "portrait", null); Set(profile, "miniPortrait", null);
+            var squadPanel = Panel<SquadStatusPanel>();
+            var active = Panel<ActiveOperatorPanel>();
+            // Rebind the cards so they pick the change up, then make Control active.
+            Keys(Key.Digit3); yield return Wait(0.1f); Keys(); yield return Wait(0.2f);
+            int card = squadPanel.CardMember(0) == members[1] ? 0 : 1;
+            Assert.That(squadPanel.CardPortrait(card).name, Is.EqualTo("Portrait_Fallback"));
+            Keys(Key.Digit2); yield return Wait(0.1f); Keys(); yield return Wait(0.15f);
+            Assert.That(active.PortraitSprite.name, Is.EqualTo("Portrait_Fallback"));
+            StringAssert.Contains("CONTROL", active.NameLabel);
+        }
+
+        [UnityTest] public IEnumerator TacticalFocusLiftsThePortraitAccentsAndKeepsThePortraits()
+        {
+            var active = Panel<ActiveOperatorPanel>();
+            var squadPanel = Panel<SquadStatusPanel>();
+            yield return Wait(0.1f);
+            var calmFrame = active.FrameColor; var calmCard = squadPanel.CardFrame(0);
+            var portrait = active.PortraitSprite; var mini = squadPanel.CardPortrait(0);
+            Keys(Key.Tab); yield return Wait(0.6f);
+            Assert.That(hud.State, Is.EqualTo(HudState.Focus));
+            Assert.That(Brightness(active.FrameColor), Is.GreaterThan(Brightness(calmFrame)));
+            Assert.That(Brightness(squadPanel.CardFrame(0)), Is.GreaterThan(Brightness(calmCard)));
+            Assert.That(active.PortraitSprite, Is.EqualTo(portrait));
+            Assert.That(squadPanel.CardPortrait(0), Is.EqualTo(mini));
+            Keys(); yield return Wait(0.6f);
+            Assert.That((Vector4)active.FrameColor, Is.EqualTo((Vector4)calmFrame).Using(ColorNear));
+        }
+
         [UnityTest] public IEnumerator SwitchingMembersUpdatesTheOperatorPanelAndTheSquadCards()
         {
             var active = Panel<ActiveOperatorPanel>();
@@ -177,6 +244,64 @@ namespace TRACE.Tests
             Assert.That(Panel<ThreatIndicatorView>(), Is.Not.Null);
         }
 
+        [UnityTest] public IEnumerator SquadCardsCarryEachMembersIdentityColour()
+        {
+            var squadPanel = Panel<SquadStatusPanel>();
+            yield return Wait(0.1f);
+            for (int card = 0; card < 2; card++)
+            {
+                var profile = squadPanel.CardMember(card).GetComponent<CharacterProfile>();
+                Assert.That(squadPanel.CardAccent(card), Is.EqualTo(profile.AccentColor), profile.DisplayName);
+                StringAssert.Contains(profile.AccentHex, squadPanel.CardLabel(card), "slot number tinted");
+            }
+            Assert.That(squadPanel.CardAccent(0), Is.Not.EqualTo(squadPanel.CardAccent(1)));
+        }
+
+        [UnityTest] public IEnumerator TargetPanelIsCompactForARegularEnemyAndHeavierForAnElite()
+        {
+            var enemy = enemies[0];
+            Place(enemy.transform, members[0].transform.position + members[0].transform.forward * 4f);
+            enemy.gameObject.SetActive(true);
+            yield return Wait(0.6f);
+            var target = Panel<TargetPanel>();
+            Assert.That(target.IsShown, Is.True);
+            Assert.That(target.IsEliteLayout, Is.False);
+            var compact = target.Size;
+            Assert.That(compact.y, Is.LessThan(50f), "thin strip for a regular enemy");
+            SetBase(enemy, "elite", true);
+            yield return Wait(0.2f);
+            Assert.That(target.IsEliteLayout, Is.True);
+            Assert.That(target.Size.x, Is.GreaterThan(compact.x));
+            Assert.That(target.Size.y, Is.GreaterThan(compact.y));
+            SetBase(enemy, "elite", false);
+        }
+
+        [UnityTest] public IEnumerator FocusAnalysisReadsAsShortTags()
+        {
+            Keys(Key.Tab); yield return Wait(0.6f);
+            string analysis = Panel<TacticalFocusOverlay>().Analysis;
+            foreach (var tag in new[] { "HOSTILES", "WIND-UP", "COMBO", "LOCK" }) StringAssert.Contains(tag, analysis);
+            StringAssert.DoesNotContain("PREPARATION", analysis);
+            Assert.That(analysis.Split('\n').Length, Is.EqualTo(2), "header and one row of tags");
+            Keys(); yield return Wait(0.6f);
+        }
+
+        [UnityTest] public IEnumerator DialogueSpeakersResolveToSquadProfiles()
+        {
+            yield return Load("FirstTrace");
+            var dialogue = Object.FindFirstObjectByType<DialogueRunner>();
+            Assert.That(dialogue.Resolve("ASSAULT"), Is.EqualTo(members[0].GetComponent<CharacterProfile>()), "role word of the archetype");
+            Assert.That(dialogue.Resolve("CONTROL"), Is.EqualTo(members[1].GetComponent<CharacterProfile>()));
+            Assert.That(dialogue.Resolve("Support"), Is.EqualTo(members[2].GetComponent<CharacterProfile>()));
+            Assert.That(dialogue.Resolve("TERMINAL"), Is.Null, "non-squad speakers stay neutral");
+            float deadline = Time.unscaledTime + 7f;
+            while (!dialogue.IsPlaying && Time.unscaledTime < deadline) yield return null;
+            Assert.That(dialogue.IsPlaying, Is.True, "arrival exchange");
+            Assert.That(dialogue.CurrentSpeaker, Is.Not.Null, dialogue.CurrentLine.speaker);
+            Assert.That(dialogue.CurrentSpeaker, Is.EqualTo(dialogue.Resolve(dialogue.CurrentLine.speaker)));
+            Assert.That(dialogue.CurrentPortrait, Is.EqualTo(dialogue.CurrentSpeaker.Portrait), "same portrait as the HUD");
+        }
+
         [UnityTest] public IEnumerator FirstTracePromptAndObjectiveReadFromTheStory()
         {
             yield return Load("FirstTrace");
@@ -229,6 +354,10 @@ namespace TRACE.Tests
         private void Keys(params Key[] keys) => InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys));
         private static IEnumerator Wait(float duration) { yield return new WaitForSecondsRealtime(duration); yield return null; }
         private static void Set(object target, string name, object value) => target.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance).SetValue(target, value);
+        private static float Brightness(Color color) => color.r + color.g + color.b;
+        private static readonly System.Comparison<Vector4> ColorNearComparison = (a, b) => Vector4.Distance(a, b) < 0.02f ? 0 : 1;
+        private static System.Collections.Generic.IComparer<Vector4> ColorNear => System.Collections.Generic.Comparer<Vector4>.Create(ColorNearComparison);
+        private static void SetBase(EnemyBrain brain, string name, object value) => typeof(EnemyBrain).GetField(name, BindingFlags.NonPublic | BindingFlags.Instance).SetValue(brain, value);
         private static T Get<T>(object target, string name) => (T)target.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance).GetValue(target);
     }
 }

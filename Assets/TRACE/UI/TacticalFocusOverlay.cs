@@ -1,41 +1,36 @@
 using TRACE.Combat;
 using TRACE.Skills;
+using TRACE.Tactical;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace TRACE.UI
 {
-    // Analytical layer for Tactical Focus: corner brackets, an ANALYSIS checklist, and a global post-process
-    // volume (desaturation, slight cyan lift) whose weight follows the focus state in real time. The existing
-    // TacticalOverlay keeps its enemy cards; this adds the frame, the readout and the grade around them.
+    // Analytical layer for Tactical Focus: corner brackets and an ANALYSIS row of short tags. It follows the reveal
+    // timing of TacticalFocusPresentationController (which also owns the grade); TacticalOverlay keeps the enemy cards.
     public sealed class TacticalFocusOverlay : HudPanel
     {
-        [SerializeField] private Volume gradeVolume;
-        [SerializeField, Range(0f, 1f)] private float gradeWeight = 0.85f;
-        [SerializeField, Min(0.1f)] private float gradeSpeed = 6f;
+        [SerializeField] private TacticalFocusPresentationController presentation;
         [SerializeField] private RectTransform[] brackets = new RectTransform[0];
         [SerializeField, Min(0f)] private float bracketBreath = 4f;
         [SerializeField] private Text analysisText;
         private Vector2[] bracketRest;
-        public float GradeWeight => gradeVolume != null ? gradeVolume.weight : 0f;
+        public float GradeWeight => presentation != null ? presentation.GradeWeight : 0f;
         public string Analysis => analysisText != null ? analysisText.text : "";
 
         protected override Vector2 SlideDirection => Vector2.zero;
-        protected override float TargetAlpha(HudRoot hud) => hud.State == HudState.Focus ? 1f : 0f;
+        protected override float TargetAlpha(HudRoot hud) => hud.State == HudState.Focus &&
+            (presentation == null || presentation.Revealed(TacticalFocusPresentationController.Stage.Status)) ? 1f : 0f;
 
         protected override void OnBind(HudRoot hud)
         {
             bracketRest = new Vector2[brackets.Length];
             for (int i = 0; i < brackets.Length; i++) bracketRest[i] = brackets[i] != null ? brackets[i].anchoredPosition : Vector2.zero;
-            if (gradeVolume != null) gradeVolume.weight = 0f;
         }
 
         protected override void OnTick(HudRoot hud, bool refresh)
         {
             bool focused = hud.State == HudState.Focus;
-            if (gradeVolume != null)
-                gradeVolume.weight = Mathf.MoveTowards(gradeVolume.weight, focused ? gradeWeight : 0f, Time.unscaledDeltaTime * gradeSpeed);
             // Brackets breathe outward very slightly: alive, not flashy.
             float breath = Mathf.Sin(Time.unscaledTime * 1.6f) * bracketBreath;
             for (int i = 0; i < brackets.Length; i++)
@@ -46,7 +41,6 @@ namespace TRACE.UI
             }
             if (!refresh || !focused || analysisText == null) return;
             int hostiles = hud.CountHostiles(out int preparing, out int combos);
-            string line(bool on, string text) => (on ? $"<color=#{Hex(Cyan)}>■</color>  " : $"<color=#{Hex(Muted)}>□</color>  ") + text;
             bool counter = false;
             if (hud.Squad != null)
                 foreach (var member in hud.Squad.Members)
@@ -54,11 +48,14 @@ namespace TRACE.UI
                     var combo = member.GetComponent<ComboOpportunity>();
                     if (combo != null && combo.Type == ComboOpportunityType.Protected) counter = true;
                 }
-            analysisText.text = $"<b>ANALYSIS</b>\n" +
-                line(hostiles > 0, $"{hostiles} HOSTILE{(hostiles > 1 ? "S" : "")} DETECTE{(hostiles > 1 ? "S" : "")}") + "\n" +
-                line(preparing > 0, preparing > 0 ? $"{preparing} ATTAQUE{(preparing > 1 ? "S" : "")} EN PREPARATION" : "AUCUNE ATTAQUE EN PREPARATION") + "\n" +
-                line(combos > 0 || counter, combos > 0 ? "COMBO : ENNEMIS GROUPES  1 + E" : counter ? "COMBO : CONTRE DISPONIBLE" : "AUCUNE OPPORTUNITE DE COMBO") + "\n" +
-                line(hud.IsLocked, hud.IsLocked ? "CIBLE VERROUILLEE" : "PAS DE VERROUILLAGE");
+            // One row of short tags, read at a glance: lit when actionable, dimmed otherwise.
+            string tag(bool on, Color color, string text) => $"<color=#{Hex(on ? color : Muted)}>{text}</color>";
+            bool combosShown = presentation == null || presentation.Revealed(TacticalFocusPresentationController.Stage.Combos);
+            analysisText.text = $"<color=#{Hex(Muted)}>ANALYSIS</color>\n<b>" +
+                tag(hostiles > 0, OffWhite, $"HOSTILES {hostiles}") + "    " +
+                tag(preparing > 0, Danger, preparing > 0 ? $"WIND-UP {preparing}" : "WIND-UP") + "    " +
+                tag(combosShown && (combos > 0 || counter), Amber, !combosShown ? "COMBO" : combos > 0 ? "GROUPED 1+E" : counter ? "PROTECTED" : "COMBO") + "    " +
+                tag(hud.IsLocked, Cyan, hud.IsLocked ? "LOCKED" : "LOCK") + "</b>";
         }
     }
 }

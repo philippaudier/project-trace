@@ -19,6 +19,8 @@ namespace TRACE.Skills
         public float CooldownRemaining => Mathf.Max(0f, readyAt - Time.time);
         public bool IsReady => CooldownRemaining <= 0f;
         public void ResetCooldown() => readyAt = 0f;
+        // Raised after a successful use; presentation (puppet gestures, equipment) listens, gameplay does not.
+        public event System.Action Activated;
 
         protected virtual void Awake()
         {
@@ -35,6 +37,7 @@ namespace TRACE.Skills
         {
             if (!CanUse() || !Use()) return false;
             readyAt = Time.time + cooldown;
+            Activated?.Invoke();
             return true;
         }
 
