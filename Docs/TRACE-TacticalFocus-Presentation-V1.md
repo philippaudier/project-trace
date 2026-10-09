@@ -34,14 +34,18 @@ Master
 
 | Groupe | Normal | TacticalFocus |
 | --- | --- | --- |
-| World | 0 dB, coupure 22 kHz | −5 dB, coupure **2400 Hz** |
-| Ambience | 0 dB, 22 kHz | −5 dB, 2400 Hz |
-| Music | 0 dB, 22 kHz | −4 dB, 2400 Hz |
+| World | 0 dB, coupure 22 kHz | −9 dB, coupure **1600 Hz** |
+| Ambience | 0 dB, 22 kHz | −14 dB, 800 Hz |
+| Music | 0 dB, 22 kHz | −8 dB, 2400 Hz |
 | Combat | 0 dB, 22 kHz | −3 dB, 4000 Hz (plus léger : le combat reste lisible) |
 | UI, Tactical | 0 dB, sans filtre | 0 dB, sans filtre |
 
 Transitions : entrée 0,16 s, sortie 0,20 s (`AudioMixerSnapshot.TransitionTo`). Priorité perçue en Focus : menaces
-(UI, volume 1,0), combo / skill (UI 0,6), retours tactiques et lock (UI / Tactical), nappe (0,12), monde filtré.
+(UI, volume 1,0), combo / skill (UI 0,6), retours tactiques et lock (UI / Tactical), nappe (0,32), monde filtré.
+
+Réglage à l'oreille (2026-10-09) : les premiers niveaux (−5 dB à 2400 Hz, nappe 0,14) laissaient les boucles graves du lieu
+passer presque intactes et la nappe sous l'ambiance. Le monde passe désormais nettement derrière la membrane et la nappe
+prend la place, sans devenir une musique.
 
 ## Sons
 

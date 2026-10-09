@@ -63,7 +63,7 @@ Material:
     - _OcclusionStrength: 1
     - _SmoothnessMax: 0.22
     - _SmoothnessMin: 0.04
-    - _Tiling: 0.2
+    - _Tiling: 0.1
     - _TriplanarSharpness: 6
     - _WetDarken: 0.85
     - _WetNormalFlatten: 0.4

@@ -91,7 +91,7 @@ namespace TRACE.Tests
             Assert.That(peak, Is.InRange(0.08f, 0.15f), "a short aberration spike on entering");
             yield return Wait(0.3f);
             Assert.That(presentation.AberrationIntensity, Is.InRange(0.005f, 0.03f), "near nothing while active");
-            Assert.That(presentation.BedLevel, Is.GreaterThan(0f).And.LessThan(0.2f), "bed present but faint");
+            Assert.That(presentation.BedLevel, Is.GreaterThan(0.2f).And.LessThan(0.5f), "bed present, under the cues");
             Assert.That(presentation.EnterCount, Is.EqualTo(1), "not replayed while held");
         }
 

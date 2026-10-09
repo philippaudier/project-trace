@@ -32,7 +32,7 @@ namespace TRACE.Tactical
         [SerializeField, Range(0f, 1f)] private float enterVolume = 0.6f;
         [SerializeField, Range(0f, 1f)] private float exitVolume = 0.5f;
         [SerializeField] private AudioSource bedSource;
-        [SerializeField, Range(0f, 1f), Tooltip("Felt more than heard: if it sounds like music starting, it is too loud.")] private float bedVolume = 0.14f;
+        [SerializeField, Range(0f, 1f), Tooltip("Felt more than heard: if it sounds like music starting, it is too loud.")] private float bedVolume = 0.32f;
         [SerializeField, Min(0f), Tooltip("The bed follows the enter cue and the world filter.")] private float bedDelay = 0.08f;
         [SerializeField, Min(0.01f)] private float bedFadeIn = 0.3f;
         [SerializeField, Min(0.01f)] private float bedFadeOut = 0.2f;

@@ -55,9 +55,10 @@ namespace TRACE.Editor
         // Group: (low-pass cutoff in Focus, attenuation in Focus). The tactical layer, UI and warnings stay clear.
         private static readonly (string group, float cutoff, float volume)[] FocusMix =
         {
-            ("World", 2400f, -5f),
-            ("Ambience", 2400f, -5f),
-            ("Music", 2400f, -4f),
+            // Tuned by ear (2026-10-09): the place goes well behind the membrane so the bed can take the room.
+            ("World", 1600f, -9f),
+            ("Ambience", 800f, -14f),
+            ("Music", 2400f, -8f),
             ("Combat", 4000f, -3f),
         };
         private const float OpenCutoff = 22000f;

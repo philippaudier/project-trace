@@ -48,7 +48,7 @@ de la couche grave créait un clic) ; refait avec un filtrage périodique, racco
 scalé :
 
 ```
-Ambience (groupe de mixer Ambience : passe-bas et −5 dB pendant le Focus)
+Ambience (groupe de mixer Ambience : passe-bas 800 Hz et −14 dB pendant le Focus)
 ├── Base         boucle 2D continue, très basse
 ├── Environment  boucle 2D, autre bande spectrale (air, ventilation)
 ├── Detail       one-shots 3D rares, depuis des points plausibles
@@ -107,7 +107,8 @@ sous 160 Hz, à −14 dB.
 
 - Source `Bed Source` : 2D, stéréo conservée, groupe **Tactical** (hors du passe-bas du monde, donc plus claire que
   l'environnement filtré).
-- Volume 0,14 (≈ −41 LUFS effectifs, sous l'ambiance du lieu). Le monde reste audible, filtré et à −5 dB.
+- Volume 0,32 (réglé à l'oreille le 2026-10-09, d'abord 0,14). Le monde reste présent mais nettement derrière :
+  Ambience à −14 dB sous 800 Hz, World à −9 dB sous 1600 Hz pendant le Focus.
 - Séquence : à l'entrée, son d'entrée, puis filtre du monde (0,16 s), puis bed après 80 ms en fondu de 0,3 s. Pendant
   le Focus, le bed est stable avec une dérive de hauteur ±1,5 % sur 17 s. À la sortie, le bed s'efface en 0,2 s, le
   monde revient (0,2 s), puis le son de sortie joue 0,1 s plus tard. Pas de relance tant que l'état ne change pas.

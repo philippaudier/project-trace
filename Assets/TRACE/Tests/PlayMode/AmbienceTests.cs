@@ -143,7 +143,7 @@ namespace TRACE.Tests
             Keys(Key.Tab); yield return null; yield return null;
             Assert.That(presentation.BedLevel, Is.EqualTo(0f), "the bed follows the enter cue");
             yield return Wait(0.6f);
-            Assert.That(presentation.BedLevel, Is.GreaterThan(0f).And.LessThan(0.2f), "felt, not a new music");
+            Assert.That(presentation.BedLevel, Is.GreaterThan(0.2f).And.LessThan(0.5f), "present, not a new music");
             Assert.That(bed.pitch, Is.InRange(0.98f, 1.02f));
             Assert.That(ambience.BaseLevel, Is.GreaterThan(0f), "the place is still there under Focus");
             Keys(); yield return Wait(0.5f);
